@@ -1,84 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Example</title>
-        <link rel="stylesheet" href="css/style.css">
-    </head>
-    <body>
-        <div class="timetable">
-            <div class="week-names">
-              <div>monday</div>
-              <div>tuesday</div>
-              <div>wednesday</div>
-              <div>thursday</div>
-              <div>friday</div>
-              <div class="weekend">saturday</div>
-              <div class="weekend">sunday</div>
-            </div>
-            <div class="time-interval">
-              <div>8:00 - 10:00</div>
-              <div>10:00 - 12:00</div>
-              <div>12:00 - 14:00</div>
-              <div>14:00 - 16:00</div>
-              <div>16:00 - 18:00</div>
-              <div>18:00 - 20:00</div>
-            </div>
-            <div class="content">
-              <div>
-                <div class="accent-orange-gradient"></div>
-              </div>
-              <div></div>
-              <div></div>
-              <div></div>
-                  <div>
-                <div class="accent-green-gradient"></div>
-              </div>
-              <div class="weekend"></div>
-              <div class="weekend"></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div>
-                <div class="accent-cyan-gradient"></div>
-              </div>
-              <div></div>
-              <div class="weekend"></div>
-              <div class="weekend"></div>
-              <div>
-                <div class="accent-pink-gradient"></div>
-              </div>
-              <div></div>
-              <div>
-                <div class="accent-purple-gradient"></div>
-              </div>
-              <div></div>
-              <div></div>
-              <div class="weekend"></div>
-              <div class="weekend"></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div class="weekend"></div>
-              <div class="weekend"></div>
-              <div>
-                <div class="accent-purple-gradient"></div>
-              </div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div class="weekend"></div>
-              <div class="weekend"></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div class="weekend"></div>
-              <div class="weekend"></div>
-            </div>
-          </div>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+<body>
+
+<!--Create a menu tab-->
+<div class="menu-tab">
+    <div id="one"></div>
+    <div id="two"></div>
+    <div id="three"></div>
+</div>
+
+<!--Show it when active-->
+<div class="menu-hide">
+    <nav>
+        <ul>
+            <li><a href="#" onclick="showPage('home.html')">Home</a></li>
+            <li><a href="#" onclick="showPage('timetable.html')">Timetable</a></li>
+            <li><a href="#" onclick="showPage('courselist.html')">Course List</a></li>
+            <li><a href="#" onclick="showPage('myaccount.html')">My account</a></li>
+            <li><a href="draft_design.html">*Another design (draft)</a></li>
+        </ul>
+    </nav>
+</div>
+
+<!--Display the selection-->
+<div id="display">Welcome</div>
+
+<script>
+    function showPage(str) {
+        $("#display").load(str);
+    }
+</script>
+
+</body>
 </html>

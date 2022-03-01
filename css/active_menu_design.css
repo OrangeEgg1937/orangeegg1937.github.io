@@ -1,0 +1,85 @@
+html, body {
+    color: #000000;
+}
+
+#display{
+    margin-left:0%;
+}
+
+.menu-tab{
+    width: 90px;
+    height: 70px;
+    position: fixed;
+    z-index: 100;
+    top: 0px;
+    left: 0px;
+    cursor: pointer;
+    transition: all .6s ease-in-out;
+
+}
+
+.menu-tab div {
+    width: 33px;
+    height: 4px;
+    display: block;
+    margin: 5px 28px;
+    transition: all 0.6s ease-in-out;
+    background-color: #000000;
+}
+.menu-tab div:nth-child(1) {
+    margin-top: 20px;
+}
+
+.menu-tab.active {
+    left: 345px;
+    transition: all 600ms ease-in-out;
+    background-color: rgb(120, 120, 195);
+}
+
+.menu-tab.active #one {
+    transform: translateY(9px) rotate(-135deg);
+    transition: all 0.6s ease-in-out;
+    background-color: #000000;
+}
+.menu-tab.active #two {
+    opacity: 0;
+    transition: 0.4s ease;
+}
+.menu-tab.active #three {
+    transform: translateY(-9px) rotate(-45deg);
+    transition: all 0.6s ease-in-out;
+    background-color: #000000;
+}
+
+.menu-hide {
+    width: 345px;
+    left: -345px;
+    height: 100vh;
+    position: fixed;
+    z-index: 10;
+    top: 0px;
+    transition: all 0.6s ease-in-out;
+}
+
+.menu-hide nav ul li {
+    height: 70px;
+    list-style-type: none;
+    text-align: center;
+    line-height: 70px;
+    transition: all 0.5s ease;
+}
+.menu-hide nav ul li:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+.menu-hide nav ul li a {
+    padding: 30px 25px;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-weight: 800;
+}
+
+.menu-hide.show {
+    left: 0px;
+    background-color: rgb(178, 166, 166);
+    transition: all 0.6s ease-in-out;
+}
