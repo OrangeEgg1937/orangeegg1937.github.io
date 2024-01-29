@@ -1,7 +1,6 @@
 ---
 title: FFXIV - 絕龍詩戰爭 - Day After Clear
 description: 絕龍詩戰爭 - Day After Clear
-slug: ffxiv
 date: 2022-08-20 00:16:34+0800
 image: https://pbs.twimg.com/media/FY7zPPjacAACkFF?format=jpg
 

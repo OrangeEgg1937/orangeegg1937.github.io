@@ -1,15 +1,14 @@
 ---
 title: Leetcode 1721 Swapping Nodes in a Linked List
 description: Leetcode 1721 解題心得
-slug: leetcode
 date: 2023-05-15 20:41:00+0800
 categories:
     - Leetcode
 tags:
     - List
 ---
-
 # Leetcode 1721. Swapping Nodes in a Linked List
+
 >You are given the head of a linked list, and an integer k.
 >
 >Return the head of the linked list after swapping the values of the kth node from the beginning and the **kth** node from the end (the list is 1-indexed).

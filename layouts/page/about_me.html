@@ -1,10 +1,55 @@
-{{ define "body-class" }}template-search{{ end }}
+{{ define "body-class" }}template-aboutme{{ end }}
 {{ define "head" }}
-    {{- with .OutputFormats.Get "json" -}} 
-        <link rel="preload" href="{{ .RelPermalink }}" as="fetch" crossorigin="anonymous">
-    {{- end -}}
 {{ end }}
 {{ define "main" }}
+<article class="{{ if .Params.image }}has-image {{ end }}main-article">
+    <header class="article-header">    
+        <div class="article-details">
+            {{ if .Params.categories }}
+            <header class="article-category">
+                {{ range (.GetTerms "categories") }}
+                    <a href="{{ .RelPermalink }}" {{ with .Params.style }}style="background-color: {{ .background }}; color: {{ .color }};"{{ end }}>
+                        {{ .LinkTitle }}
+                    </a>
+                {{ end }}
+            </header>
+            {{ end }}
+        
+            <div class="article-title-wrapper">
+                <h2 class="article-title">
+                    <a href="{{ .RelPermalink }}">
+                        {{- .Title -}}
+                    </a>
+                </h2>
+            
+                {{ with .Params.description }}
+                <h3 class="article-subtitle">
+                    {{ . }}
+                </h3>
+                {{ end }}
+            </div>
+        
+            {{ $showReadingTime := .Params.readingTime | default (.Site.Params.article.readingTime) }}
+            {{ $showDate := not .Date.IsZero }}
+            {{ $showFooter := or $showDate $showReadingTime }}
+            
+        
+            {{ if .IsTranslated }}
+                <footer class="article-translations">
+                    {{ partial "helper/icon" "language" }}
+                    <div>
+                        {{ range .Translations }}
+                            <a href="{{ .Permalink }}" class="link">{{ .Language.LanguageName }}</a>
+                        {{ end }}
+                    </div>
+                </footer>
+            {{ end }}
+        </div>
+    </header>
 
+    {{ partial "article/components/content" . }}
+
+</article>
+<!-- {{ .Content }} -->
 {{ partialCached "footer/footer" . }}
 {{ end }}
