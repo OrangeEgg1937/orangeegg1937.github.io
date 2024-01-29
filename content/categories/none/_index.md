@@ -1,6 +1,6 @@
 ---
-title: Example Category
-description: A description of this category
+title: 無分類
+description: 無分類
 image:
 
 # Badge style
