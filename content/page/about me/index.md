@@ -37,8 +37,8 @@ ASMPT is a leading global supplier of hardware and software solutions for the ma
 - Provided assistance in circuit design and soldering of circuit boards
 - Debugging hardware board such as using oscilloscope for waveform analysis
 - Proposed an intern project “Time Pressure Dispenser prototype with Ti C2000 MCU”
-- Achieved a base function of dispenser in software part
-- Designed a CLB for Manchester-encoded and decode
+  - Achieved a base function of dispenser in software part
+  - Designed a CLB for Manchester-encoded and decode
 
 
 ## Personal Project
