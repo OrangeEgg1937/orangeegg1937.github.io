@@ -1,5 +1,5 @@
 ---
-title: ML 個人筆記 (UnityEvent and advance use of button)
+title: ML 個人筆記
 description: personal note
 date: 2024-02-05 00:09:00+0800
 categories:
