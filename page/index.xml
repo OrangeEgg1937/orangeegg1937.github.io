@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Pages on OrangeEgg1937's Blog</title><link>https://orangeegg1937.github.io/page/</link><description>Recent content in Pages on OrangeEgg1937's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 06 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://orangeegg1937.github.io/page/index.xml" rel="self" type="application/rss+xml"/><item><title>Archives</title><link>https://orangeegg1937.github.io/archives/</link><pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate><guid>https://orangeegg1937.github.io/archives/</guid><description/></item><item><title>About me</title><link>https://orangeegg1937.github.io/about_me/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://orangeegg1937.github.io/about_me/</guid><description>&lt;blockquote>
+&lt;p>This page is still in designing, but you may free feel to take a look first.&lt;/p>
+&lt;/blockquote>
+&lt;p>Welcome to my personal blog, here is my personal background:&lt;/p>
+&lt;h2 id="education">EDUCATION&lt;/h2>
+&lt;h3 id="hong-kong-community-college-hkcc">Hong Kong Community College (HKCC)&lt;/h3>
+&lt;p>Associate in Information Technology&lt;/p>
+&lt;h3 id="the-chinese-university-of-hong-kong-cuhk">The Chinese University of Hong Kong (CUHK)&lt;/h3>
+&lt;p>From Sept 2020-Present (Exceoted Graduatuib in May 2024)&lt;/p>
+&lt;p>B.Eng. in Computer Engineering&lt;/p>
+&lt;h2 id="experience">Experience&lt;/h2>
+&lt;h3 id="asmpt-past-name-asm-technology-hong-kong-july-2022-july-2023">ASMPT (Past name: ASM Technology Hong Kong) July 2022-July 2023&lt;/h3>
+&lt;p>ASMPT is a leading global supplier of hardware and software solutions for the manufacture of semi-conductors and electronics.&lt;/p>
+&lt;h4 id="job-title-intern-1-year">Job title: Intern (1-Year)&lt;/h4>
+&lt;ul>
+&lt;li>Collaborated with colleagues on various MCU application and software design mainly&lt;/li>
+&lt;li>Provided assistance in circuit design and soldering of circuit boards&lt;/li>
+&lt;li>Debugging hardware board such as using oscilloscope for waveform analysis&lt;/li>
+&lt;li>Proposed an intern project “Time Pressure Dispenser prototype with Ti C2000 MCU”
+&lt;ul>
+&lt;li>Achieved a base function of dispenser in software part&lt;/li>
+&lt;li>Designed a CLB for Manchester-encoded and decode&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="personal-project">Personal Project&lt;/h2>
+&lt;h3 id="hosting-a-personal-blog-in-githubio-this-page">Hosting a Personal Blog in Github.io (This page)&lt;/h3>
+&lt;ul>
+&lt;li>Utilizing the Hugo framework, hosted at github.io&lt;/li>
+&lt;li>Customizing the style and layout sheets to enhance the overall appearance and user experience&lt;/li>
+&lt;li>Sharing my valuable learning experiences and providing personal feedback through the blog&lt;/li>
+&lt;/ul>
+&lt;h3 id="ar-object-placer-in-smartphonehttpsgithubcomorangeegg1937simpleandroidarmodelplacer">&lt;a class="link" href="https://github.com/OrangeEgg1937/SimpleAndroidARModelPlacer" target="_blank" rel="noopener"
+>AR Object placer in Smartphone&lt;/a>&lt;/h3>
+&lt;ul>
+&lt;li>A simple Android application to place the mode in the AR scenes&lt;/li>
+&lt;li>Implemented the application using Unity AR foundation, using the Raycasts and Plane Detection to accurately position - cts on real-world surfaces&lt;/li>
+&lt;li>Allow users to manipulate the pose, position, and rotation of the placed models&lt;/li>
+&lt;/ul>
+&lt;h2 id="personal-skills">Personal Skills&lt;/h2>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Programming Language&lt;/th>
+&lt;th>Related School Courses Project / Courses Work&lt;/th>
+&lt;th>Link&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>C/C++&lt;/td>
+&lt;td>OpenGL in Computer Graphic, MCU design and development&lt;/td>
+&lt;td>N/A&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Python&lt;/td>
+&lt;td>Raspberry Pi + mediapipe + OpenCV, photomosaic, multimedia application&lt;/td>
+&lt;td>&lt;a class="link" href="https://github.com/OrangeEgg1937/smart_lamp_pj" target="_blank" rel="noopener"
+>Raspi&lt;/a>, &lt;a class="link" href="https://github.com/OrangeEgg1937/photomosaic" target="_blank" rel="noopener"
+>photomosaic&lt;/a>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>C#&lt;/td>
+&lt;td>Final Year Project, Developing a Detective Game with Generative AI&lt;/td>
+&lt;td>N/A&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Java&lt;/td>
+&lt;td>Android App development&lt;/td>
+&lt;td>&lt;a class="link" href="https://github.com/OrangeEgg1937/SEHH_2279_pj_hotel_booking_Original" target="_blank" rel="noopener"
+>Hotel App Prototype&lt;/a>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>HTML + CSS + JS&lt;/td>
+&lt;td>Responsive Web application design by Bootstrap, React, Node.JS&lt;/td>
+&lt;td>&lt;a class="link" href="https://github.com/OrangeEgg1937/simpleWebsite" target="_blank" rel="noopener"
+>Code&lt;/a>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>VHDL&lt;/td>
+&lt;td>Design Zedboard program with Xilinx Vivado&lt;/td>
+&lt;td>N/A&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table></description></item><item><title>Search</title><link>https://orangeegg1937.github.io/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://orangeegg1937.github.io/search/</guid><description/></item></channel></rss>

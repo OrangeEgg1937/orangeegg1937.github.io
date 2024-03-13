@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on OrangeEgg1937's Blog</title><link>https://orangeegg1937.github.io/post/</link><description>Recent content in Posts on OrangeEgg1937's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 05 Feb 2024 00:09:00 +0800</lastBuildDate><atom:link href="https://orangeegg1937.github.io/post/index.xml" rel="self" type="application/rss+xml"/><item><title>ML 個人筆記</title><link>https://orangeegg1937.github.io/p/ml-%E5%80%8B%E4%BA%BA%E7%AD%86%E8%A8%98/</link><pubDate>Mon, 05 Feb 2024 00:09:00 +0800</pubDate><guid>https://orangeegg1937.github.io/p/ml-%E5%80%8B%E4%BA%BA%E7%AD%86%E8%A8%98/</guid><description/></item><item><title>ML 個人筆記 Part2</title><link>https://orangeegg1937.github.io/p/ml-%E5%80%8B%E4%BA%BA%E7%AD%86%E8%A8%98-part2/</link><pubDate>Mon, 05 Feb 2024 00:09:00 +0800</pubDate><guid>https://orangeegg1937.github.io/p/ml-%E5%80%8B%E4%BA%BA%E7%AD%86%E8%A8%98-part2/</guid><description/></item><item><title>Unity note 個人筆記 (UnityEvent and advance use of button)</title><link>https://orangeegg1937.github.io/p/unity-note-%E5%80%8B%E4%BA%BA%E7%AD%86%E8%A8%98-unityevent-and-advance-use-of-button/</link><pubDate>Sat, 20 Jan 2024 20:28:00 +0800</pubDate><guid>https://orangeegg1937.github.io/p/unity-note-%E5%80%8B%E4%BA%BA%E7%AD%86%E8%A8%98-unityevent-and-advance-use-of-button/</guid><description>&lt;h2 id="unityevent">UnityEvent&lt;/h2>
+&lt;blockquote>
+&lt;p>Unity manual: &lt;a class="link" href="https://docs.unity3d.com/Manual/UnityEvents.html" target="_blank" rel="noopener"
+>https://docs.unity3d.com/Manual/UnityEvents.html&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;p>According to the manual, UnityEvents are a way of allowing user driven callback to be persisted from edit time to run time without the need for additional programming and script configuration. UnityEvents may sound very unfamiliar as it cannot directly added in a gameobject. However, if you used the UGUI Button before, you will understand it soon. As the &lt;code>On click()&lt;/code> selection in the button is a kind of UnityEvents.&lt;/p>
+&lt;p>&lt;img src="https://orangeegg1937.github.io/p/unity-note-%E5%80%8B%E4%BA%BA%E7%AD%86%E8%A8%98-unityevent-and-advance-use-of-button/image2.png"
+width="437"
+height="485"
+srcset="https://orangeegg1937.github.io/p/unity-note-%E5%80%8B%E4%BA%BA%E7%AD%86%E8%A8%98-unityevent-and-advance-use-of-button/image2_hu55e209a94975f70e1f99e14998e5b477_36177_480x0_resize_box_3.png 480w, https://orangeegg1937.github.io/p/unity-note-%E5%80%8B%E4%BA%BA%E7%AD%86%E8%A8%98-unityevent-and-advance-use-of-button/image2_hu55e209a94975f70e1f99e14998e5b477_36177_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Button Inspector"
+class="gallery-image"
+data-flex-grow="90"
+data-flex-basis="216px"
+>&lt;/p>
+&lt;p>If we want to use the UnityEvent, we can simply using the class &lt;code>UnityEvent&lt;/code>. After that, you can see the same selection in the inspector.&lt;/p>
+&lt;p>&lt;img src="https://orangeegg1937.github.io/p/unity-note-%E5%80%8B%E4%BA%BA%E7%AD%86%E8%A8%98-unityevent-and-advance-use-of-button/image1.png"
+width="1073"
+height="398"
+srcset="https://orangeegg1937.github.io/p/unity-note-%E5%80%8B%E4%BA%BA%E7%AD%86%E8%A8%98-unityevent-and-advance-use-of-button/image1_hu5095f6e1780d1726be26f80da555f4d9_74970_480x0_resize_box_3.png 480w, https://orangeegg1937.github.io/p/unity-note-%E5%80%8B%E4%BA%BA%E7%AD%86%E8%A8%98-unityevent-and-advance-use-of-button/image1_hu5095f6e1780d1726be26f80da555f4d9_74970_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Custom script"
+class="gallery-image"
+data-flex-grow="269"
+data-flex-basis="647px"
+>&lt;/p>
+&lt;h2 id="move-deeply">Move deeply&lt;/h2>
+&lt;p>Sometime we may want to pass some specific value to the callback function such as the enemy gameobject, however, if we look at the inspector, it dose not support to pass the gameobject, so how can we do it? Actually, we can using the generic form of the &lt;code>UnityEvent&amp;lt;T0&amp;gt;&lt;/code>. Then, using &lt;code>.Invoke(value)&lt;/code> to send to all listener.&lt;/p>
+&lt;p>However, if you look at the code it may a bit complicated. So how can we assign a function into a &lt;code>UnityEvent&lt;/code> without using generic? We can try to use &lt;code>C# delegate&lt;/code>. Here is an example:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-C#" data-lang="C#">&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="k">class&lt;/span> &lt;span class="nc">ValueController&lt;/span> &lt;span class="p">:&lt;/span> &lt;span class="n">MonoBehaviour&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="kt">float&lt;/span> &lt;span class="n">number&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">Button&lt;/span> &lt;span class="n">plus&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">Button&lt;/span> &lt;span class="n">mins&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">float&lt;/span> &lt;span class="n">offset&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="m">10.0f&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// initial the member&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="k">void&lt;/span> &lt;span class="n">Awake&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">number&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="m">0&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">plus&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">gameObject&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">transform&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">GetChild&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="m">0&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="n">GetComponent&lt;/span>&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="n">Button&lt;/span>&lt;span class="p">&amp;gt;();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">mins&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">gameObject&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">transform&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">GetChild&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="m">1&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="n">GetComponent&lt;/span>&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="n">Button&lt;/span>&lt;span class="p">&amp;gt;();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">plus&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">onClick&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">AddListener&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">delegate&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="n">EditVal&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">offset&lt;/span>&lt;span class="p">);&lt;/span> &lt;span class="p">});&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">mins&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">onClick&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">AddListener&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">delegate&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="n">EditVal&lt;/span>&lt;span class="p">(-&lt;/span>&lt;span class="n">offset&lt;/span>&lt;span class="p">);&lt;/span> &lt;span class="p">});&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="k">void&lt;/span> &lt;span class="n">EditVal&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">float&lt;/span> &lt;span class="n">val&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">number&lt;/span> &lt;span class="p">+=&lt;/span> &lt;span class="n">val&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>In this code, we assign the &lt;code>EditVal()&lt;/code> function into the listener, when players click the &lt;code>plus&lt;/code> button, the number will be increased by 10; when players click the &lt;code>mins&lt;/code> button, the number will be decreased by 10. Most importantly, we havn&amp;rsquo;t create any new UnityEvent in the script.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-C#" data-lang="C#">&lt;span class="line">&lt;span class="cl">&lt;span class="n">plus&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">onClick&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">AddListener&lt;/span>&lt;span class="p">(()&lt;/span> &lt;span class="p">=&amp;gt;&lt;/span> &lt;span class="n">EditVal&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">offset&lt;/span>&lt;span class="p">));&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Or using the lambda expressions.&lt;/p>
+&lt;p>The reason why we need to use delegate/lambda expressions here because according to the Unity &lt;a class="link" href="https://docs.unity3d.com/2018.3/Documentation/ScriptReference/Events.UnityEvent.AddListener.html" target="_blank" rel="noopener"
+>documentaion&lt;/a>, the &lt;code>UnityAction&lt;/code> class here (The button &lt;code>OnClick()&lt;/code> ) does not take any argument.&lt;/p>
+&lt;h2 id="reference">Reference&lt;/h2>
+&lt;ol>
+&lt;li>
+&lt;p>&lt;a class="link" href="https://docs.unity3d.com/2018.3/Documentation/ScriptReference/Events.UnityEvent.html" target="_blank" rel="noopener"
+>&lt;code>UnityEvent&lt;/code> Class&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a class="link" href="https://docs.unity3d.com/Manual/UnityEvents.html" target="_blank" rel="noopener"
+>Unity Manual&lt;/a>&lt;/p>
+&lt;/li>
+&lt;/ol></description></item><item><title>Leetcode 1721 Swapping Nodes in a Linked List</title><link>https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/</link><pubDate>Mon, 15 May 2023 20:41:00 +0800</pubDate><guid>https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/</guid><description>&lt;h1 id="leetcode-1721-swapping-nodes-in-a-linked-list">Leetcode 1721. Swapping Nodes in a Linked List&lt;/h1>
+&lt;blockquote>
+&lt;p>You are given the head of a linked list, and an integer k.&lt;/p>
+&lt;p>Return the head of the linked list after swapping the values of the kth node from the beginning and the &lt;strong>kth&lt;/strong> node from the end (the list is 1-indexed).&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;img src="https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/example.png"
+width="761"
+height="465"
+srcset="https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/example_huf7d34ff275124f1ac4035803924c73fe_52959_480x0_resize_box_3.png 480w, https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/example_huf7d34ff275124f1ac4035803924c73fe_52959_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Test case"
+class="gallery-image"
+data-flex-grow="163"
+data-flex-basis="392px"
+>&lt;/p>
+&lt;h2 id="前言">前言&lt;/h2>
+&lt;p>作為一個Leetcode + Data structure菜鳥，一開始的解決方法都很直接。發現有什麼問題就直接暴力解決它。這一篇Blog最主要紀錄我前期的思考方式以及開始培養習慣，所以以下解法思路可能效率不高。&lt;/p>
+&lt;h2 id="個人解法思路">個人解法思路&lt;/h2>
+&lt;p>&lt;img src="https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/example2.jpg"
+width="961"
+height="283"
+srcset="https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/example2_hu28a5d644e2965eb07e5b80efde6509f4_29143_480x0_resize_q75_box.jpg 480w, https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/example2_hu28a5d644e2965eb07e5b80efde6509f4_29143_1024x0_resize_q75_box.jpg 1024w"
+loading="lazy"
+alt="Question 1721"
+class="gallery-image"
+data-flex-grow="339"
+data-flex-basis="814px"
+>&lt;/p>
+&lt;ol>
+&lt;li>在list中先尋找第&lt;strong>k&lt;/strong>個node為何。然後尋找它對應的node（即從尾端到開頭的第&lt;strong>k&lt;/strong>個node），並將兩者交換。&lt;/li>
+&lt;li>swap實現方法相對簡單，不詳細說明&lt;/li>
+&lt;li>將問題簡化成「如何在list中尋找第&lt;strong>k&lt;/strong>的node和從尾端到開頭的第&lt;strong>k&lt;/strong>個node」&lt;/li>
+&lt;li>因為我們怎樣都要Travel整個Linked-list才知道整體長度（Linked-list特色），所以一開始用Array/Vector紀錄已經走過的node&lt;/li>
+&lt;li>透過已紀錄的Array/Vector，就知道node的位置以及整體長度，從而解決了「如何在list中尋找第&lt;strong>k&lt;/strong>的node和從尾端到開頭的第&lt;strong>k&lt;/strong>個node」&lt;/li>
+&lt;/ol>
+&lt;h2 id="解法-solution">解法 Solution&lt;/h2>
+&lt;p>&lt;img src="https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/example3.jpg"
+width="975"
+height="369"
+srcset="https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/example3_hu3bf104413aa37c5e23e6122f1d0a57cd_49363_480x0_resize_q75_box.jpg 480w, https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/example3_hu3bf104413aa37c5e23e6122f1d0a57cd_49363_1024x0_resize_q75_box.jpg 1024w"
+loading="lazy"
+alt="Solution"
+class="gallery-image"
+data-flex-grow="264"
+data-flex-basis="634px"
+>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-C++" data-lang="C++">&lt;span class="line">&lt;span class="cl">&lt;span class="cm">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> * Definition for singly-linked list.
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> * struct ListNode {
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> * int val;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> * ListNode *next;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> * ListNode() : val(0), next(nullptr) {}
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> * ListNode(int x) : val(x), next(nullptr) {}
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> * ListNode(int x, ListNode *next) : val(x), next(next) {}
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> * };
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">Solution&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">public&lt;/span>&lt;span class="o">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ListNode&lt;/span>&lt;span class="o">*&lt;/span> &lt;span class="n">swapNodes&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ListNode&lt;/span>&lt;span class="o">*&lt;/span> &lt;span class="n">head&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="n">k&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">vector&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">ListNode&lt;/span>&lt;span class="o">*&amp;gt;&lt;/span> &lt;span class="n">list&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ListNode&lt;/span>&lt;span class="o">*&lt;/span> &lt;span class="n">curr&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">head&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">while&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">curr&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="nb">NULL&lt;/span>&lt;span class="p">){&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">list&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">push_back&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">curr&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">curr&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">curr&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">int&lt;/span> &lt;span class="n">selected&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">k&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">mirror&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">list&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">size&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">k&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">k&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="mi">1&lt;/span> &lt;span class="o">||&lt;/span> &lt;span class="n">k&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="n">list&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">size&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="o">||&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">mirror&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="mi">1&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="n">selected&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">||&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">selected&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="mi">1&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="n">mirror&lt;/span>&lt;span class="p">)){&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">int&lt;/span> &lt;span class="n">temp&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">list&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">selected&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">val&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">list&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">selected&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">val&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">list&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">mirror&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">val&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">list&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">mirror&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">val&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">temp&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>&lt;span class="k">else&lt;/span>&lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">list&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">selected&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">list&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">mirror&lt;/span>&lt;span class="p">];&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">list&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">selected&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">list&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">mirror&lt;/span>&lt;span class="o">+&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">];&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">list&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">mirror&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">list&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">selected&lt;/span>&lt;span class="p">];&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">list&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">mirror&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">list&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">selected&lt;/span>&lt;span class="o">+&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">];&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">list&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">];&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">};&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Time complexity: $\mathcal{O}(n)$, $\mathcal n=number \space of\space nodes$&lt;/p>
+&lt;p>Space complexity: $\mathcal{O}(n)$, $\mathcal n=number \space of\space nodes$&lt;/p>
+&lt;h2 id="更進一步思考">更進一步思考&lt;/h2>
+&lt;ul>
+&lt;li>這裏還有更加好的方法嗎？&lt;/li>
+&lt;li>「怎樣都要Travel整個Linked-list才知道整體長度」→ Time complexity 已經沒有最佳化空間 → 那麼就從Space complexity改良&lt;/li>
+&lt;li>有沒有方法可以節省空間？有，可以用pointer紀錄兩個位置 (fast/slow point)&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/example4.png"
+width="811"
+height="676"
+srcset="https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/example4_hu194090d3c3517b8ebfe617be78a52432_42839_480x0_resize_box_3.png 480w, https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/example4_hu194090d3c3517b8ebfe617be78a52432_42839_1024x0_resize_box_3.png 1024w"
+loading="lazy"
+alt="Fast_slow_pointer"
+class="gallery-image"
+data-flex-grow="119"
+data-flex-basis="287px"
+>&lt;/p>
+&lt;ol>
+&lt;li>我們首先用fast pointer尋找第k的node&lt;/li>
+&lt;li>curr (current) = fast pointer&lt;/li>
+&lt;li>然後slow fast pointer一起走&lt;/li>
+&lt;li>透過上圖我們發現當fast到達終點時，剛好就是我們想要的對應node的位置&lt;/li>
+&lt;/ol>
+&lt;h2 id="解法2-solution2">解法2 Solution2&lt;/h2>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-C++" data-lang="C++">&lt;span class="line">&lt;span class="cl">&lt;span class="cm">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> * Definition for singly-linked list.
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> * struct ListNode {
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> * int val;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> * ListNode *next;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> * ListNode() : val(0), next(nullptr) {}
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> * ListNode(int x) : val(x), next(nullptr) {}
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> * ListNode(int x, ListNode *next) : val(x), next(next) {}
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> * };
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">Solution&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">public&lt;/span>&lt;span class="o">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ListNode&lt;/span>&lt;span class="o">*&lt;/span> &lt;span class="n">swapNodes&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ListNode&lt;/span>&lt;span class="o">*&lt;/span> &lt;span class="n">head&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="n">k&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ListNode&lt;/span>&lt;span class="o">*&lt;/span> &lt;span class="n">slow&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">head&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ListNode&lt;/span>&lt;span class="o">*&lt;/span> &lt;span class="n">fast&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">head&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ListNode&lt;/span>&lt;span class="o">*&lt;/span> &lt;span class="n">curr&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">for&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">i&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="n">i&lt;/span> &lt;span class="o">&amp;lt;&lt;/span> &lt;span class="n">k&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="n">i&lt;/span>&lt;span class="o">++&lt;/span>&lt;span class="p">){&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">fast&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">fast&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">curr&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">fast&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">while&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">fast&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="nb">NULL&lt;/span>&lt;span class="p">){&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">slow&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">slow&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">fast&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">fast&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">swap&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">curr&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">val&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">slow&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">val&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">head&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">};&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Time complexity: $\mathcal{O}(n)$, $\mathcal n=number \space of\space nodes$&lt;/p>
+&lt;p>Space complexity: $\mathcal{O}(1)$, 我們只用了三個pointer&lt;/p></description></item><item><title>FFXIV - 絕龍詩戰爭 - Day After Clear</title><link>https://orangeegg1937.github.io/p/ffxiv-%E7%B5%95%E9%BE%8D%E8%A9%A9%E6%88%B0%E7%88%AD-day-after-clear/</link><pubDate>Sat, 20 Aug 2022 00:16:34 +0800</pubDate><guid>https://orangeegg1937.github.io/p/ffxiv-%E7%B5%95%E9%BE%8D%E8%A9%A9%E6%88%B0%E7%88%AD-day-after-clear/</guid><description>&lt;img src="https://pbs.twimg.com/media/FY7zPPjacAACkFF?format=jpg" alt="Featured image of post FFXIV - 絕龍詩戰爭 - Day After Clear" />&lt;h1 id="絕龍詩戰爭---day-after-clear">絕龍詩戰爭 - Day After Clear&lt;/h1>
+&lt;p>趁開新版本之前仲得閒寫返個通關後感，寫完發現太長，先post咗演出部分先。&lt;/p>
+&lt;p>攻略時間：&lt;/p>
+&lt;ul>
+&lt;li>第1隊：61小時（第一隊因為某事暫停，未通關的）&lt;/li>
+&lt;li>第2隊：58小時
+（合共119小時）&lt;/li>
+&lt;/ul>
+&lt;p>評分：&lt;/p>
+&lt;ul>
+&lt;li>副本演出：9/10（-1分因為某些地方竟然沒有語音）&lt;/li>
+&lt;li>機制難度：10/10（沒有解謎，全部硬碰硬機制）&lt;/li>
+&lt;li>輸出要求：8.5/10（當版），6/10（6.3後）&lt;/li>
+&lt;li>心理要求：8/10&lt;/li>
+&lt;li>綜合：9/10&lt;/li>
+&lt;/ul>
+&lt;h1 id="副本演出">副本演出&lt;/h1>
+&lt;blockquote>
+&lt;p>「圍繞著『假如』的幻想詩歌」絕龍詩戰爭主要圍繞著3個部分&lt;/p>
+&lt;p>正史─輪迴─偽典。&lt;/p>
+&lt;/blockquote>
+&lt;p>正史部分基本上就是跑完整個3.0-3.3故事流程，從教皇廳阻止教皇、經歷了好朋友Haurchefant的死亡、在魔大陸與騎神展開最終決戰，最後在雲廊討伐邪龍以及拯救大師兄，為千年龍詩畫上句號。基本上這部分機制演出在正常水平，不過當中有一個最震撼的地方就是Haurchefant出來幫你擋槍，&lt;/p>
+&lt;p>輪迴則是這次副本的第一大亮點，當我們完成了正史流程，異邦的詩人會送我們回到教皇廳的時間線，我們得到一次機會去尋找可以拯救好朋友的可能性，如果玩家在時間回溯的時間仍未救下他，那我們就會再一次輪迴到正史時間線，直到找到能夠拯救他的方法。不過現在這部分在有攻略的情況下基本上一下子就打破了輪迴，但在版本初期見證住天團一次又一次的嘗試，去到最終成功救到他，那一瞬間整個整個人十分興奮和感動。回溯這部分可以說是目前只有絕龍詩才有的特色，雖然回到過去這個題材在FF14已經用到爛哂，但作為機制演出效果我會給滿分，而且也滿足不小玩家想返去拯救他的那種遺憾，非常建議大家去體驗一下。&lt;/p>
+&lt;p>當玩家正沈澱在成功拯救友人的喜悅之中，殘酷的異邦詩人卻為我們彈奏了另一首悲劇的開始─偽典時間線。在偽典時間線的一開始，我們將在雲海再次與騎神戰鬥，但因為世界線的變動，當玩家趕到的時候龍族已經被騎神精煉，這一次我們面對的敵人不止蒼天騎士團還有龍族。基本上戰鬥流程沒有太大分別。不過這部分的戰鬥除了有100% match的背景音樂外，Boss的對話也十分有趣，當玩家解完至天の陣風槍後，騎神對身為光戰的我們發問：&lt;/p>
+&lt;blockquote>
+&lt;p>「憑你可以如何終結這千年戰爭？」&lt;/p>
+&lt;/blockquote>
+&lt;p>而我們在完成至天の陣死刻，騎神再一次發問：&lt;/p>
+&lt;blockquote>
+&lt;p>「你以為殺掉了我就能結果了戰爭，化解了千年的恩怨嗎？」&lt;/p>
+&lt;/blockquote>
+&lt;p>這時候Boss都常剩下很少血，這時候如果騎神低於3%，他會跪下來救玩家不要殺他。如果玩家選擇殺他，那麼會被後面劇情強制終結，所以為了過本，玩家只好放過他，並留下一句：&lt;/p>
+&lt;blockquote>
+&lt;p>「你會為你的天真付出代價，光之戰士。」&lt;/p>
+&lt;/blockquote>
+&lt;p>不過整體來說這部分作為偽典的開頭我覺得很好，不單可以感受絕本的難度，也可以感受一下演出效果。在版本開初時很多人都以為要打死他，好像是後來有人在chat room說騎神在最後說了些甚麼，試一下不擊殺，結果發現原來會有逃走的部分。以FF14來說可以看出設計師在這個部分花多了一些心機，在機制上加多了副本演出效果。&lt;/p>
+&lt;p>雖然我們放過了騎神，但偽典龍詩仍然在繼續。我們再次在雲廊與邪龍展開決戰，但這一次，被控制的聖龍也加入了戰鬥。這部分的戰鬥演出沒有十分特別的地方，很多都是以前出現過的機制。不過背景音樂用了Dragonsong，Dragonsong裏面就描述了人與龍之間的故事，從如何人與龍一起，到人背叛了龍，剛好就是這兩條龍。除此之外，這部分有一個有興的點是，聖龍身上有「不殺的誓言：聖龍赫拉斯瓦尔格吃掉深愛的希瓦時所立下的不殺誓言」的Buff，如果玩家被聖龍殺掉，那聖龍會狂暴，之後殺光我們。（只要你們死了，就不會有人知道我打破誓言）&lt;/p>
+&lt;p>當光之戰士打敗雙龍後再一次準備救大師兄的時候，騎神跳了出來，乘勢對我們造成傷害並且吸收了在場的所有龍眼的力量，化身成為新的神──騎龍神。騎龍神的戰鬥與絕巴哈一樣，屬於手汗級難度，在經歷17分鐘的集中後配上管弦樂版的逆襲の咆哮和令人手震的地火機制，這部分緊張感十足。不過可能是考慮到這是這最終決戰想減少玩家的壓力和令玩家集中處理機制，從轉場到過本是零配音。&lt;/p>
+&lt;p>而當玩家通關後，絕龍詩作為高難度副本罕有地加了1分鐘Ending，主要是向玩家表達龍詩戰爭的另一個可能性，拯救了一個生命但卻帶來了另一種悲劇，不要沈澱在過去而是要帶着前人的意志去開拓未來。個人覺得這部分跟6.0主線有少量相似的地方，但我並不認同選擇了一個，另一個就會死的結局，這裏應該有一個可以拯救所有人的時間線。Steins;Gate 不過這始終只是一個為HC玩家的挑戰，有時候過多的解讀可能會失去副本趣味。總括而言絕龍詩非常建議大家去體驗。&lt;/p></description></item></channel></rss>
