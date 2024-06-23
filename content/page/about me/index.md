@@ -15,7 +15,7 @@ Welcome to my personal blog, here is my personal background:
 
 ## EDUCATION
 
-### Hong Kong Community College (HKCC) 
+### Hong Kong Community College (HKCC)
 
 Associate in Information Technology
 
@@ -27,7 +27,7 @@ B.Eng. in Computer Engineering
 
 ## Experience
 
-### ASMPT (Past name: ASM Technology Hong Kong) July 2022-July 2023 
+### ASMPT (Past name: ASM Technology Hong Kong) July 2022-July 2023
 
 ASMPT is a leading global supplier of hardware and software solutions for the manufacture of semi-conductors and electronics.
 
@@ -39,7 +39,6 @@ ASMPT is a leading global supplier of hardware and software solutions for the ma
 - Proposed an intern project “Time Pressure Dispenser prototype with Ti C2000 MCU”
   - Achieved a base function of dispenser in software part
   - Designed a CLB for Manchester-encoded and decode
-
 
 ## Personal Project
 
@@ -58,11 +57,11 @@ ASMPT is a leading global supplier of hardware and software solutions for the ma
 
 ## Personal Skills
 
-| Programming Language | Related School Courses Project / Courses Work                          | Link |
-| -------------------- | ---------------------------------------------------------------------- | ---- |
-| C/C++                | OpenGL in Computer Graphic, MCU design and development                 | N/A     |
-| Python               | Raspberry Pi + mediapipe + OpenCV, photomosaic, multimedia application | [Raspi](https://github.com/OrangeEgg1937/smart_lamp_pj), [photomosaic](https://github.com/OrangeEgg1937/photomosaic)     |
-| C#                   | Final Year Project,  Developing a Detective Game with Generative AI    | N/A     |
-| Java                 | Android App development                                                | [Hotel App Prototype](https://github.com/OrangeEgg1937/SEHH_2279_pj_hotel_booking_Original)     |
-| HTML + CSS + JS      | Responsive Web application design by Bootstrap, React, Node.JS         | [Code](https://github.com/OrangeEgg1937/simpleWebsite)     |
-| VHDL                 | Design Zedboard program with Xilinx Vivado                             | N/A     |
+| Programming Language | Related School Courses Project / Courses Work                          | Link                                                                                                                 |
+| -------------------- | ---------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| C/C++                | OpenGL in Computer Graphic, MCU design and development                 | N/A                                                                                                                  |
+| Python               | Raspberry Pi + mediapipe + OpenCV, photomosaic, multimedia application | [Raspi](https://github.com/OrangeEgg1937/smart_lamp_pj), [photomosaic](https://github.com/OrangeEgg1937/photomosaic) |
+| C#                   | Final Year Project,  Developing a Detective Game with Generative AI    | N/A                                                                                                                  |
+| Java                 | Android App development                                                | [Hotel App Prototype](https://github.com/OrangeEgg1937/SEHH_2279_pj_hotel_booking_Original)                          |
+| HTML + CSS + JS      | Responsive Web application design by Bootstrap, React, Node.JS         | [Code](https://github.com/OrangeEgg1937/simpleWebsite)                                                               |
+| VHDL                 | Design Zedboard program with Xilinx Vivado                             | N/A                                                                                                                  |
