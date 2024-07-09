@@ -2,8 +2,8 @@
     You can add your own custom styles here.
 */
 
-// For about me section
-.template-aboutme {
+/* For resume section */
+.template-resume {
 
     .main-article {
         background: var(--card-background);
@@ -16,8 +16,23 @@
         color: var(--card-text-color-main);
 
         h2{
-            text-decoration: underline;
+            text-decoration: none;
         }
     }
+}
 
+/* Hide all list items in the ToC */
+.resume-toc ol li ol {
+    display: none;
+}
+
+/* For fav-course */
+.fav-course {
+    background: var(--card-background);
+    overflow: hidden;
+    color: var(--card-text-color-main);
+
+    h2{
+        font-size: medium;
+    }
 }
