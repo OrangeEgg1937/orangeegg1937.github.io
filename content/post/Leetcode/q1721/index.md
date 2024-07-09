@@ -7,13 +7,12 @@ categories:
 tags:
     - List
 ---
-# Leetcode 1721. Swapping Nodes in a Linked List
 
 >You are given the head of a linked list, and an integer k.
 >
 >Return the head of the linked list after swapping the values of the kth node from the beginning and the **kth** node from the end (the list is 1-indexed).
 
-![Test case](example.png)
+![Test case](src/example.png)
 
 ## 前言
 
@@ -21,7 +20,7 @@ tags:
 
 ## 個人解法思路
 
-![Question 1721](example2.jpg)
+![Question 1721](src/example2.jpg)
 
 1. 在list中先尋找第**k**個node為何。然後尋找它對應的node（即從尾端到開頭的第**k**個node），並將兩者交換。
 2. swap實現方法相對簡單，不詳細說明
@@ -31,7 +30,7 @@ tags:
 
 ## 解法 Solution
 
-![Solution](example3.jpg)
+![Solution](src/example3.jpg)
 
 ```C++
 /**
@@ -85,7 +84,7 @@ Space complexity: $\mathcal{O}(n)$, $\mathcal n=number \space of\space nodes$
 + 「怎樣都要Travel整個Linked-list才知道整體長度」→ Time complexity 已經沒有最佳化空間 → 那麼就從Space complexity改良
 + 有沒有方法可以節省空間？有，可以用pointer紀錄兩個位置 (fast/slow point)
 
-![Fast_slow_pointer](example4.png)
+![Fast_slow_pointer](src/example4.png)
 
 1. 我們首先用fast pointer尋找第k的node
 2. curr (current) = fast pointer
@@ -128,6 +127,7 @@ public:
     }
 };
 ```
+
 Time complexity: $\mathcal{O}(n)$, $\mathcal n=number \space of\space nodes$
 
 Space complexity: $\mathcal{O}(1)$, 我們只用了三個pointer

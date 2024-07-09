@@ -1,7 +1,7 @@
 ---
-title: About me
-layout: "about_me"
-slug: "about_me"
+title: Resume
+layout: "resume"
+slug: "resume"
 menu:
     main: 
         weight: 4
@@ -15,7 +15,7 @@ Welcome to my personal blog, here is my personal background:
 
 ## EDUCATION
 
-### Hong Kong Community College (HKCC) 
+### Hong Kong Community College (HKCC)
 
 Associate in Information Technology
 
@@ -27,7 +27,7 @@ B.Eng. in Computer Engineering
 
 ## Experience
 
-### ASMPT (Past name: ASM Technology Hong Kong) July 2022-July 2023 
+### ASMPT (Past name: ASM Technology Hong Kong) July 2022-July 2023
 
 ASMPT is a leading global supplier of hardware and software solutions for the manufacture of semi-conductors and electronics.
 
@@ -39,7 +39,6 @@ ASMPT is a leading global supplier of hardware and software solutions for the ma
 - Proposed an intern project “Time Pressure Dispenser prototype with Ti C2000 MCU”
   - Achieved a base function of dispenser in software part
   - Designed a CLB for Manchester-encoded and decode
-
 
 ## Personal Project
 
@@ -54,7 +53,6 @@ ASMPT is a leading global supplier of hardware and software solutions for the ma
 - A simple Android application to place the mode in the AR scenes
 - Implemented the application using Unity AR foundation, using the Raycasts and Plane Detection to accurately position - cts on real-world surfaces
 - Allow users to manipulate the pose, position, and rotation of the placed models
-
 
 ## Personal Skills
 

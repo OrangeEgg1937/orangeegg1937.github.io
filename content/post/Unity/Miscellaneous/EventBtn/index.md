@@ -13,11 +13,11 @@ tags:
 
 According to the manual, UnityEvents are a way of allowing user driven callback to be persisted from edit time to run time without the need for additional programming and script configuration. UnityEvents may sound very unfamiliar as it cannot directly added in a gameobject. However, if you used the UGUI Button before, you will understand it soon. As the `On click()` selection in the button is a kind of UnityEvents.
 
-![Button Inspector](image2.png)
+![Button Inspector](src/image2.png)
 
 If we want to use the UnityEvent, we can simply using the class `UnityEvent`. After that, you can see the same selection in the inspector.
 
-![Custom script](image1.png)
+![Custom script](src/image1.png)
 
 ## Move deeply
 
