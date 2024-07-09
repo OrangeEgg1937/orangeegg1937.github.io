@@ -1,6 +1,6 @@
 ---
-title: Making BongoCat with Arduino
-description: Using OLED and Button to making a simple animation!
+title: 簡單BongoCat動畫 with Arduino
+description: 利用按鈕去轉換螢幕顯示的圖片
 date: 2024-01-20 20:28:00+0800
 categories:
     - Arduino
@@ -10,32 +10,109 @@ tags:
     - OLED
     - Arduino
 ---
-
-{{< figure src="demo.jpg" alt="" width="400px" >}}
-
 [Code and resources](https://github.com/OrangeEgg1937/ArduinoBongoCatOLED)
 
-## Introduction
+## 前言
 
-<blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/C5qtH2cLLbm/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/reel/C5qtH2cLLbm/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">在 Instagram 查看這則貼文</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/reel/C5qtH2cLLbm/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">Jaime Nufio（@jaimenufio）分享的貼文</a></p></div></blockquote> <script async src="//www.instagram.com/embed.js"></script>
+話說在某一天，有位友人發送了這個貼文給我
+{{< instagram C5qtH2cLLbm >}}
+當時看完之后感覺幾有趣，於是自己根據這張貼文去嘗試重現出來
 
-## Project Setup
+## 分析
 
-- Hardware requirements
-- Software requirements
+首先從圖片中可以大概了解當中必要的元件：MCU、顯示用的螢幕以及按鈕。
 
-## Work Log
+工作原理大概就是「透過按鈕去轉換顯示在螢幕上的圖片」，因此可以分為以下幾個步驟去實現：
 
-- Chronological list of your activities
-- Challenges faced and how you overcame them
-- Any modifications or improvements you made to the original project
+1. Hardware Setup (MCU＋螢幕)
+2. Software (顯示圖片的program)
+   - 2.1. 圖片準備
+   - 2.2. 控制按鈕去轉換圖片
 
-## Result
+## Hardware Setup (MCU＋螢幕)
 
-- Your thoughts on the project
-- Any future plans related to this project
+{{< figure src="src/connection.png" alt="" width="800px" >}}
 
-## References
+- 1x Arduino UNO
+- 2x Button
+- 1x SSD1306 OLED (0.96")
 
-- Link to the original GitHub repository
-- Any other resources you found helpful
+螢幕的通訊方法這裡將會使用I2C
+
+## Sofware
+
+因為採用SSD1306，所以可以直接用Adafruit SSD1306 Library，節省了寫I2C connection以及顯示螢幕像素的部分。
+
+```c
+#define SCREEN_WIDTH  128  // OLED display width, in pixels
+#define SCREEN_HEIGHT 64   // OLED display height, in pixels
+#define OLED_RESET    -1   // Reset pin # (or -1 if sharing Arduino reset pin)
+
+// Declaration for an SSD1306 display connected to I2C (SDA, SCL pins)
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+
+//  ------------------- For i2c -------------------
+//  SSD1306_SWITCHCAPVCC = generate display voltage from 3.3V internally
+  if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
+    Serial.println(F("SSD1306 allocation failed"));
+    for(;;); // Don't proceed, loop forever
+  }
+```
+
+可能需要注意的是i2c address以及Arduino Pin位置（正常情況下應該都是0x3C）
+
+### 圖片準備
+
+SSD1306有幾個不同尺寸的型號，根據型號的尺寸，展示圖片的範圍也會有所不同。而我所使用的尺寸是128x64，為了方便設計，圖片的原生尺寸也設定為128x64。
+
+{{< figure src="src/drawing.png" alt="" width="800px" >}}
+
+然后再繪製4幅不同狀態的圖片（leftBtnOnClick, rightBtnOnClick, both, idle）
+
+{{< figure src="src/pic_all.jpg" alt="" width="800px" >}}
+
+### 將圖片import進去program
+
+將圖片export變成bitmap，利用LCD Assistant輸出成byte array。（詳細的工作原理之后可能再補充一下）
+
+關於LCD Assistant使用方法，可以參考我在網上找到的：
+[＜Step By Step系列 - 番外篇 OLED圖片取檔方法, 使用LCD Assistant＞](https://nhs-tw.blogspot.com/2015/11/step-by-step-oled-lcd-assistant.html)
+
+之後我們將結果貼上在主程式裏面
+{{< figure src="src/byte_array_01.jpg" alt="" width="800px" >}}
+
+需要注意的是如果我們直接貼上的話，應該會顯示以下錯誤：
+{{< figure src="src/max_error.jpg" alt="" width="800px" >}}
+這個原因是因為Arduino的dynamic memory(RAM)沒有足夠空間放我們的圖片，dynamic memory通常在MCU上面所擁有的空間都比較少(而且珍貴)，而我們的圖片是一個非常大的檔案。
+
+因為我們的圖片通常是是一個常數不會變的東西，所以我們可以將圖片的資料放在Flash memory，因此我們需要加一個modifier "PROGMEM"在這個variable上面：
+
+```c
+const unsigned char bongoCat_idle [1024] PROGMEM = {...};
+```
+
+詳細的使用可以參考官方的文章：[Arduino - PROGMEM](https://www.arduino.cc/reference/en/language/variables/utilities/progmem/)
+
+之后圖片就可以順利import進去program裡面了！
+{{< figure src="src/ok.png" alt="" width="800px" >}}
+
+### 按鈕控制
+
+控制方面，可以想像成是一個簡單的state machine，望下按鈕的瞬間去render不同的圖片
+
+```C
+  // if both button cliecked, draw both
+  if (leftBtnState == LOW && rightBtnState == LOW) {
+    display.drawBitmap(0, 0, bongoCat_bothBtn, 128, 64, WHITE);
+  } else if(leftBtnState == LOW) {
+    display.drawBitmap(0, 0, bongoCat_leftBtn, 128, 64, WHITE);
+  } else if(rightBtnState == LOW) {
+    display.drawBitmap(0, 0, bongoCat_rightBtn, 128, 64, WHITE);
+  } else {
+    display.drawBitmap(0, 0, bongoCat_idle, 128, 64, WHITE);
+  }
+```
+
+## 最終成果
+
+{{< figure src="src/result.png" alt="" width="800px" >}}
