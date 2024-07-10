@@ -10,7 +10,7 @@ menu:
 ---
 ## Biogarphy
 
-Some info.
+A recent computer engineering graduate with experience in embedded systems, programming, and digital logic design, who is looking for an innovative team to create new things, and keep exploring different technologies and get better on my skills.
 
 ## Education
 
@@ -32,21 +32,9 @@ Some info.
 
 ## Job Experience
 
-### ASMPT
-
-#### Date
-
-July 2022-July 2023
-
-#### Title
+### ASMPT (July 2022-July 2023)
 
 Intern (1-Year)
-
-#### Company background
-
-ASMPT is a leading global supplier of hardware and software solutions for the manufacture of semi-conductors and electronics.
-
-#### Achievements
 
 - Collaborated with colleagues on various MCU application and software design mainly
 - Provided assistance in circuit design and soldering of circuit boards
@@ -71,13 +59,11 @@ ASMPT is a leading global supplier of hardware and software solutions for the ma
 
 ## Personal Skills/Experience
 
-(TBD)
-
-<!-- | Programming Language | Related School Courses Project / Courses Work                          | Link |
-| -------------------- | ---------------------------------------------------------------------- | ---- |
-| C/C++                | OpenGL in Computer Graphic, MCU design and development                 | N/A     |
-| Python               | Raspberry Pi + mediapipe + OpenCV, photomosaic, multimedia application | [Raspi](https://github.com/OrangeEgg1937/smart_lamp_pj), [photomosaic](https://github.com/OrangeEgg1937/photomosaic)     |
-| C#                   | Final Year Project,  Developing a Detective Game with Generative AI    | N/A     |
-| Java                 | Android App development                                                | [Hotel App Prototype](https://github.com/OrangeEgg1937/SEHH_2279_pj_hotel_booking_Original)     |
-| HTML + CSS + JS      | Responsive Web application design by Bootstrap, React, Node.JS         | [Code](https://github.com/OrangeEgg1937/simpleWebsite)     |
-| VHDL                 | Design Zedboard program with Xilinx Vivado                             | N/A     | -->
+| Programming Language | Related School Courses Project / Courses Work                              | Link                                                                                                                                                                                 |
+| -------------------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| C/C++                | OpenGL in Computer Graphic, MCU design and development, ESPRESSO algorithm | [ESPRESSO (irredundant Step)](https://github.com/OrangeEgg1937/irredundantStepESPRESSO)                                                                                              |
+| Python               | Raspberry Pi + mediapipe + OpenCV, photomosaic, multimedia application (Online Chatroom)    | [Raspi](https://github.com/OrangeEgg1937/smart_lamp_pj), [photomosaic](https://github.com/OrangeEgg1937/photomosaic), [Online Chatroom](https://github.com/OrangeEgg1937/pj_rm_chat) |
+| C#                   | Final Year Project,  Developing a Detective Game with Generative AI        | [FYP](https://github.com/OrangeEgg1937/KTL2303)                                                                                                                                      |
+| Java                 | Android App development                                                    | [Hotel App Prototype](https://github.com/OrangeEgg1937/SEHH_2279_pj_hotel_booking_Original)                                                                                          |
+| HTML + CSS + JS      | Responsive Web application design by Bootstrap, React, Node.JS             | [Code](https://github.com/OrangeEgg1937/simpleWebsite)                                                                                                                               |
+| VHDL                 | Design Zedboard program with Xilinx Vivado                                 | N/A                                                                                                                                                                                  |
