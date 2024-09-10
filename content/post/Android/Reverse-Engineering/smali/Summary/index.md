@@ -7,16 +7,13 @@ categories:
 tags:
     - note
 ---
-
-# smali code cheatsheet
-
 ## Data types
 
 | Type | Description | Size (bytes) | Size (bits) |
 | --- | --- | --- | --- |
-| V | void | 0 | 0 |    
+| V | void | 0 | 0 |
 | Z | boolean | 1 | 1 |
-| B | byte | 1 | 8 |    
+| B | byte | 1 | 8 |
 | S | short | 2 | 16 |
 | C | char | 2 | 16 |
 | I | int | 4 | 32 |
@@ -31,7 +28,7 @@ tags:
 
 ## Register and variable/member
 
-For all registers, the size of the register is 4 bytes (32 bits). 
+For all registers, the size of the register is 4 bytes (32 bits).
 
 ### Parameter register and non-parameter register
 
@@ -95,10 +92,9 @@ In this example, we known that
 | Register | Param/Var name in method |  
 | --- | --- |
 | v0 | `c` |
-| p0 | `this` | 
-| p1 | `a` | 
-| p2 | `b` | 
-
+| p0 | `this` |
+| p1 | `a` |
+| p2 | `b` |
 
 ## Method
 
@@ -108,6 +104,7 @@ Basic definition:
 # ObjectName;->MethodName(ParameterTypes)ReturnType
 Lpackage/name/obj1;->get(III)Z
 ```
+
 It is equal to the following in java:
 
 ```java
@@ -122,7 +119,7 @@ boolean get(int a, int b, int c)
 invoke-virtual {p0, p1, p2, p3}, Lpackage/name/obj1;->get(III)Z
 ```
 
-# Reference
+## Reference
 
 [Smali Github Wiki](https://github.com/JesusFreke/smali/wiki)
 
