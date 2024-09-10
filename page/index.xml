@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Pages on OrangeEgg1937's Blog</title><link>https://orangeegg1937.github.io/page/</link><description>Recent content in Pages on OrangeEgg1937's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 06 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://orangeegg1937.github.io/page/index.xml" rel="self" type="application/rss+xml"/><item><title>Archives</title><link>https://orangeegg1937.github.io/archives/</link><pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate><guid>https://orangeegg1937.github.io/archives/</guid><description/></item><item><title>About me</title><link>https://orangeegg1937.github.io/resume/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://orangeegg1937.github.io/resume/</guid><description>&lt;h2 id="education">Education
+&lt;/h2>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">University/School&lt;/th>
+&lt;th style="text-align: left">Date&lt;/th>
+&lt;th style="text-align: left">Degree&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">&lt;a class="link" href="https://www.hkcc-polyu.edu.hk/en/programmes/associate-degree/programmeDetails.php?sid=17" target="_blank" rel="noopener"
+>Hong Kong Community College&lt;/a>&lt;/td>
+&lt;td style="text-align: left">2018-2020&lt;/td>
+&lt;td style="text-align: left">Associate in Information Technology&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;a class="link" href="https://www.cse.cuhk.edu.hk/admission/cengn/" target="_blank" rel="noopener"
+>The Chinese University of Hong Kong&lt;/a>&lt;/td>
+&lt;td style="text-align: left">2020-2024&lt;/td>
+&lt;td style="text-align: left">B.Eng. in Computer Engineering&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="job-experience">Job Experience
+&lt;/h2>&lt;ul>
+&lt;li>
+&lt;p>ASMPT (July 2022-July 2023)&lt;/p>
+&lt;ul>
+&lt;li>Intern (1 Year), forcus on embeed application (Software) and optimization&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Shangmi (Current)&lt;/p>
+&lt;ul>
+&lt;li>Software Enginner&lt;/li>
+&lt;li>Native Android App development&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="personal-project">Personal Project
+&lt;/h2>&lt;ul>
+&lt;li>
+&lt;p>Hosting a Personal Blog in Github.io&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a class="link" href="https://github.com/OrangeEgg1937/SimpleAndroidARModelPlacer" target="_blank" rel="noopener"
+>AR Object placer in Smartphone&lt;/a>&lt;/p>
+&lt;ul>
+&lt;li>A simple Android application to place the mode in the AR scenes&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="programming-experience">Programming Experience
+&lt;/h2>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">Programming Language&lt;/th>
+&lt;th style="text-align: left">Related School Courses Project / Courses Work&lt;/th>
+&lt;th style="text-align: left">Link&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">C/C++&lt;/td>
+&lt;td style="text-align: left">OpenGL in Computer Graphic, MCU design and development, ESPRESSO algorithm&lt;/td>
+&lt;td style="text-align: left">&lt;a class="link" href="https://github.com/OrangeEgg1937/irredundantStepESPRESSO" target="_blank" rel="noopener"
+>ESPRESSO (irredundant Step)&lt;/a>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">Python&lt;/td>
+&lt;td style="text-align: left">Raspberry Pi + mediapipe + OpenCV, photomosaic, multimedia application (Online Chatroom)&lt;/td>
+&lt;td style="text-align: left">&lt;a class="link" href="https://github.com/OrangeEgg1937/smart_lamp_pj" target="_blank" rel="noopener"
+>Raspi&lt;/a>, &lt;a class="link" href="https://github.com/OrangeEgg1937/photomosaic" target="_blank" rel="noopener"
+>photomosaic&lt;/a>, &lt;a class="link" href="https://github.com/OrangeEgg1937/pj_rm_chat" target="_blank" rel="noopener"
+>Online Chatroom&lt;/a>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">C#&lt;/td>
+&lt;td style="text-align: left">Final Year Project, Developing a Detective Game with Generative AI&lt;/td>
+&lt;td style="text-align: left">&lt;a class="link" href="https://github.com/OrangeEgg1937/KTL2303" target="_blank" rel="noopener"
+>FYP&lt;/a>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">Java&lt;/td>
+&lt;td style="text-align: left">Android App development&lt;/td>
+&lt;td style="text-align: left">&lt;a class="link" href="https://github.com/OrangeEgg1937/SEHH_2279_pj_hotel_booking_Original" target="_blank" rel="noopener"
+>Hotel App Prototype&lt;/a>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">HTML + CSS + JS&lt;/td>
+&lt;td style="text-align: left">Responsive Web application design by Bootstrap, React, Node.JS&lt;/td>
+&lt;td style="text-align: left">&lt;a class="link" href="https://github.com/OrangeEgg1937/simpleWebsite" target="_blank" rel="noopener"
+>Code&lt;/a>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">VHDL&lt;/td>
+&lt;td style="text-align: left">Design Zedboard program with Xilinx Vivado&lt;/td>
+&lt;td style="text-align: left">N/A&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table></description></item><item><title>Search</title><link>https://orangeegg1937.github.io/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://orangeegg1937.github.io/search/</guid><description/></item></channel></rss>

@@ -1,0 +1,1194 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>OrangeEgg1937's Blog</title><link>https://orangeegg1937.github.io/</link><description>Recent content on OrangeEgg1937's Blog</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 20 Jan 2024 20:28:00 +0800</lastBuildDate><atom:link href="https://orangeegg1937.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>簡單BongoCat動畫 with Arduino</title><link>https://orangeegg1937.github.io/p/%E7%B0%A1%E5%96%AEbongocat%E5%8B%95%E7%95%AB-with-arduino/</link><pubDate>Sat, 20 Jan 2024 20:28:00 +0800</pubDate><guid>https://orangeegg1937.github.io/p/%E7%B0%A1%E5%96%AEbongocat%E5%8B%95%E7%95%AB-with-arduino/</guid><description>&lt;p>&lt;a class="link" href="https://github.com/OrangeEgg1937/ArduinoBongoCatOLED" target="_blank" rel="noopener"
+>Code and resources&lt;/a>&lt;/p>
+&lt;h2 id="前言">前言
+&lt;/h2>&lt;p>話說在某一天，有位友人發送了這個貼文給我
+&lt;blockquote
+class="instagram-media"
+data-instgrm-captioned
+data-instgrm-permalink="https://www.instagram.com/p/C5qtH2cLLbm"
+data-instgrm-version="14"
+style="
+background: #fff;
+border: 0;
+border-radius: 3px;
+box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.5), 0 1px 10px 0 rgba(0, 0, 0, 0.15);
+margin: 1px;
+max-width: 540px;
+min-width: 326px;
+padding: 0;
+width: 99.375%;
+width: -webkit-calc(100% - 2px);
+width: calc(100% - 2px);
+"
+>
+&lt;div style="padding: 16px">
+&lt;a
+href="https://www.instagram.com/p/C5qtH2cLLbm"
+style="
+background: #ffffff;
+line-height: 0;
+padding: 0 0;
+text-align: center;
+text-decoration: none;
+width: 100%;
+"
+target="_blank"
+>
+&lt;div style="display: flex; flex-direction: row; align-items: center">
+&lt;div
+style="
+background-color: #f4f4f4;
+border-radius: 50%;
+flex-grow: 0;
+height: 40px;
+margin-right: 14px;
+width: 40px;
+"
+>&lt;/div>
+&lt;div
+style="
+display: flex;
+flex-direction: column;
+flex-grow: 1;
+justify-content: center;
+"
+>
+&lt;div
+style="
+background-color: #f4f4f4;
+border-radius: 4px;
+flex-grow: 0;
+height: 14px;
+margin-bottom: 6px;
+width: 100px;
+"
+>&lt;/div>
+&lt;div
+style="
+background-color: #f4f4f4;
+border-radius: 4px;
+flex-grow: 0;
+height: 14px;
+width: 60px;
+"
+>&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;div style="padding: 19% 0">&lt;/div>
+&lt;div
+style="display: block; height: 50px; margin: 0 auto 12px; width: 50px"
+>
+&lt;svg
+width="50px"
+height="50px"
+viewBox="0 0 60 60"
+version="1.1"
+xmlns="https://www.w3.org/2000/svg"
+xmlns:xlink="https://www.w3.org/1999/xlink"
+>
+&lt;g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+&lt;g transform="translate(-511.000000, -20.000000)" fill="#000000">
+&lt;g>
+&lt;path
+d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"
+>&lt;/path>
+&lt;/g>
+&lt;/g>
+&lt;/g>
+&lt;/svg>
+&lt;/div>
+&lt;div style="padding-top: 8px">
+&lt;div
+style="
+color: #3897f0;
+font-family: Arial, sans-serif;
+font-size: 14px;
+font-style: normal;
+font-weight: 550;
+line-height: 18px;
+"
+>
+View this post on Instagram
+&lt;/div>
+&lt;/div>
+&lt;div style="padding: 12.5% 0">&lt;/div>
+&lt;div
+style="
+display: flex;
+flex-direction: row;
+margin-bottom: 14px;
+align-items: center;
+"
+>
+&lt;div>
+&lt;div
+style="
+background-color: #f4f4f4;
+border-radius: 50%;
+height: 12.5px;
+width: 12.5px;
+transform: translateX(0px) translateY(7px);
+"
+>&lt;/div>
+&lt;div
+style="
+background-color: #f4f4f4;
+height: 12.5px;
+transform: rotate(-45deg) translateX(3px) translateY(1px);
+width: 12.5px;
+flex-grow: 0;
+margin-right: 14px;
+margin-left: 2px;
+"
+>&lt;/div>
+&lt;div
+style="
+background-color: #f4f4f4;
+border-radius: 50%;
+height: 12.5px;
+width: 12.5px;
+transform: translateX(9px) translateY(-18px);
+"
+>&lt;/div>
+&lt;/div>
+&lt;div style="margin-left: 8px">
+&lt;div
+style="
+background-color: #f4f4f4;
+border-radius: 50%;
+flex-grow: 0;
+height: 20px;
+width: 20px;
+"
+>&lt;/div>
+&lt;div
+style="
+width: 0;
+height: 0;
+border-top: 2px solid transparent;
+border-left: 6px solid #f4f4f4;
+border-bottom: 2px solid transparent;
+transform: translateX(16px) translateY(-4px) rotate(30deg);
+"
+>&lt;/div>
+&lt;/div>
+&lt;div style="margin-left: auto">
+&lt;div
+style="
+width: 0px;
+border-top: 8px solid #f4f4f4;
+border-right: 8px solid transparent;
+transform: translateY(16px);
+"
+>&lt;/div>
+&lt;div
+style="
+background-color: #f4f4f4;
+flex-grow: 0;
+height: 12px;
+width: 16px;
+transform: translateY(-4px);
+"
+>&lt;/div>
+&lt;div
+style="
+width: 0;
+height: 0;
+border-top: 8px solid #f4f4f4;
+border-left: 8px solid transparent;
+transform: translateY(-4px) translateX(8px);
+"
+>&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;div
+style="
+display: flex;
+flex-direction: column;
+flex-grow: 1;
+justify-content: center;
+margin-bottom: 24px;
+"
+>
+&lt;div
+style="
+background-color: #f4f4f4;
+border-radius: 4px;
+flex-grow: 0;
+height: 14px;
+margin-bottom: 6px;
+width: 224px;
+"
+>&lt;/div>
+&lt;div
+style="
+background-color: #f4f4f4;
+border-radius: 4px;
+flex-grow: 0;
+height: 14px;
+width: 144px;
+"
+>&lt;/div>&lt;/div
+>&lt;/a>
+&lt;/div>
+&lt;/blockquote>&lt;script async src="//www.instagram.com/embed.js">&lt;/script>
+當時看完之后感覺幾有趣，於是自己根據這張貼文去嘗試重現出來&lt;/p>
+&lt;h2 id="分析">分析
+&lt;/h2>&lt;p>首先從圖片中可以大概了解當中必要的元件：MCU、顯示用的螢幕以及按鈕。&lt;/p>
+&lt;p>工作原理大概就是「透過按鈕去轉換顯示在螢幕上的圖片」，因此可以分為以下幾個步驟去實現：&lt;/p>
+&lt;ol>
+&lt;li>Hardware Setup (MCU＋螢幕)&lt;/li>
+&lt;li>Software (顯示圖片的program)
+&lt;ul>
+&lt;li>2.1. 圖片準備&lt;/li>
+&lt;li>2.2. 控制按鈕去轉換圖片&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;h2 id="hardware-setup-mcu螢幕">Hardware Setup (MCU＋螢幕)
+&lt;/h2>&lt;figure>&lt;img src="https://orangeegg1937.github.io/p/%E7%B0%A1%E5%96%AEbongocat%E5%8B%95%E7%95%AB-with-arduino/src/connection.png" width="800px">
+&lt;/figure>
+&lt;ul>
+&lt;li>1x Arduino UNO&lt;/li>
+&lt;li>2x Button&lt;/li>
+&lt;li>1x SSD1306 OLED (0.96&amp;quot;)&lt;/li>
+&lt;/ul>
+&lt;p>螢幕的通訊方法這裡將會使用I2C&lt;/p>
+&lt;h2 id="sofware">Sofware
+&lt;/h2>&lt;p>因為採用SSD1306，所以可以直接用Adafruit SSD1306 Library，節省了寫I2C connection以及顯示螢幕像素的部分。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-c" data-lang="c">&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#define SCREEN_WIDTH 128 &lt;/span>&lt;span class="c1">// OLED display width, in pixels
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="cp">#define SCREEN_HEIGHT 64 &lt;/span>&lt;span class="c1">// OLED display height, in pixels
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="cp">#define OLED_RESET -1 &lt;/span>&lt;span class="c1">// Reset pin # (or -1 if sharing Arduino reset pin)
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// Declaration for an SSD1306 display connected to I2C (SDA, SCL pins)
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">Adafruit_SSD1306&lt;/span> &lt;span class="nf">display&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">SCREEN_WIDTH&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">SCREEN_HEIGHT&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">Wire&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">OLED_RESET&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// ------------------- For i2c -------------------
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// SSD1306_SWITCHCAPVCC = generate display voltage from 3.3V internally
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">if&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="n">display&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nf">begin&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">SSD1306_SWITCHCAPVCC&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mh">0x3C&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">Serial&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nf">println&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nf">F&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;SSD1306 allocation failed&amp;#34;&lt;/span>&lt;span class="p">));&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">for&lt;/span>&lt;span class="p">(;;);&lt;/span> &lt;span class="c1">// Don&amp;#39;t proceed, loop forever
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>可能需要注意的是i2c address以及Arduino Pin位置（正常情況下應該都是0x3C）&lt;/p>
+&lt;h3 id="圖片準備">圖片準備
+&lt;/h3>&lt;p>SSD1306有幾個不同尺寸的型號，根據型號的尺寸，展示圖片的範圍也會有所不同。而我所使用的尺寸是128x64，為了方便設計，圖片的原生尺寸也設定為128x64。&lt;/p>
+&lt;figure>&lt;img src="https://orangeegg1937.github.io/p/%E7%B0%A1%E5%96%AEbongocat%E5%8B%95%E7%95%AB-with-arduino/src/drawing.png" width="800px">
+&lt;/figure>
+&lt;p>然后再繪製4幅不同狀態的圖片（leftBtnOnClick, rightBtnOnClick, both, idle）&lt;/p>
+&lt;figure>&lt;img src="https://orangeegg1937.github.io/p/%E7%B0%A1%E5%96%AEbongocat%E5%8B%95%E7%95%AB-with-arduino/src/pic_all.jpg" width="800px">
+&lt;/figure>
+&lt;h3 id="將圖片import進去program">將圖片import進去program
+&lt;/h3>&lt;p>將圖片export變成bitmap，利用LCD Assistant輸出成byte array。（詳細的工作原理之后可能再補充一下）&lt;/p>
+&lt;p>關於LCD Assistant使用方法，可以參考我在網上找到的：
+&lt;a class="link" href="https://nhs-tw.blogspot.com/2015/11/step-by-step-oled-lcd-assistant.html" target="_blank" rel="noopener"
+>＜Step By Step系列 - 番外篇 OLED圖片取檔方法, 使用LCD Assistant＞&lt;/a>&lt;/p>
+&lt;p>之後我們將結果貼上在主程式裏面
+&lt;figure>&lt;img src="https://orangeegg1937.github.io/p/%E7%B0%A1%E5%96%AEbongocat%E5%8B%95%E7%95%AB-with-arduino/src/byte_array_01.jpg" width="800px">
+&lt;/figure>
+&lt;/p>
+&lt;p>需要注意的是如果我們直接貼上的話，應該會顯示以下錯誤：
+&lt;figure>&lt;img src="https://orangeegg1937.github.io/p/%E7%B0%A1%E5%96%AEbongocat%E5%8B%95%E7%95%AB-with-arduino/src/max_error.jpg" width="800px">
+&lt;/figure>
+這個原因是因為Arduino的dynamic memory(RAM)沒有足夠空間放我們的圖片，dynamic memory通常在MCU上面所擁有的空間都比較少(而且珍貴)，而我們的圖片是一個非常大的檔案。&lt;/p>
+&lt;p>因為我們的圖片通常是是一個常數不會變的東西，所以我們可以將圖片的資料放在Flash memory，因此我們需要加一個modifier &amp;ldquo;PROGMEM&amp;quot;在這個variable上面：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-c" data-lang="c">&lt;span class="line">&lt;span class="cl">&lt;span class="k">const&lt;/span> &lt;span class="kt">unsigned&lt;/span> &lt;span class="kt">char&lt;/span> &lt;span class="n">bongoCat_idle&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="mi">1024&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="n">PROGMEM&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{...};&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>詳細的使用可以參考官方的文章：&lt;a class="link" href="https://www.arduino.cc/reference/en/language/variables/utilities/progmem/" target="_blank" rel="noopener"
+>Arduino - PROGMEM&lt;/a>&lt;/p>
+&lt;p>之后圖片就可以順利import進去program裡面了！
+&lt;figure>&lt;img src="https://orangeegg1937.github.io/p/%E7%B0%A1%E5%96%AEbongocat%E5%8B%95%E7%95%AB-with-arduino/src/ok.png" width="800px">
+&lt;/figure>
+&lt;/p>
+&lt;h3 id="按鈕控制">按鈕控制
+&lt;/h3>&lt;p>控制方面，可以想像成是一個簡單的state machine，望下按鈕的瞬間去render不同的圖片&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-C" data-lang="C">&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// if both button cliecked, draw both
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">leftBtnState&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="n">LOW&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="n">rightBtnState&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="n">LOW&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">display&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nf">drawBitmap&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">bongoCat_bothBtn&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">128&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">64&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">WHITE&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span> &lt;span class="k">else&lt;/span> &lt;span class="k">if&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">leftBtnState&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="n">LOW&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">display&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nf">drawBitmap&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">bongoCat_leftBtn&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">128&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">64&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">WHITE&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span> &lt;span class="k">else&lt;/span> &lt;span class="k">if&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">rightBtnState&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="n">LOW&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">display&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nf">drawBitmap&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">bongoCat_rightBtn&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">128&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">64&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">WHITE&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span> &lt;span class="k">else&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">display&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nf">drawBitmap&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">bongoCat_idle&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">128&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">64&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">WHITE&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="最終成果">最終成果
+&lt;/h2>&lt;figure>&lt;img src="https://orangeegg1937.github.io/p/%E7%B0%A1%E5%96%AEbongocat%E5%8B%95%E7%95%AB-with-arduino/src/result.png" width="800px">
+&lt;/figure></description></item><item><title>Note for Android</title><link>https://orangeegg1937.github.io/p/note-for-android/</link><pubDate>Sun, 03 Dec 2023 18:21:00 +0800</pubDate><guid>https://orangeegg1937.github.io/p/note-for-android/</guid><description/></item><item><title>Unity note 個人筆記 (UnityEvent and advance use of button)</title><link>https://orangeegg1937.github.io/p/unity-note-%E5%80%8B%E4%BA%BA%E7%AD%86%E8%A8%98-unityevent-and-advance-use-of-button/</link><pubDate>Sun, 03 Dec 2023 18:21:00 +0800</pubDate><guid>https://orangeegg1937.github.io/p/unity-note-%E5%80%8B%E4%BA%BA%E7%AD%86%E8%A8%98-unityevent-and-advance-use-of-button/</guid><description>&lt;h2 id="unityevent">UnityEvent
+&lt;/h2>&lt;blockquote>
+&lt;p>Unity manual: &lt;a class="link" href="https://docs.unity3d.com/Manual/UnityEvents.html" target="_blank" rel="noopener"
+>https://docs.unity3d.com/Manual/UnityEvents.html&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;p>According to the manual, UnityEvents are a way of allowing user driven callback to be persisted from edit time to run time without the need for additional programming and script configuration. UnityEvents may sound very unfamiliar as it cannot directly added in a gameobject. However, if you used the UGUI Button before, you will understand it soon. As the &lt;code>On click()&lt;/code> selection in the button is a kind of UnityEvents.&lt;/p>
+&lt;p>&lt;img src="https://orangeegg1937.github.io/p/unity-note-%E5%80%8B%E4%BA%BA%E7%AD%86%E8%A8%98-unityevent-and-advance-use-of-button/src/image2.png"
+width="437"
+height="485"
+srcset="https://orangeegg1937.github.io/p/unity-note-%E5%80%8B%E4%BA%BA%E7%AD%86%E8%A8%98-unityevent-and-advance-use-of-button/src/image2_hu15189024664184502374.png 480w, https://orangeegg1937.github.io/p/unity-note-%E5%80%8B%E4%BA%BA%E7%AD%86%E8%A8%98-unityevent-and-advance-use-of-button/src/image2_hu848395818651171655.png 1024w"
+loading="lazy"
+alt="Button Inspector"
+class="gallery-image"
+data-flex-grow="90"
+data-flex-basis="216px"
+>&lt;/p>
+&lt;p>If we want to use the UnityEvent, we can simply using the class &lt;code>UnityEvent&lt;/code>. After that, you can see the same selection in the inspector.&lt;/p>
+&lt;p>&lt;img src="https://orangeegg1937.github.io/p/unity-note-%E5%80%8B%E4%BA%BA%E7%AD%86%E8%A8%98-unityevent-and-advance-use-of-button/src/image1.png"
+width="1073"
+height="398"
+srcset="https://orangeegg1937.github.io/p/unity-note-%E5%80%8B%E4%BA%BA%E7%AD%86%E8%A8%98-unityevent-and-advance-use-of-button/src/image1_hu15813581362227662010.png 480w, https://orangeegg1937.github.io/p/unity-note-%E5%80%8B%E4%BA%BA%E7%AD%86%E8%A8%98-unityevent-and-advance-use-of-button/src/image1_hu7118946986683836284.png 1024w"
+loading="lazy"
+alt="Custom script"
+class="gallery-image"
+data-flex-grow="269"
+data-flex-basis="647px"
+>&lt;/p>
+&lt;h2 id="move-deeply">Move deeply
+&lt;/h2>&lt;p>Sometime we may want to pass some specific value to the callback function such as the enemy gameobject, however, if we look at the inspector, it dose not support to pass the gameobject, so how can we do it? Actually, we can using the generic form of the &lt;code>UnityEvent&amp;lt;T0&amp;gt;&lt;/code>. Then, using &lt;code>.Invoke(value)&lt;/code> to send to all listener.&lt;/p>
+&lt;p>However, if you look at the code it may a bit complicated. So how can we assign a function into a &lt;code>UnityEvent&lt;/code> without using generic? We can try to use &lt;code>C# delegate&lt;/code>. Here is an example:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-C#" data-lang="C#">&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="k">class&lt;/span> &lt;span class="nc">ValueController&lt;/span> &lt;span class="p">:&lt;/span> &lt;span class="n">MonoBehaviour&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="kt">float&lt;/span> &lt;span class="n">number&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">Button&lt;/span> &lt;span class="n">plus&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">Button&lt;/span> &lt;span class="n">mins&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">float&lt;/span> &lt;span class="n">offset&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="m">10.0f&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// initial the member&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="k">void&lt;/span> &lt;span class="n">Awake&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">number&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="m">0&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">plus&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">gameObject&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">transform&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">GetChild&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="m">0&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="n">GetComponent&lt;/span>&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="n">Button&lt;/span>&lt;span class="p">&amp;gt;();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">mins&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">gameObject&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">transform&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">GetChild&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="m">1&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="n">GetComponent&lt;/span>&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="n">Button&lt;/span>&lt;span class="p">&amp;gt;();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">plus&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">onClick&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">AddListener&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">delegate&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="n">EditVal&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">offset&lt;/span>&lt;span class="p">);&lt;/span> &lt;span class="p">});&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">mins&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">onClick&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">AddListener&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">delegate&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="n">EditVal&lt;/span>&lt;span class="p">(-&lt;/span>&lt;span class="n">offset&lt;/span>&lt;span class="p">);&lt;/span> &lt;span class="p">});&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="k">void&lt;/span> &lt;span class="n">EditVal&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">float&lt;/span> &lt;span class="n">val&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">number&lt;/span> &lt;span class="p">+=&lt;/span> &lt;span class="n">val&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>In this code, we assign the &lt;code>EditVal()&lt;/code> function into the listener, when players click the &lt;code>plus&lt;/code> button, the number will be increased by 10; when players click the &lt;code>mins&lt;/code> button, the number will be decreased by 10. Most importantly, we havn&amp;rsquo;t create any new UnityEvent in the script.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-C#" data-lang="C#">&lt;span class="line">&lt;span class="cl">&lt;span class="n">plus&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">onClick&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">AddListener&lt;/span>&lt;span class="p">(()&lt;/span> &lt;span class="p">=&amp;gt;&lt;/span> &lt;span class="n">EditVal&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">offset&lt;/span>&lt;span class="p">));&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Or using the lambda expressions.&lt;/p>
+&lt;p>The reason why we need to use delegate/lambda expressions here because according to the Unity &lt;a class="link" href="https://docs.unity3d.com/2018.3/Documentation/ScriptReference/Events.UnityEvent.AddListener.html" target="_blank" rel="noopener"
+>documentaion&lt;/a>, the &lt;code>UnityAction&lt;/code> class here (The button &lt;code>OnClick()&lt;/code> ) does not take any argument.&lt;/p>
+&lt;h2 id="reference">Reference
+&lt;/h2>&lt;ol>
+&lt;li>
+&lt;p>&lt;a class="link" href="https://docs.unity3d.com/2018.3/Documentation/ScriptReference/Events.UnityEvent.html" target="_blank" rel="noopener"
+>&lt;code>UnityEvent&lt;/code> Class&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a class="link" href="https://docs.unity3d.com/Manual/UnityEvents.html" target="_blank" rel="noopener"
+>Unity Manual&lt;/a>&lt;/p>
+&lt;/li>
+&lt;/ol></description></item><item><title>Basic smali code</title><link>https://orangeegg1937.github.io/p/basic-smali-code/</link><pubDate>Sun, 03 Dec 2023 14:13:00 +0800</pubDate><guid>https://orangeegg1937.github.io/p/basic-smali-code/</guid><description>&lt;h2 id="data-types">Data types
+&lt;/h2>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">Type&lt;/th>
+&lt;th style="text-align: left">Description&lt;/th>
+&lt;th style="text-align: left">Size (bytes)&lt;/th>
+&lt;th style="text-align: left">Size (bits)&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">V&lt;/td>
+&lt;td style="text-align: left">void&lt;/td>
+&lt;td style="text-align: left">0&lt;/td>
+&lt;td style="text-align: left">0&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">Z&lt;/td>
+&lt;td style="text-align: left">boolean&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">B&lt;/td>
+&lt;td style="text-align: left">byte&lt;/td>
+&lt;td style="text-align: left">1&lt;/td>
+&lt;td style="text-align: left">8&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">S&lt;/td>
+&lt;td style="text-align: left">short&lt;/td>
+&lt;td style="text-align: left">2&lt;/td>
+&lt;td style="text-align: left">16&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">C&lt;/td>
+&lt;td style="text-align: left">char&lt;/td>
+&lt;td style="text-align: left">2&lt;/td>
+&lt;td style="text-align: left">16&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">I&lt;/td>
+&lt;td style="text-align: left">int&lt;/td>
+&lt;td style="text-align: left">4&lt;/td>
+&lt;td style="text-align: left">32&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">J&lt;/td>
+&lt;td style="text-align: left">long&lt;/td>
+&lt;td style="text-align: left">8&lt;/td>
+&lt;td style="text-align: left">64&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">F&lt;/td>
+&lt;td style="text-align: left">float&lt;/td>
+&lt;td style="text-align: left">4&lt;/td>
+&lt;td style="text-align: left">32&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">D&lt;/td>
+&lt;td style="text-align: left">double&lt;/td>
+&lt;td style="text-align: left">8&lt;/td>
+&lt;td style="text-align: left">64&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">L&lt;/td>
+&lt;td style="text-align: left">reference&lt;/td>
+&lt;td style="text-align: left">4&lt;/td>
+&lt;td style="text-align: left">32&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;ul>
+&lt;li>
+&lt;p>For object, it will follow the class definition in the .class file. For example, a class &lt;code>android.widget.TextView&lt;/code> will be &lt;code>Landroid/widget/TextView;&lt;/code> in Smali.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>For array, it will adding a &lt;code>[&lt;/code> in front of the type, number of &lt;code>[&lt;/code> is the dimension of the array. For example, a &lt;code>int[]&lt;/code> will be &lt;code>[I&lt;/code> in Smali; a &lt;code>int[][]&lt;/code> will be &lt;code>[[I&lt;/code>.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="register-and-variablemember">Register and variable/member
+&lt;/h2>&lt;p>For all registers, the size of the register is 4 bytes (32 bits).&lt;/p>
+&lt;h3 id="parameter-register-and-non-parameter-register">Parameter register and non-parameter register
+&lt;/h3>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">&lt;/th>
+&lt;th style="text-align: left">Size&lt;/th>
+&lt;th style="text-align: left">Prefix&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">Parameter register&lt;/td>
+&lt;td style="text-align: left">no. of param&lt;/td>
+&lt;td style="text-align: left">p (e.g: p0, p1, p2, &amp;hellip;)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">non-parameter register&lt;/td>
+&lt;td style="text-align: left">.locals [num] / .registers [total] - no. of param&lt;/td>
+&lt;td style="text-align: left">v (e.g: v0, v1, v2, &amp;hellip;)&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;blockquote>
+&lt;p>For Parameter register, in non-static method, the first parameter register is &lt;code>p1&lt;/code>, because &lt;code>p0&lt;/code> the reference to the object (&lt;code>p0&lt;/code> = &lt;code>this&lt;/code>). In static method, the first parameter register is &lt;code>p0&lt;/code>.&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="initialize-local-variable-with-immediate-value">Initialize local variable with immediate value
+&lt;/h3>&lt;p>&lt;code>const(/4/16) {reg}, {value}&lt;/code>. For 64-bit, use &lt;code>const-wide&lt;/code>.&lt;/p>
+&lt;blockquote>
+&lt;p>Complier may optimize the const to a smaller value. Like &lt;code>int i = 0&lt;/code> may be optimized to &lt;code>const/4 v0, 0x0&lt;/code>.&lt;/p>
+&lt;/blockquote>
+&lt;p>For example, we want to initialize &lt;code>a = 10&lt;/code>.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-smali" data-lang="smali">&lt;span class="line">&lt;span class="cl">const/16&lt;span class="w"> &lt;/span>&lt;span class="nb">v0&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mh">0xa&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="constant-memberfield">Constant Member/Field
+&lt;/h3>&lt;p>&lt;code>const-string {reg}, {string}&lt;/code>.&lt;/p>
+&lt;h3 id="naming">Naming
+&lt;/h3>&lt;p>When a method is invoked, the parameters to the method are placed into the last n registers.&lt;/p>
+&lt;p>Consider the following method:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// obj1.java&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">add_magic&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">if&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">10&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">return&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">return&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">0&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Smali code:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-smali" data-lang="smali">&lt;span class="line">&lt;span class="cl">&lt;span class="c"># obj1.java
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="k">.method&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">private&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">add_magic&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">II&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="kt">I&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">.locals&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>const/16&lt;span class="w"> &lt;/span>&lt;span class="nb">v0&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mh">0xa&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>if-le&lt;span class="w"> &lt;/span>&lt;span class="nb">p1&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">v0&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nl">:cond_0&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>add-int/2addr&lt;span class="w"> &lt;/span>&lt;span class="nb">p1&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">p2&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>goto&lt;span class="w"> &lt;/span>&lt;span class="nl">:goto_0&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nl">:cond_0&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>const/4&lt;span class="w"> &lt;/span>&lt;span class="nb">p1&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mh">0x0&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nl">:goto_0&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>return&lt;span class="w"> &lt;/span>&lt;span class="nb">p1&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="k">.end&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">method&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>In this example, we known that&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">Register&lt;/th>
+&lt;th style="text-align: left">Param/Var name in method&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">v0&lt;/td>
+&lt;td style="text-align: left">&lt;code>c&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">p0&lt;/td>
+&lt;td style="text-align: left">&lt;code>this&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">p1&lt;/td>
+&lt;td style="text-align: left">&lt;code>a&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">p2&lt;/td>
+&lt;td style="text-align: left">&lt;code>b&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="method">Method
+&lt;/h2>&lt;p>Basic definition:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-smali" data-lang="smali">&lt;span class="line">&lt;span class="cl">&lt;span class="c"># ObjectName;-&amp;gt;MethodName(ParameterTypes)ReturnType
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="kt">L&lt;/span>package/name/&lt;span class="nc">obj1&lt;/span>;&lt;span class="p">-&amp;gt;&lt;/span>&lt;span class="nf">get&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">III&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="kt">Z&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>It is equal to the following in java:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// obj1.java&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kt">boolean&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">get&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">c&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="method-call">Method Call
+&lt;/h2>&lt;p>The basic syntax is &lt;code>invoke{-method-type} {parameters}, method+returnType&lt;/code>.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">Command&lt;/th>
+&lt;th style="text-align: left">Description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">invoke-virtual&lt;/td>
+&lt;td style="text-align: left">Non-private instance method&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">invoke-static&lt;/td>
+&lt;td style="text-align: left">Static method&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">invoke-direct&lt;/td>
+&lt;td style="text-align: left">Constructor or private method&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">invoke-super&lt;/td>
+&lt;td style="text-align: left">Superclass method&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">invoke-interface&lt;/td>
+&lt;td style="text-align: left">Interface method&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Example:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// obj1.java&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">foo&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">private&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">bar&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">static&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">baz&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-smali" data-lang="smali">&lt;span class="line">&lt;span class="cl">&lt;span class="c"># obj1.java
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>invoke-virtual&lt;span class="w"> &lt;/span>&lt;span class="p">{},&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">L&lt;/span>package/name/&lt;span class="nc">obj1&lt;/span>;&lt;span class="p">-&amp;gt;&lt;/span>&lt;span class="nf">foo&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="kt">I&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>invoke-direct&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="nb">p0&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">v1&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">v2&lt;/span>&lt;span class="p">},&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">L&lt;/span>package/name/&lt;span class="nc">obj1&lt;/span>;&lt;span class="p">-&amp;gt;&lt;/span>&lt;span class="nf">bar&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">II&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="kt">V&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>invoke-static&lt;span class="w"> &lt;/span>&lt;span class="p">{},&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">L&lt;/span>package/name/&lt;span class="nc">obj1&lt;/span>;&lt;span class="p">-&amp;gt;&lt;/span>&lt;span class="nf">baz&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="kt">V&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="assign-the-result-of-the-retrun-value-to-a-variable">Assign the result of the retrun value to a variable
+&lt;/h3>&lt;p>Basic syntax is &lt;code>move-result [register]&lt;/code>&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">Command&lt;/th>
+&lt;th style="text-align: left">Description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">move-result&lt;/td>
+&lt;td style="text-align: left">Move the return value to a register&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">move-result-wide&lt;/td>
+&lt;td style="text-align: left">Move the return value to a register (64-bit)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">move-result-object&lt;/td>
+&lt;td style="text-align: left">Move the return value to a register (object)&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Example:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-smali" data-lang="smali">&lt;span class="line">&lt;span class="cl">invoke-virtual&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="nb">p0&lt;/span>&lt;span class="p">},&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">L&lt;/span>package/name/&lt;span class="nc">obj1&lt;/span>;&lt;span class="p">-&amp;gt;&lt;/span>&lt;span class="nf">foo&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="kt">I&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>move-result&lt;span class="w"> &lt;/span>&lt;span class="nb">v0&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="basic-command-for-smali">Basic command for smali
+&lt;/h2>&lt;h3 id="variable-assignment">Variable assignment
+&lt;/h3>&lt;p>For get/put, basic syntax is &lt;code>{command} {src}, {dest}, {offset}&lt;/code>.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">Command&lt;/th>
+&lt;th style="text-align: left">Description&lt;/th>
+&lt;th style="text-align: left">Java code&lt;/th>
+&lt;th style="text-align: left">Smali code&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">move&lt;/td>
+&lt;td style="text-align: left">Move value from one register to another&lt;/td>
+&lt;td style="text-align: left">&lt;code>a = b&lt;/code>&lt;/td>
+&lt;td style="text-align: left">&lt;code>move v0, v1&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">put&lt;/td>
+&lt;td style="text-align: left">Assign value&lt;/td>
+&lt;td style="text-align: left">&lt;code>int a = b&lt;/code>&lt;/td>
+&lt;td style="text-align: left">&lt;code>iput v0, p0, Lcom/example/demo/MainActivity;-&amp;gt;a:I&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">get&lt;/td>
+&lt;td style="text-align: left">Get value&lt;/td>
+&lt;td style="text-align: left">&lt;code>a&lt;/code>&lt;/td>
+&lt;td style="text-align: left">&lt;code>iget v0, p0, Lcom/example/MainActivity;-&amp;gt;a:I&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;blockquote>
+&lt;p>For get and set, there is (i/s)set/put for static variable or instance variable.&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="conditional-jump">Conditional jump
+&lt;/h3>&lt;p>Syntax is &lt;code>if-{condition} {regA}, {regB}: {label}&lt;/code>&lt;/p>
+&lt;p>Example:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-Java" data-lang="Java">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// p1 = i, v0 = 10, le is less than or equal to&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="kd">private&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">add_magic&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">i2&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">if&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">&amp;lt;=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">10&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c1">// if-le p1, v0, :cond_6&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">return&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">0&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">return&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">i2&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="reference-and-detail-command-description">Reference and detail command description
+&lt;/h2>&lt;p>&lt;a class="link" href="https://github.com/JesusFreke/smali/wiki" target="_blank" rel="noopener"
+>Smali Github Wiki&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/JesusFreke/smali/wiki/Register" target="_blank" rel="noopener"
+>Smali Register&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://source.android.com/docs/core/runtime/dalvik-bytecode#instructions" target="_blank" rel="noopener"
+>Smali Instruction&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/JnuSimba/AndroidSecNotes/blob/master/Android%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/apk%20%E5%8F%8D%E7%BC%96%E8%AF%91%E5%9F%BA%E7%A1%80.md" target="_blank" rel="noopener"
+>apk 反编译基础&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://www.cnblogs.com/songzhixue/p/12027822.html" target="_blank" rel="noopener"
+>Smali语法基础 - 叫我大表哥&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://code.newban.cn/169.html" target="_blank" rel="noopener"
+>Smali Example (乱码三千)&lt;/a>&lt;/p></description></item><item><title>Leetcode 1721 Swapping Nodes in a Linked List</title><link>https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/</link><pubDate>Mon, 15 May 2023 20:41:00 +0800</pubDate><guid>https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/</guid><description>&lt;blockquote>
+&lt;p>You are given the head of a linked list, and an integer k.&lt;/p>
+&lt;p>Return the head of the linked list after swapping the values of the kth node from the beginning and the &lt;strong>kth&lt;/strong> node from the end (the list is 1-indexed).&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;img src="https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/src/example.png"
+width="761"
+height="465"
+srcset="https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/src/example_hu9289183150545423046.png 480w, https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/src/example_hu18255092291164237453.png 1024w"
+loading="lazy"
+alt="Test case"
+class="gallery-image"
+data-flex-grow="163"
+data-flex-basis="392px"
+>&lt;/p>
+&lt;h2 id="前言">前言
+&lt;/h2>&lt;p>作為一個Leetcode + Data structure菜鳥，一開始的解決方法都很直接。發現有什麼問題就直接暴力解決它。這一篇Blog最主要紀錄我前期的思考方式以及開始培養習慣，所以以下解法思路可能效率不高。&lt;/p>
+&lt;h2 id="個人解法思路">個人解法思路
+&lt;/h2>&lt;p>&lt;img src="https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/src/example2.jpg"
+width="961"
+height="283"
+srcset="https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/src/example2_hu12370151483948191988.jpg 480w, https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/src/example2_hu8676861022439758378.jpg 1024w"
+loading="lazy"
+alt="Question 1721"
+class="gallery-image"
+data-flex-grow="339"
+data-flex-basis="814px"
+>&lt;/p>
+&lt;ol>
+&lt;li>在list中先尋找第&lt;strong>k&lt;/strong>個node為何。然後尋找它對應的node（即從尾端到開頭的第&lt;strong>k&lt;/strong>個node），並將兩者交換。&lt;/li>
+&lt;li>swap實現方法相對簡單，不詳細說明&lt;/li>
+&lt;li>將問題簡化成「如何在list中尋找第&lt;strong>k&lt;/strong>的node和從尾端到開頭的第&lt;strong>k&lt;/strong>個node」&lt;/li>
+&lt;li>因為我們怎樣都要Travel整個Linked-list才知道整體長度（Linked-list特色），所以一開始用Array/Vector紀錄已經走過的node&lt;/li>
+&lt;li>透過已紀錄的Array/Vector，就知道node的位置以及整體長度，從而解決了「如何在list中尋找第&lt;strong>k&lt;/strong>的node和從尾端到開頭的第&lt;strong>k&lt;/strong>個node」&lt;/li>
+&lt;/ol>
+&lt;h2 id="解法-solution">解法 Solution
+&lt;/h2>&lt;p>&lt;img src="https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/src/example3.jpg"
+width="975"
+height="369"
+srcset="https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/src/example3_hu15037016097872182046.jpg 480w, https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/src/example3_hu12021902458292534298.jpg 1024w"
+loading="lazy"
+alt="Solution"
+class="gallery-image"
+data-flex-grow="264"
+data-flex-basis="634px"
+>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-C++" data-lang="C++">&lt;span class="line">&lt;span class="cl">&lt;span class="cm">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> * Definition for singly-linked list.
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> * struct ListNode {
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> * int val;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> * ListNode *next;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> * ListNode() : val(0), next(nullptr) {}
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> * ListNode(int x) : val(x), next(nullptr) {}
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> * ListNode(int x, ListNode *next) : val(x), next(next) {}
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> * };
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">Solution&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">public&lt;/span>&lt;span class="o">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ListNode&lt;/span>&lt;span class="o">*&lt;/span> &lt;span class="n">swapNodes&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ListNode&lt;/span>&lt;span class="o">*&lt;/span> &lt;span class="n">head&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="n">k&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">vector&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">ListNode&lt;/span>&lt;span class="o">*&amp;gt;&lt;/span> &lt;span class="n">list&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ListNode&lt;/span>&lt;span class="o">*&lt;/span> &lt;span class="n">curr&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">head&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">while&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">curr&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="nb">NULL&lt;/span>&lt;span class="p">){&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">list&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">push_back&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">curr&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">curr&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">curr&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">int&lt;/span> &lt;span class="n">selected&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">k&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">mirror&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">list&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">size&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="n">k&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">k&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="mi">1&lt;/span> &lt;span class="o">||&lt;/span> &lt;span class="n">k&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="n">list&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">size&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="o">||&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">mirror&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="mi">1&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="n">selected&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="o">||&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">selected&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="mi">1&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="n">mirror&lt;/span>&lt;span class="p">)){&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">int&lt;/span> &lt;span class="n">temp&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">list&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">selected&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">val&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">list&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">selected&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">val&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">list&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">mirror&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">val&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">list&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">mirror&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">val&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">temp&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>&lt;span class="k">else&lt;/span>&lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">list&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">selected&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">list&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">mirror&lt;/span>&lt;span class="p">];&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">list&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">selected&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">list&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">mirror&lt;/span>&lt;span class="o">+&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">];&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">list&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">mirror&lt;/span>&lt;span class="o">-&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">list&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">selected&lt;/span>&lt;span class="p">];&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">list&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">mirror&lt;/span>&lt;span class="p">]&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">list&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">selected&lt;/span>&lt;span class="o">+&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">];&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">list&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">];&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">};&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Time complexity: $\mathcal{O}(n)$, $\mathcal n=number \space of\space nodes$&lt;/p>
+&lt;p>Space complexity: $\mathcal{O}(n)$, $\mathcal n=number \space of\space nodes$&lt;/p>
+&lt;h2 id="更進一步思考">更進一步思考
+&lt;/h2>&lt;ul>
+&lt;li>這裏還有更加好的方法嗎？&lt;/li>
+&lt;li>「怎樣都要Travel整個Linked-list才知道整體長度」→ Time complexity 已經沒有最佳化空間 → 那麼就從Space complexity改良&lt;/li>
+&lt;li>有沒有方法可以節省空間？有，可以用pointer紀錄兩個位置 (fast/slow point)&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/src/example4.png"
+width="811"
+height="676"
+srcset="https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/src/example4_hu13256663897459884771.png 480w, https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/src/example4_hu3280608004773979029.png 1024w"
+loading="lazy"
+alt="Fast_slow_pointer"
+class="gallery-image"
+data-flex-grow="119"
+data-flex-basis="287px"
+>&lt;/p>
+&lt;ol>
+&lt;li>我們首先用fast pointer尋找第k的node&lt;/li>
+&lt;li>curr (current) = fast pointer&lt;/li>
+&lt;li>然後slow fast pointer一起走&lt;/li>
+&lt;li>透過上圖我們發現當fast到達終點時，剛好就是我們想要的對應node的位置&lt;/li>
+&lt;/ol>
+&lt;h2 id="解法2-solution2">解法2 Solution2
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-C++" data-lang="C++">&lt;span class="line">&lt;span class="cl">&lt;span class="cm">/**
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> * Definition for singly-linked list.
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> * struct ListNode {
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> * int val;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> * ListNode *next;
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> * ListNode() : val(0), next(nullptr) {}
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> * ListNode(int x) : val(x), next(nullptr) {}
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> * ListNode(int x, ListNode *next) : val(x), next(next) {}
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> * };
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="cm"> */&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">class&lt;/span> &lt;span class="nc">Solution&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">public&lt;/span>&lt;span class="o">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ListNode&lt;/span>&lt;span class="o">*&lt;/span> &lt;span class="n">swapNodes&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ListNode&lt;/span>&lt;span class="o">*&lt;/span> &lt;span class="n">head&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="n">k&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ListNode&lt;/span>&lt;span class="o">*&lt;/span> &lt;span class="n">slow&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">head&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ListNode&lt;/span>&lt;span class="o">*&lt;/span> &lt;span class="n">fast&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">head&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ListNode&lt;/span>&lt;span class="o">*&lt;/span> &lt;span class="n">curr&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">for&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">i&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="n">i&lt;/span> &lt;span class="o">&amp;lt;&lt;/span> &lt;span class="n">k&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="n">i&lt;/span>&lt;span class="o">++&lt;/span>&lt;span class="p">){&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">fast&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">fast&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">curr&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">fast&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">while&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">fast&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="nb">NULL&lt;/span>&lt;span class="p">){&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">slow&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">slow&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">fast&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">fast&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">next&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">swap&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">curr&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">val&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="n">slow&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">val&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">head&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">};&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Time complexity: $\mathcal{O}(n)$, $\mathcal n=number \space of\space nodes$&lt;/p>
+&lt;p>Space complexity: $\mathcal{O}(1)$, 我們只用了三個pointer&lt;/p></description></item><item><title>Archives</title><link>https://orangeegg1937.github.io/archives/</link><pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate><guid>https://orangeegg1937.github.io/archives/</guid><description/></item><item><title>About me</title><link>https://orangeegg1937.github.io/resume/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://orangeegg1937.github.io/resume/</guid><description>&lt;h2 id="education">Education
+&lt;/h2>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">University/School&lt;/th>
+&lt;th style="text-align: left">Date&lt;/th>
+&lt;th style="text-align: left">Degree&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">&lt;a class="link" href="https://www.hkcc-polyu.edu.hk/en/programmes/associate-degree/programmeDetails.php?sid=17" target="_blank" rel="noopener"
+>Hong Kong Community College&lt;/a>&lt;/td>
+&lt;td style="text-align: left">2018-2020&lt;/td>
+&lt;td style="text-align: left">Associate in Information Technology&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">&lt;a class="link" href="https://www.cse.cuhk.edu.hk/admission/cengn/" target="_blank" rel="noopener"
+>The Chinese University of Hong Kong&lt;/a>&lt;/td>
+&lt;td style="text-align: left">2020-2024&lt;/td>
+&lt;td style="text-align: left">B.Eng. in Computer Engineering&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="job-experience">Job Experience
+&lt;/h2>&lt;ul>
+&lt;li>
+&lt;p>ASMPT (July 2022-July 2023)&lt;/p>
+&lt;ul>
+&lt;li>Intern (1 Year), forcus on embeed application (Software) and optimization&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>Shangmi (Current)&lt;/p>
+&lt;ul>
+&lt;li>Software Enginner&lt;/li>
+&lt;li>Native Android App development&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="personal-project">Personal Project
+&lt;/h2>&lt;ul>
+&lt;li>
+&lt;p>Hosting a Personal Blog in Github.io&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a class="link" href="https://github.com/OrangeEgg1937/SimpleAndroidARModelPlacer" target="_blank" rel="noopener"
+>AR Object placer in Smartphone&lt;/a>&lt;/p>
+&lt;ul>
+&lt;li>A simple Android application to place the mode in the AR scenes&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="programming-experience">Programming Experience
+&lt;/h2>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align: left">Programming Language&lt;/th>
+&lt;th style="text-align: left">Related School Courses Project / Courses Work&lt;/th>
+&lt;th style="text-align: left">Link&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align: left">C/C++&lt;/td>
+&lt;td style="text-align: left">OpenGL in Computer Graphic, MCU design and development, ESPRESSO algorithm&lt;/td>
+&lt;td style="text-align: left">&lt;a class="link" href="https://github.com/OrangeEgg1937/irredundantStepESPRESSO" target="_blank" rel="noopener"
+>ESPRESSO (irredundant Step)&lt;/a>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">Python&lt;/td>
+&lt;td style="text-align: left">Raspberry Pi + mediapipe + OpenCV, photomosaic, multimedia application (Online Chatroom)&lt;/td>
+&lt;td style="text-align: left">&lt;a class="link" href="https://github.com/OrangeEgg1937/smart_lamp_pj" target="_blank" rel="noopener"
+>Raspi&lt;/a>, &lt;a class="link" href="https://github.com/OrangeEgg1937/photomosaic" target="_blank" rel="noopener"
+>photomosaic&lt;/a>, &lt;a class="link" href="https://github.com/OrangeEgg1937/pj_rm_chat" target="_blank" rel="noopener"
+>Online Chatroom&lt;/a>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">C#&lt;/td>
+&lt;td style="text-align: left">Final Year Project, Developing a Detective Game with Generative AI&lt;/td>
+&lt;td style="text-align: left">&lt;a class="link" href="https://github.com/OrangeEgg1937/KTL2303" target="_blank" rel="noopener"
+>FYP&lt;/a>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">Java&lt;/td>
+&lt;td style="text-align: left">Android App development&lt;/td>
+&lt;td style="text-align: left">&lt;a class="link" href="https://github.com/OrangeEgg1937/SEHH_2279_pj_hotel_booking_Original" target="_blank" rel="noopener"
+>Hotel App Prototype&lt;/a>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">HTML + CSS + JS&lt;/td>
+&lt;td style="text-align: left">Responsive Web application design by Bootstrap, React, Node.JS&lt;/td>
+&lt;td style="text-align: left">&lt;a class="link" href="https://github.com/OrangeEgg1937/simpleWebsite" target="_blank" rel="noopener"
+>Code&lt;/a>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align: left">VHDL&lt;/td>
+&lt;td style="text-align: left">Design Zedboard program with Xilinx Vivado&lt;/td>
+&lt;td style="text-align: left">N/A&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table></description></item><item><title>Search</title><link>https://orangeegg1937.github.io/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://orangeegg1937.github.io/search/</guid><description/></item></channel></rss>
