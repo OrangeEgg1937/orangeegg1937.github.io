@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Run the metadata stripping script
+if [ -f ".devcontainer/strip_metadata.sh" ]; then
+    bash .devcontainer/strip_metadata.sh
+    exit $?
+else
+    echo "Error: strip_metadata.sh not found in .devcontainer/ directory."
+    exit 1
+fi

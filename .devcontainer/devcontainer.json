@@ -27,7 +27,7 @@
 	"forwardPorts": [1313],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "git submodule update --init",
+	"postCreateCommand": "/bin/bash .devcontainer/setup.sh"
 
 	// Configure tool-specific properties.
 	// "customizations": {},
