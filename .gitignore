@@ -1,0 +1,31 @@
+# Hugo generated site output
+/public/
+/resources/_gen/
+
+# Hugo cache and temporary files
+/hugo_cache/
+/.thumbs/
+
+# Local development server data
+/.hugo_build.lock
+
+# Environment-specific or sensitive files
+.env
+*.env
+config.local.yaml
+config.local.toml
+config.local.json
+
+# Common OS and editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Optional: Node.js dependencies (if using npm for PostCSS, etc.)
+/node_modules/
+package-lock.json
