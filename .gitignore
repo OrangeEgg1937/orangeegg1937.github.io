@@ -29,3 +29,6 @@ Thumbs.db
 # Optional: Node.js dependencies (if using npm for PostCSS, etc.)
 /node_modules/
 package-lock.json
+
+# .frontmatter.yaml files
+.frontmatter/
