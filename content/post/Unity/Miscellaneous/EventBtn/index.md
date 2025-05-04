@@ -1,11 +1,17 @@
 ---
-title: Unity note 個人筆記 (UnityEvent and advance use of button)
-description: personal note
+title: UnityEvent
+description: personal note for the UnityEvent
 date: 2023-12-03 18:21:00+0800
 categories:
     - Unity
 tags:
     - note
+keywords: [
+    "UnityEvent",
+    "Unity",
+    "Unity3D",
+    "Unity3D Event"
+]
 ---
 ## UnityEvent
 
