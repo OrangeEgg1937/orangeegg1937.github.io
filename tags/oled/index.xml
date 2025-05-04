@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>OLED on Akua的IT狗Blog</title><link>https://orangeegg1937.github.io/tags/oled/</link><description>Recent content in OLED on Akua的IT狗Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Sat, 20 Jan 2024 20:28:00 +0800</lastBuildDate><atom:link href="https://orangeegg1937.github.io/tags/oled/index.xml" rel="self" type="application/rss+xml"/><item><title>簡單BongoCat動畫 with Arduino</title><link>https://orangeegg1937.github.io/p/%E7%B0%A1%E5%96%AEbongocat%E5%8B%95%E7%95%AB-with-arduino/</link><pubDate>Sat, 20 Jan 2024 20:28:00 +0800</pubDate><guid>https://orangeegg1937.github.io/p/%E7%B0%A1%E5%96%AEbongocat%E5%8B%95%E7%95%AB-with-arduino/</guid><description>&lt;img src="https://orangeegg1937.github.io/p/%E7%B0%A1%E5%96%AEbongocat%E5%8B%95%E7%95%AB-with-arduino/src/cover.png" alt="Featured image of post 簡單BongoCat動畫 with Arduino" />&lt;h1 id="project-repo-here">&lt;strong>Project repo here: &lt;a class="link" href="https://github.com/OrangeEgg1937/ArduinoBongoCatOLED" target="_blank" rel="noopener"
+>Code&lt;/a>&lt;/strong>
+&lt;/h1>&lt;h2 id="前言">前言
+&lt;/h2>&lt;p>話說在某一天，有位友人發送了這個貼文給我
+&lt;blockquote
+class="instagram-media"
+data-instgrm-captioned
+data-instgrm-permalink="https://www.instagram.com/p/C5qtH2cLLbm"
+data-instgrm-version="14"
+style="
+background: #fff;
+border: 0;
+border-radius: 3px;
+box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.5), 0 1px 10px 0 rgba(0, 0, 0, 0.15);
+margin: 1px;
+max-width: 540px;
+min-width: 326px;
+padding: 0;
+width: 99.375%;
+width: -webkit-calc(100% - 2px);
+width: calc(100% - 2px);
+"
+>
+&lt;div style="padding: 16px">
+&lt;a
+href="https://www.instagram.com/p/C5qtH2cLLbm"
+style="
+background: #ffffff;
+line-height: 0;
+padding: 0 0;
+text-align: center;
+text-decoration: none;
+width: 100%;
+"
+target="_blank"
+>
+&lt;div style="display: flex; flex-direction: row; align-items: center">
+&lt;div
+style="
+background-color: #f4f4f4;
+border-radius: 50%;
+flex-grow: 0;
+height: 40px;
+margin-right: 14px;
+width: 40px;
+"
+>&lt;/div>
+&lt;div
+style="
+display: flex;
+flex-direction: column;
+flex-grow: 1;
+justify-content: center;
+"
+>
+&lt;div
+style="
+background-color: #f4f4f4;
+border-radius: 4px;
+flex-grow: 0;
+height: 14px;
+margin-bottom: 6px;
+width: 100px;
+"
+>&lt;/div>
+&lt;div
+style="
+background-color: #f4f4f4;
+border-radius: 4px;
+flex-grow: 0;
+height: 14px;
+width: 60px;
+"
+>&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;div style="padding: 19% 0">&lt;/div>
+&lt;div
+style="display: block; height: 50px; margin: 0 auto 12px; width: 50px"
+>
+&lt;svg
+width="50px"
+height="50px"
+viewBox="0 0 60 60"
+version="1.1"
+xmlns="https://www.w3.org/2000/svg"
+xmlns:xlink="https://www.w3.org/1999/xlink"
+>
+&lt;g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+&lt;g transform="translate(-511.000000, -20.000000)" fill="#000000">
+&lt;g>
+&lt;path
+d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"
+>&lt;/path>
+&lt;/g>
+&lt;/g>
+&lt;/g>
+&lt;/svg>
+&lt;/div>
+&lt;div style="padding-top: 8px">
+&lt;div
+style="
+color: #3897f0;
+font-family: Arial, sans-serif;
+font-size: 14px;
+font-style: normal;
+font-weight: 550;
+line-height: 18px;
+"
+>
+View this post on Instagram
+&lt;/div>
+&lt;/div>
+&lt;div style="padding: 12.5% 0">&lt;/div>
+&lt;div
+style="
+display: flex;
+flex-direction: row;
+margin-bottom: 14px;
+align-items: center;
+"
+>
+&lt;div>
+&lt;div
+style="
+background-color: #f4f4f4;
+border-radius: 50%;
+height: 12.5px;
+width: 12.5px;
+transform: translateX(0px) translateY(7px);
+"
+>&lt;/div>
+&lt;div
+style="
+background-color: #f4f4f4;
+height: 12.5px;
+transform: rotate(-45deg) translateX(3px) translateY(1px);
+width: 12.5px;
+flex-grow: 0;
+margin-right: 14px;
+margin-left: 2px;
+"
+>&lt;/div>
+&lt;div
+style="
+background-color: #f4f4f4;
+border-radius: 50%;
+height: 12.5px;
+width: 12.5px;
+transform: translateX(9px) translateY(-18px);
+"
+>&lt;/div>
+&lt;/div>
+&lt;div style="margin-left: 8px">
+&lt;div
+style="
+background-color: #f4f4f4;
+border-radius: 50%;
+flex-grow: 0;
+height: 20px;
+width: 20px;
+"
+>&lt;/div>
+&lt;div
+style="
+width: 0;
+height: 0;
+border-top: 2px solid transparent;
+border-left: 6px solid #f4f4f4;
+border-bottom: 2px solid transparent;
+transform: translateX(16px) translateY(-4px) rotate(30deg);
+"
+>&lt;/div>
+&lt;/div>
+&lt;div style="margin-left: auto">
+&lt;div
+style="
+width: 0px;
+border-top: 8px solid #f4f4f4;
+border-right: 8px solid transparent;
+transform: translateY(16px);
+"
+>&lt;/div>
+&lt;div
+style="
+background-color: #f4f4f4;
+flex-grow: 0;
+height: 12px;
+width: 16px;
+transform: translateY(-4px);
+"
+>&lt;/div>
+&lt;div
+style="
+width: 0;
+height: 0;
+border-top: 8px solid #f4f4f4;
+border-left: 8px solid transparent;
+transform: translateY(-4px) translateX(8px);
+"
+>&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;div
+style="
+display: flex;
+flex-direction: column;
+flex-grow: 1;
+justify-content: center;
+margin-bottom: 24px;
+"
+>
+&lt;div
+style="
+background-color: #f4f4f4;
+border-radius: 4px;
+flex-grow: 0;
+height: 14px;
+margin-bottom: 6px;
+width: 224px;
+"
+>&lt;/div>
+&lt;div
+style="
+background-color: #f4f4f4;
+border-radius: 4px;
+flex-grow: 0;
+height: 14px;
+width: 144px;
+"
+>&lt;/div>&lt;/div
+>&lt;/a>
+&lt;/div>
+&lt;/blockquote>&lt;script async src="https://www.instagram.com/embed.js">&lt;/script>
+當時看完之后感覺幾有趣，於是自己根據這張貼文去嘗試重現出來&lt;/p>
+&lt;h2 id="分析">分析
+&lt;/h2>&lt;p>首先從圖片中可以大概了解當中必要的元件：MCU、顯示用的螢幕以及按鈕。&lt;/p>
+&lt;p>工作原理大概就是「透過按鈕去轉換顯示在螢幕上的圖片」，因此可以分為以下幾個步驟去實現：&lt;/p>
+&lt;ol>
+&lt;li>Hardware Setup (MCU＋螢幕)&lt;/li>
+&lt;li>Software (顯示圖片的program)
+&lt;ul>
+&lt;li>2.1. 圖片準備&lt;/li>
+&lt;li>2.2. 控制按鈕去轉換圖片&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ol>
+&lt;h2 id="hardware-setup-mcu螢幕">Hardware Setup (MCU＋螢幕)
+&lt;/h2>&lt;figure>&lt;img src="https://orangeegg1937.github.io/p/%E7%B0%A1%E5%96%AEbongocat%E5%8B%95%E7%95%AB-with-arduino/src/connection.png" width="800px">
+&lt;/figure>
+&lt;ul>
+&lt;li>1x Arduino UNO&lt;/li>
+&lt;li>2x Button&lt;/li>
+&lt;li>1x SSD1306 OLED (0.96&amp;quot;)&lt;/li>
+&lt;/ul>
+&lt;p>螢幕的通訊方法這裡將會使用I2C&lt;/p>
+&lt;h2 id="sofware">Sofware
+&lt;/h2>&lt;p>因為採用SSD1306，所以可以直接用Adafruit SSD1306 Library，節省了寫I2C connection以及顯示螢幕像素的部分。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-c" data-lang="c">&lt;span class="line">&lt;span class="cl">&lt;span class="cp">#define SCREEN_WIDTH 128 &lt;/span>&lt;span class="c1">// OLED display width, in pixels
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="cp">#define SCREEN_HEIGHT 64 &lt;/span>&lt;span class="c1">// OLED display height, in pixels
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="cp">#define OLED_RESET -1 &lt;/span>&lt;span class="c1">// Reset pin # (or -1 if sharing Arduino reset pin)
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// Declaration for an SSD1306 display connected to I2C (SDA, SCL pins)
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="n">Adafruit_SSD1306&lt;/span> &lt;span class="nf">display&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">SCREEN_WIDTH&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">SCREEN_HEIGHT&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="o">&amp;amp;&lt;/span>&lt;span class="n">Wire&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">OLED_RESET&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// ------------------- For i2c -------------------
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// SSD1306_SWITCHCAPVCC = generate display voltage from 3.3V internally
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">if&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="n">display&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nf">begin&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">SSD1306_SWITCHCAPVCC&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mh">0x3C&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">Serial&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nf">println&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nf">F&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;SSD1306 allocation failed&amp;#34;&lt;/span>&lt;span class="p">));&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">for&lt;/span>&lt;span class="p">(;;);&lt;/span> &lt;span class="c1">// Don&amp;#39;t proceed, loop forever
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>可能需要注意的是i2c address以及Arduino Pin位置（正常情況下應該都是0x3C）&lt;/p>
+&lt;h3 id="圖片準備">圖片準備
+&lt;/h3>&lt;p>SSD1306有幾個不同尺寸的型號，根據型號的尺寸，展示圖片的範圍也會有所不同。而我所使用的尺寸是128x64，為了方便設計，圖片的原生尺寸也設定為128x64。&lt;/p>
+&lt;figure>&lt;img src="https://orangeegg1937.github.io/p/%E7%B0%A1%E5%96%AEbongocat%E5%8B%95%E7%95%AB-with-arduino/src/drawing.png" width="800px">
+&lt;/figure>
+&lt;p>然后再繪製4幅不同狀態的圖片（leftBtnOnClick, rightBtnOnClick, both, idle）&lt;/p>
+&lt;figure>&lt;img src="https://orangeegg1937.github.io/p/%E7%B0%A1%E5%96%AEbongocat%E5%8B%95%E7%95%AB-with-arduino/src/pic_all.jpg" width="800px">
+&lt;/figure>
+&lt;h3 id="將圖片import進去program">將圖片import進去program
+&lt;/h3>&lt;p>將圖片export變成bitmap，利用LCD Assistant輸出成byte array。（詳細的工作原理之后可能再補充一下）&lt;/p>
+&lt;p>關於LCD Assistant使用方法，可以參考我在網上找到的：
+&lt;a class="link" href="https://nhs-tw.blogspot.com/2015/11/step-by-step-oled-lcd-assistant.html" target="_blank" rel="noopener"
+>＜Step By Step系列 - 番外篇 OLED圖片取檔方法, 使用LCD Assistant＞&lt;/a>&lt;/p>
+&lt;p>之後我們將結果貼上在主程式裏面
+&lt;figure>&lt;img src="https://orangeegg1937.github.io/p/%E7%B0%A1%E5%96%AEbongocat%E5%8B%95%E7%95%AB-with-arduino/src/byte_array_01.jpg" width="800px">
+&lt;/figure>
+&lt;/p>
+&lt;p>需要注意的是如果我們直接貼上的話，應該會顯示以下錯誤：
+&lt;figure>&lt;img src="https://orangeegg1937.github.io/p/%E7%B0%A1%E5%96%AEbongocat%E5%8B%95%E7%95%AB-with-arduino/src/max_error.jpg" width="800px">
+&lt;/figure>
+這個原因是因為Arduino的dynamic memory(RAM)沒有足夠空間放我們的圖片，dynamic memory通常在MCU上面所擁有的空間都比較少(而且珍貴)，而我們的圖片是一個非常大的檔案。&lt;/p>
+&lt;p>因為我們的圖片通常是是一個常數不會變的東西，所以我們可以將圖片的資料放在Flash memory，因此我們需要加一個modifier &amp;ldquo;PROGMEM&amp;quot;在這個variable上面：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-c" data-lang="c">&lt;span class="line">&lt;span class="cl">&lt;span class="k">const&lt;/span> &lt;span class="kt">unsigned&lt;/span> &lt;span class="kt">char&lt;/span> &lt;span class="n">bongoCat_idle&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="mi">1024&lt;/span>&lt;span class="p">]&lt;/span> &lt;span class="n">PROGMEM&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{...};&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>詳細的使用可以參考官方的文章：&lt;a class="link" href="https://www.arduino.cc/reference/en/language/variables/utilities/progmem/" target="_blank" rel="noopener"
+>Arduino - PROGMEM&lt;/a>&lt;/p>
+&lt;p>之后圖片就可以順利import進去program裡面了！
+&lt;figure>&lt;img src="https://orangeegg1937.github.io/p/%E7%B0%A1%E5%96%AEbongocat%E5%8B%95%E7%95%AB-with-arduino/src/ok.png" width="800px">
+&lt;/figure>
+&lt;/p>
+&lt;h3 id="按鈕控制">按鈕控制
+&lt;/h3>&lt;p>控制方面，可以想像成是一個簡單的state machine，望下按鈕的瞬間去render不同的圖片&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-C" data-lang="C">&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// if both button cliecked, draw both
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">leftBtnState&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="n">LOW&lt;/span> &lt;span class="o">&amp;amp;&amp;amp;&lt;/span> &lt;span class="n">rightBtnState&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="n">LOW&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">display&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nf">drawBitmap&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">bongoCat_bothBtn&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">128&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">64&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">WHITE&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span> &lt;span class="k">else&lt;/span> &lt;span class="k">if&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">leftBtnState&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="n">LOW&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">display&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nf">drawBitmap&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">bongoCat_leftBtn&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">128&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">64&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">WHITE&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span> &lt;span class="k">else&lt;/span> &lt;span class="k">if&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">rightBtnState&lt;/span> &lt;span class="o">==&lt;/span> &lt;span class="n">LOW&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">display&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nf">drawBitmap&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">bongoCat_rightBtn&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">128&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">64&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">WHITE&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span> &lt;span class="k">else&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">display&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nf">drawBitmap&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">bongoCat_idle&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">128&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">64&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">WHITE&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="最終成果">最終成果
+&lt;/h2>&lt;figure>&lt;img src="https://orangeegg1937.github.io/p/%E7%B0%A1%E5%96%AEbongocat%E5%8B%95%E7%95%AB-with-arduino/src/result.png" width="800px">
+&lt;/figure></description></item></channel></rss>

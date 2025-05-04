@@ -1,12 +1,412 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Note on Akua的IT狗Blog</title><link>https://orangeegg1937.github.io/tags/note/</link><description>Recent content in Note on Akua的IT狗Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Sun, 03 Dec 2023 18:21:00 +0800</lastBuildDate><atom:link href="https://orangeegg1937.github.io/tags/note/index.xml" rel="self" type="application/rss+xml"/><item><title>Unity note 個人筆記 (UnityEvent and advance use of button)</title><link>https://orangeegg1937.github.io/p/unity-note-%E5%80%8B%E4%BA%BA%E7%AD%86%E8%A8%98-unityevent-and-advance-use-of-button/</link><pubDate>Sun, 03 Dec 2023 18:21:00 +0800</pubDate><guid>https://orangeegg1937.github.io/p/unity-note-%E5%80%8B%E4%BA%BA%E7%AD%86%E8%A8%98-unityevent-and-advance-use-of-button/</guid><description>&lt;h2 id="unityevent">UnityEvent
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Note on Akua的IT狗Blog</title><link>https://orangeegg1937.github.io/tags/note/</link><description>Recent content in Note on Akua的IT狗Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Thu, 03 Oct 2024 14:13:00 +0800</lastBuildDate><atom:link href="https://orangeegg1937.github.io/tags/note/index.xml" rel="self" type="application/rss+xml"/><item><title>Basic smali code</title><link>https://orangeegg1937.github.io/p/basic-smali-code/</link><pubDate>Thu, 03 Oct 2024 14:13:00 +0800</pubDate><guid>https://orangeegg1937.github.io/p/basic-smali-code/</guid><description>&lt;h2 id="data-types">Data types
+&lt;/h2>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Type&lt;/th>
+&lt;th>Description&lt;/th>
+&lt;th>Size (bytes)&lt;/th>
+&lt;th>Size (bits)&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>V&lt;/td>
+&lt;td>void&lt;/td>
+&lt;td>0&lt;/td>
+&lt;td>0&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Z&lt;/td>
+&lt;td>boolean&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>1&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>B&lt;/td>
+&lt;td>byte&lt;/td>
+&lt;td>1&lt;/td>
+&lt;td>8&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>S&lt;/td>
+&lt;td>short&lt;/td>
+&lt;td>2&lt;/td>
+&lt;td>16&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>C&lt;/td>
+&lt;td>char&lt;/td>
+&lt;td>2&lt;/td>
+&lt;td>16&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>I&lt;/td>
+&lt;td>int&lt;/td>
+&lt;td>4&lt;/td>
+&lt;td>32&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>J&lt;/td>
+&lt;td>long&lt;/td>
+&lt;td>8&lt;/td>
+&lt;td>64&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>F&lt;/td>
+&lt;td>float&lt;/td>
+&lt;td>4&lt;/td>
+&lt;td>32&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>D&lt;/td>
+&lt;td>double&lt;/td>
+&lt;td>8&lt;/td>
+&lt;td>64&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>L&lt;/td>
+&lt;td>reference&lt;/td>
+&lt;td>4&lt;/td>
+&lt;td>32&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;ul>
+&lt;li>
+&lt;p>For object, it will follow the class definition in the .class file. For example, a class &lt;code>android.widget.TextView&lt;/code> will be &lt;code>Landroid/widget/TextView;&lt;/code> in Smali.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>For array, it will adding a &lt;code>[&lt;/code> in front of the type, number of &lt;code>[&lt;/code> is the dimension of the array. For example, a &lt;code>int[]&lt;/code> will be &lt;code>[I&lt;/code> in Smali; a &lt;code>int[][]&lt;/code> will be &lt;code>[[I&lt;/code>.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="register-and-variablemember">Register and variable/member
+&lt;/h2>&lt;p>For all registers, the size of the register is 4 bytes (32 bits).&lt;/p>
+&lt;h3 id="parameter-register-and-non-parameter-register">Parameter register and non-parameter register
+&lt;/h3>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>Size&lt;/th>
+&lt;th>Prefix&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Parameter register&lt;/td>
+&lt;td>no. of param&lt;/td>
+&lt;td>p (e.g: p0, p1, p2, &amp;hellip;)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>non-parameter register&lt;/td>
+&lt;td>.locals [num] / .registers [total] - no. of param&lt;/td>
+&lt;td>v (e.g: v0, v1, v2, &amp;hellip;)&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;blockquote>
+&lt;p>For Parameter register, in non-static method, the first parameter register is &lt;code>p1&lt;/code>, because &lt;code>p0&lt;/code> the reference to the object (&lt;code>p0&lt;/code> = &lt;code>this&lt;/code>). In static method, the first parameter register is &lt;code>p0&lt;/code>.&lt;/p>&lt;/blockquote>
+&lt;h3 id="initialize-local-variable-with-immediate-value">Initialize local variable with immediate value
+&lt;/h3>&lt;p>&lt;code>const(/4/16) {reg}, {value}&lt;/code>. For 64-bit, use &lt;code>const-wide&lt;/code>.&lt;/p>
+&lt;blockquote>
+&lt;p>Complier may optimize the const to a smaller value. Like &lt;code>int i = 0&lt;/code> may be optimized to &lt;code>const/4 v0, 0x0&lt;/code>.&lt;/p>&lt;/blockquote>
+&lt;p>For example, we want to initialize &lt;code>a = 10&lt;/code>.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-smali" data-lang="smali">&lt;span class="line">&lt;span class="cl">const/16&lt;span class="w"> &lt;/span>&lt;span class="nb">v0&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mh">0xa&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="constant-memberfield">Constant Member/Field
+&lt;/h3>&lt;p>&lt;code>const-string {reg}, {string}&lt;/code>.&lt;/p>
+&lt;h3 id="naming">Naming
+&lt;/h3>&lt;p>When a method is invoked, the parameters to the method are placed into the last n registers.&lt;/p>
+&lt;p>Consider the following method:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// obj1.java&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">add_magic&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">if&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">10&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">return&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">return&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">0&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Smali code:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-smali" data-lang="smali">&lt;span class="line">&lt;span class="cl">&lt;span class="c"># obj1.java
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="k">.method&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">private&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">add_magic&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">II&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="kt">I&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">.locals&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>const/16&lt;span class="w"> &lt;/span>&lt;span class="nb">v0&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mh">0xa&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>if-le&lt;span class="w"> &lt;/span>&lt;span class="nb">p1&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">v0&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nl">:cond_0&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>add-int/2addr&lt;span class="w"> &lt;/span>&lt;span class="nb">p1&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">p2&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>goto&lt;span class="w"> &lt;/span>&lt;span class="nl">:goto_0&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nl">:cond_0&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>const/4&lt;span class="w"> &lt;/span>&lt;span class="nb">p1&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mh">0x0&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nl">:goto_0&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>return&lt;span class="w"> &lt;/span>&lt;span class="nb">p1&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="k">.end&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">method&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>In this example, we known that&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Register&lt;/th>
+&lt;th>Param/Var name in method&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>v0&lt;/td>
+&lt;td>&lt;code>c&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>p0&lt;/td>
+&lt;td>&lt;code>this&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>p1&lt;/td>
+&lt;td>&lt;code>a&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>p2&lt;/td>
+&lt;td>&lt;code>b&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="method">Method
+&lt;/h2>&lt;p>Basic definition:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-smali" data-lang="smali">&lt;span class="line">&lt;span class="cl">&lt;span class="c"># ObjectName;-&amp;gt;MethodName(ParameterTypes)ReturnType
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>&lt;span class="kt">L&lt;/span>package/name/&lt;span class="nc">obj1&lt;/span>;&lt;span class="p">-&amp;gt;&lt;/span>&lt;span class="nf">get&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">III&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="kt">Z&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>It is equal to the following in java:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// obj1.java&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kt">boolean&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">get&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">c&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="method-call">Method Call
+&lt;/h2>&lt;p>The basic syntax is &lt;code>invoke{-method-type} {parameters}, method+returnType&lt;/code>.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Command&lt;/th>
+&lt;th>Description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>invoke-virtual&lt;/td>
+&lt;td>Non-private instance method&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>invoke-static&lt;/td>
+&lt;td>Static method&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>invoke-direct&lt;/td>
+&lt;td>Constructor or private method&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>invoke-super&lt;/td>
+&lt;td>Superclass method&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>invoke-interface&lt;/td>
+&lt;td>Interface method&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Example:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// obj1.java&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">foo&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">private&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">bar&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">a&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">b&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">static&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">baz&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-smali" data-lang="smali">&lt;span class="line">&lt;span class="cl">&lt;span class="c"># obj1.java
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c">&lt;/span>invoke-virtual&lt;span class="w"> &lt;/span>&lt;span class="p">{},&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">L&lt;/span>package/name/&lt;span class="nc">obj1&lt;/span>;&lt;span class="p">-&amp;gt;&lt;/span>&lt;span class="nf">foo&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="kt">I&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>invoke-direct&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="nb">p0&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">v1&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nb">v2&lt;/span>&lt;span class="p">},&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">L&lt;/span>package/name/&lt;span class="nc">obj1&lt;/span>;&lt;span class="p">-&amp;gt;&lt;/span>&lt;span class="nf">bar&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">II&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="kt">V&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>invoke-static&lt;span class="w"> &lt;/span>&lt;span class="p">{},&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">L&lt;/span>package/name/&lt;span class="nc">obj1&lt;/span>;&lt;span class="p">-&amp;gt;&lt;/span>&lt;span class="nf">baz&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="kt">V&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="assign-the-result-of-the-retrun-value-to-a-variable">Assign the result of the retrun value to a variable
+&lt;/h3>&lt;p>Basic syntax is &lt;code>move-result [register]&lt;/code>&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Command&lt;/th>
+&lt;th>Description&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>move-result&lt;/td>
+&lt;td>Move the return value to a register&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>move-result-wide&lt;/td>
+&lt;td>Move the return value to a register (64-bit)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>move-result-object&lt;/td>
+&lt;td>Move the return value to a register (object)&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>Example:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-smali" data-lang="smali">&lt;span class="line">&lt;span class="cl">invoke-virtual&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="nb">p0&lt;/span>&lt;span class="p">},&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">L&lt;/span>package/name/&lt;span class="nc">obj1&lt;/span>;&lt;span class="p">-&amp;gt;&lt;/span>&lt;span class="nf">foo&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="kt">I&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>move-result&lt;span class="w"> &lt;/span>&lt;span class="nb">v0&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="basic-command-for-smali">Basic command for smali
+&lt;/h2>&lt;h3 id="variable-assignment">Variable assignment
+&lt;/h3>&lt;p>For get/put, basic syntax is &lt;code>{command} {src}, {dest}, {offset}&lt;/code>.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Command&lt;/th>
+&lt;th>Description&lt;/th>
+&lt;th>Java code&lt;/th>
+&lt;th>Smali code&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>move&lt;/td>
+&lt;td>Move value from one register to another&lt;/td>
+&lt;td>&lt;code>a = b&lt;/code>&lt;/td>
+&lt;td>&lt;code>move v0, v1&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>put&lt;/td>
+&lt;td>Assign value&lt;/td>
+&lt;td>&lt;code>int a = b&lt;/code>&lt;/td>
+&lt;td>&lt;code>iput v0, p0, Lcom/example/demo/MainActivity;-&amp;gt;a:I&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>get&lt;/td>
+&lt;td>Get value&lt;/td>
+&lt;td>&lt;code>a&lt;/code>&lt;/td>
+&lt;td>&lt;code>iget v0, p0, Lcom/example/MainActivity;-&amp;gt;a:I&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;blockquote>
+&lt;p>For get and set, there is (i/s)set/put for static variable or instance variable.&lt;/p>&lt;/blockquote>
+&lt;h3 id="conditional-jump">Conditional jump
+&lt;/h3>&lt;p>Syntax is &lt;code>if-{condition} {regA}, {regB}: {label}&lt;/code>&lt;/p>
+&lt;p>Example:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-Java" data-lang="Java">&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// p1 = i, v0 = 10, le is less than or equal to&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="kd">private&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">add_magic&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">int&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">i2&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">if&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">&amp;lt;=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">10&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c1">// if-le p1, v0, :cond_6&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">return&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">0&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">return&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">+&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">i2&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="reference-and-detail-command-description">Reference and detail command description
+&lt;/h2>&lt;p>&lt;a class="link" href="https://github.com/JesusFreke/smali/wiki" target="_blank" rel="noopener"
+>Smali Github Wiki&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/JesusFreke/smali/wiki/Register" target="_blank" rel="noopener"
+>Smali Register&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://source.android.com/docs/core/runtime/dalvik-bytecode#instructions" target="_blank" rel="noopener"
+>Smali Instruction&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://github.com/JnuSimba/AndroidSecNotes/blob/master/Android%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/apk%20%E5%8F%8D%E7%BC%96%E8%AF%91%E5%9F%BA%E7%A1%80.md" target="_blank" rel="noopener"
+>apk 反编译基础&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://www.cnblogs.com/songzhixue/p/12027822.html" target="_blank" rel="noopener"
+>Smali语法基础 - 叫我大表哥&lt;/a>&lt;/p>
+&lt;p>&lt;a class="link" href="https://code.newban.cn/169.html" target="_blank" rel="noopener"
+>Smali Example (乱码三千)&lt;/a>&lt;/p></description></item><item><title>UnityEvent</title><link>https://orangeegg1937.github.io/p/unityevent/</link><pubDate>Sun, 03 Dec 2023 18:21:00 +0800</pubDate><guid>https://orangeegg1937.github.io/p/unityevent/</guid><description>&lt;h2 id="unityevent">UnityEvent
 &lt;/h2>&lt;blockquote>
 &lt;p>Unity manual: &lt;a class="link" href="https://docs.unity3d.com/Manual/UnityEvents.html" target="_blank" rel="noopener"
 >https://docs.unity3d.com/Manual/UnityEvents.html&lt;/a>&lt;/p>&lt;/blockquote>
 &lt;p>According to the manual, UnityEvents are a way of allowing user driven callback to be persisted from edit time to run time without the need for additional programming and script configuration. UnityEvents may sound very unfamiliar as it cannot directly added in a gameobject. However, if you used the UGUI Button before, you will understand it soon. As the &lt;code>On click()&lt;/code> selection in the button is a kind of UnityEvents.&lt;/p>
-&lt;p>&lt;img src="https://orangeegg1937.github.io/p/unity-note-%E5%80%8B%E4%BA%BA%E7%AD%86%E8%A8%98-unityevent-and-advance-use-of-button/src/image2.png"
+&lt;p>&lt;img src="https://orangeegg1937.github.io/p/unityevent/src/image2.png"
 width="437"
 height="485"
-srcset="https://orangeegg1937.github.io/p/unity-note-%E5%80%8B%E4%BA%BA%E7%AD%86%E8%A8%98-unityevent-and-advance-use-of-button/src/image2_hu_5042c07a0406f541.png 480w, https://orangeegg1937.github.io/p/unity-note-%E5%80%8B%E4%BA%BA%E7%AD%86%E8%A8%98-unityevent-and-advance-use-of-button/src/image2_hu_f4fb8b334f80d94d.png 1024w"
+srcset="https://orangeegg1937.github.io/p/unityevent/src/image2_hu_5042c07a0406f541.png 480w, https://orangeegg1937.github.io/p/unityevent/src/image2_hu_f4fb8b334f80d94d.png 1024w"
 loading="lazy"
 alt="Button Inspector"
 class="gallery-image"
@@ -14,10 +414,10 @@ data-flex-grow="90"
 data-flex-basis="216px"
 >&lt;/p>
 &lt;p>If we want to use the UnityEvent, we can simply using the class &lt;code>UnityEvent&lt;/code>. After that, you can see the same selection in the inspector.&lt;/p>
-&lt;p>&lt;img src="https://orangeegg1937.github.io/p/unity-note-%E5%80%8B%E4%BA%BA%E7%AD%86%E8%A8%98-unityevent-and-advance-use-of-button/src/image1.png"
+&lt;p>&lt;img src="https://orangeegg1937.github.io/p/unityevent/src/image1.png"
 width="1073"
 height="398"
-srcset="https://orangeegg1937.github.io/p/unity-note-%E5%80%8B%E4%BA%BA%E7%AD%86%E8%A8%98-unityevent-and-advance-use-of-button/src/image1_hu_762a88ba4f3034bb.png 480w, https://orangeegg1937.github.io/p/unity-note-%E5%80%8B%E4%BA%BA%E7%AD%86%E8%A8%98-unityevent-and-advance-use-of-button/src/image1_hu_8bbb4b86d158ef9a.png 1024w"
+srcset="https://orangeegg1937.github.io/p/unityevent/src/image1_hu_762a88ba4f3034bb.png 480w, https://orangeegg1937.github.io/p/unityevent/src/image1_hu_8bbb4b86d158ef9a.png 1024w"
 loading="lazy"
 alt="Custom script"
 class="gallery-image"

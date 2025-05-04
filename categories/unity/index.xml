@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Unity on Akua的IT狗Blog</title><link>https://orangeegg1937.github.io/categories/unity/</link><description>Recent content in Unity on Akua的IT狗Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Sun, 03 Dec 2023 18:21:00 +0800</lastBuildDate><atom:link href="https://orangeegg1937.github.io/categories/unity/index.xml" rel="self" type="application/rss+xml"/><item><title>Unity note 個人筆記 (UnityEvent and advance use of button)</title><link>https://orangeegg1937.github.io/p/unity-note-%E5%80%8B%E4%BA%BA%E7%AD%86%E8%A8%98-unityevent-and-advance-use-of-button/</link><pubDate>Sun, 03 Dec 2023 18:21:00 +0800</pubDate><guid>https://orangeegg1937.github.io/p/unity-note-%E5%80%8B%E4%BA%BA%E7%AD%86%E8%A8%98-unityevent-and-advance-use-of-button/</guid><description>&lt;h2 id="unityevent">UnityEvent
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Unity on Akua的IT狗Blog</title><link>https://orangeegg1937.github.io/categories/unity/</link><description>Recent content in Unity on Akua的IT狗Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Sun, 03 Dec 2023 18:21:00 +0800</lastBuildDate><atom:link href="https://orangeegg1937.github.io/categories/unity/index.xml" rel="self" type="application/rss+xml"/><item><title>UnityEvent</title><link>https://orangeegg1937.github.io/p/unityevent/</link><pubDate>Sun, 03 Dec 2023 18:21:00 +0800</pubDate><guid>https://orangeegg1937.github.io/p/unityevent/</guid><description>&lt;h2 id="unityevent">UnityEvent
 &lt;/h2>&lt;blockquote>
 &lt;p>Unity manual: &lt;a class="link" href="https://docs.unity3d.com/Manual/UnityEvents.html" target="_blank" rel="noopener"
 >https://docs.unity3d.com/Manual/UnityEvents.html&lt;/a>&lt;/p>&lt;/blockquote>
 &lt;p>According to the manual, UnityEvents are a way of allowing user driven callback to be persisted from edit time to run time without the need for additional programming and script configuration. UnityEvents may sound very unfamiliar as it cannot directly added in a gameobject. However, if you used the UGUI Button before, you will understand it soon. As the &lt;code>On click()&lt;/code> selection in the button is a kind of UnityEvents.&lt;/p>
-&lt;p>&lt;img src="https://orangeegg1937.github.io/p/unity-note-%E5%80%8B%E4%BA%BA%E7%AD%86%E8%A8%98-unityevent-and-advance-use-of-button/src/image2.png"
+&lt;p>&lt;img src="https://orangeegg1937.github.io/p/unityevent/src/image2.png"
 width="437"
 height="485"
-srcset="https://orangeegg1937.github.io/p/unity-note-%E5%80%8B%E4%BA%BA%E7%AD%86%E8%A8%98-unityevent-and-advance-use-of-button/src/image2_hu_5042c07a0406f541.png 480w, https://orangeegg1937.github.io/p/unity-note-%E5%80%8B%E4%BA%BA%E7%AD%86%E8%A8%98-unityevent-and-advance-use-of-button/src/image2_hu_f4fb8b334f80d94d.png 1024w"
+srcset="https://orangeegg1937.github.io/p/unityevent/src/image2_hu_5042c07a0406f541.png 480w, https://orangeegg1937.github.io/p/unityevent/src/image2_hu_f4fb8b334f80d94d.png 1024w"
 loading="lazy"
 alt="Button Inspector"
 class="gallery-image"
@@ -14,10 +14,10 @@ data-flex-grow="90"
 data-flex-basis="216px"
 >&lt;/p>
 &lt;p>If we want to use the UnityEvent, we can simply using the class &lt;code>UnityEvent&lt;/code>. After that, you can see the same selection in the inspector.&lt;/p>
-&lt;p>&lt;img src="https://orangeegg1937.github.io/p/unity-note-%E5%80%8B%E4%BA%BA%E7%AD%86%E8%A8%98-unityevent-and-advance-use-of-button/src/image1.png"
+&lt;p>&lt;img src="https://orangeegg1937.github.io/p/unityevent/src/image1.png"
 width="1073"
 height="398"
-srcset="https://orangeegg1937.github.io/p/unity-note-%E5%80%8B%E4%BA%BA%E7%AD%86%E8%A8%98-unityevent-and-advance-use-of-button/src/image1_hu_762a88ba4f3034bb.png 480w, https://orangeegg1937.github.io/p/unity-note-%E5%80%8B%E4%BA%BA%E7%AD%86%E8%A8%98-unityevent-and-advance-use-of-button/src/image1_hu_8bbb4b86d158ef9a.png 1024w"
+srcset="https://orangeegg1937.github.io/p/unityevent/src/image1_hu_762a88ba4f3034bb.png 480w, https://orangeegg1937.github.io/p/unityevent/src/image1_hu_8bbb4b86d158ef9a.png 1024w"
 loading="lazy"
 alt="Custom script"
 class="gallery-image"
