@@ -12,6 +12,10 @@ comments: false
 
 # 我是誰？
 
+剛剛畢業的Programmer，咩都知少少，但冇一樣嘢專精
+
+~夢想成為Game Developer~
+
 ## Who am I?
 
 ## 技能樹 Skills Tree
