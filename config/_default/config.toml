@@ -12,7 +12,7 @@ hasCJKLanguage = true
 
 [services]
     [services.googleAnalytics]
-        trackingId = "G-W1EQ120P1Y"
+        id = "G-W1EQ120P1Y"
 
 [pagination]
 pagerSize = 5
