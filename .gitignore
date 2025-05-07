@@ -32,3 +32,4 @@ package-lock.json
 
 # .frontmatter.yaml files
 .frontmatter/
+frontmatter.json
