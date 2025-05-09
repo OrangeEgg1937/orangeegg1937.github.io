@@ -9,6 +9,7 @@ theme = "hugo-theme-stack"
 defaultContentLanguage = "zh-tw"
 
 hasCJKLanguage = true
+enableRobotsTXT = true
 
 [services]
     [services.googleAnalytics]
@@ -16,3 +17,8 @@ hasCJKLanguage = true
 
 [pagination]
 pagerSize = 5
+
+[sitemap]
+    changefreq = "weekly"
+    priority = 0.5
+    filename = "sitemap.xml"
