@@ -1,6 +1,12 @@
 # Markdown renderer configuration
+[markup]
+defaultMarkdownHandler = 'goldmark'
+
 [goldmark.renderer]
 unsafe = true
+
+[goldmark.extensions.attributes]
+enable = true
 
 [goldmark.extensions.passthrough]
 enable = true
