@@ -8,6 +8,8 @@ menu:
             icon: user
 
 comments: false
+readingtime: false
+license: false
 ---
 
 # 我是誰？
