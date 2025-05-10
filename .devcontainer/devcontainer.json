@@ -15,7 +15,8 @@
 		"vscode": {
 			"extensions": [
 				"eliostruyf.vscode-front-matter",
-				"adamvoss.vscode-languagetool"
+				"adamvoss.vscode-languagetool",
+				"RooVeterinaryInc.roo-cline"
 			]
 		}
 	},

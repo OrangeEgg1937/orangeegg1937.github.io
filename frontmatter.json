@@ -51,15 +51,8 @@
   "frontMatter.preview.host": "http://localhost:1313",
   "frontMatter.content.pageFolders": [
     {
-      "path": "[[workspace]]/archetypes",
-      "title": "archetypes"
-    },
-    {
-      "path": "[[workspace]]/themes/PaperMod/.github"
-    },
-    {
       "title": "content",
-      "path": "[[workspace]]/themes/PaperMod"
+      "path": "[[workspace]]/content"
     }
   ],
   "frontMatter.git.enabled": true
