@@ -67,3 +67,16 @@ src = "img/game_default.png"
 [colorScheme]
 toggle = true
 default = "dark"
+
+[comments.giscus]
+repo = "OrangeEgg1937/orangeegg1937.github.io"
+repoID = "R_kgDOOjbNNQ"
+category = "Announcements"
+categoryID = "DIC_kwDOOjbNNc4Cpu-P"
+mapping = "pathname"
+strict = 0
+lightTheme = "preferred_color_scheme"
+darkTheme = "preferred_color_scheme"
+inputPosition = "top"
+reactionsEnabled = 1
+emitMetadata = 0
