@@ -1,0 +1,795 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>遊戲漢化 on Akua的IT狗Blog</title><link>https://orangeegg1937.github.io/categories/%E9%81%8A%E6%88%B2%E6%BC%A2%E5%8C%96/</link><description>Recent content in 遊戲漢化 on Akua的IT狗Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Mon, 05 May 2025 00:26:00 +0800</lastBuildDate><atom:link href="https://orangeegg1937.github.io/categories/%E9%81%8A%E6%88%B2%E6%BC%A2%E5%8C%96/index.xml" rel="self" type="application/rss+xml"/><item><title>技術上，漢化遊戲有什麼方法？</title><link>https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/</link><pubDate>Mon, 05 May 2025 00:26:00 +0800</pubDate><guid>https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/</guid><description>&lt;img src="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/cover.png" alt="Featured image of post 技術上，漢化遊戲有什麼方法？" />&lt;h2 id="前言">前言
+&lt;/h2>&lt;blockquote>
+&lt;p>作為資深玩家，當遇到沒有中文選項的遊戲時，第一反應往往是尋找漢化MOD。這些MOD的安裝方式各異，從簡單的下載安裝包到需要修改遊戲資源的複雜操作。使用過漢化的玩家都知道，有些漢化會在遊戲更新後失效(甚至需要移除)，但有些卻不受影響，這其中的差異是什麼原因造成的呢？&lt;/p>
+&lt;p>對於沒有漢化MOD的遊戲，且不懂遊戲語言的玩家，還有什麼方法可以理解遊戲內容呢？&lt;/p>
+&lt;p>⚠️文章內有較為簡單的遊戲解包，遊戲逆向的技術，這些技術是用來幫助我們理解遊戲的運作原理，以及漢化的手段。請勿用於不正當的用途，以及尊重知識產權。&lt;/p>&lt;/blockquote>
+&lt;p>最近因為工作關係，需要設計一些遊戲翻譯服務，在設計的途中接觸到一些遊戲漢化手段，當中有些技術手段個人覺得值得一看，部分技術整合到自己設計的服務裏面。於是乎想寫一篇文章來介紹一下這些技術手段~&lt;/p>
+&lt;blockquote>
+&lt;p>⚠️翻譯質量問題本文章並不會詳細討論&lt;/p>&lt;/blockquote>
+&lt;h2 id="人工輸入加直接用翻譯服務">&lt;del>人工輸入加直接用翻譯服務&lt;/del>
+&lt;/h2>&lt;p>所謂反璞歸真，最簡單的方法就是直接使用網上翻譯服務，例如 &lt;a class="link" href="https://translate.google.com/" target="_blank" rel="noopener"
+>Google Translate&lt;/a>、&lt;a class="link" href="https://www.deepl.com/en/translator" target="_blank" rel="noopener"
+>DeepL&lt;/a>等。優點是簡單，但是缺點是需要手動去輸入文本。不考慮翻譯質量，操作上也是很麻煩，需要不斷地切換遊戲和翻譯服務之間，影響遊玩體驗&lt;/p>
+&lt;p>而且還有一個關鍵問題是：&lt;/p>
+&lt;blockquote>
+&lt;p>既然都不會原語言，怎麼會懂得輸入文本呢？&lt;/p>&lt;/blockquote>
+&lt;p>&lt;img src="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/example1.jpg"
+width="1920"
+height="1080"
+srcset="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/example1_hu_9c8df8db763a2fda.jpg 480w, https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/example1_hu_a929661461df60f.jpg 1024w"
+loading="lazy"
+alt="想像一下，要將畫面中所有日文轉成中文是一件多麼苦惱的事情😲"
+class="gallery-image"
+data-flex-grow="177"
+data-flex-basis="426px"
+>&lt;/p>
+&lt;p>為了解決上述問題，在不修改遊戲的情況下，首先可以採用&lt;a class="link" href="https://zh.wikipedia.org/zh-tw/%E5%85%89%E5%AD%A6%E5%AD%97%E7%AC%A6%E8%AF%86%E5%88%AB" target="_blank" rel="noopener"
+>OCR&lt;/a>技術來幫助我們進行翻譯~&lt;/p>
+&lt;hr>
+&lt;h2 id="ocr技術自動識別文字與翻譯">OCR技術自動識別文字與翻譯
+&lt;/h2>&lt;p>OCR技術(光學字符識別)通過截取遊戲畫面並識別其中的文字，再將識別結果傳送至翻譯服務，最後將翻譯結果以疊加或替換方式顯示在遊戲畫面上。這種方法不僅解決了&amp;quot;不懂輸入&amp;quot;的問題，同時實現了文字提取與翻譯的自動化流程，大幅提升了效率。&lt;/p>
+&lt;h3 id="ocr翻譯工具">OCR翻譯工具
+&lt;/h3>&lt;h4 id="google-translate-translate-images">Google Translate (Translate images)
+&lt;/h4>&lt;p>Google Translate 提供了一個非常方便的功能 &amp;ndash; &lt;a class="link" href="https://support.google.com/translate/answer/6142483" target="_blank" rel="noopener"
+>Translate images&lt;/a>，可以直接將圖片中的文字翻譯成其他語言，這項技術的原理就是透過OCR識別文字，然后再翻譯成目標語言。&lt;/p>
+&lt;p>雖然在網頁版中，只提供了上傳圖片的功能，但在手機App中，則可以直接拍攝圖片甚至動態翻譯。（可以使用智能鏡頭無需拍照，然後它會自動幫你翻譯以及替換）&lt;/p>
+&lt;p>&lt;img src="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/ocr_google.jpg"
+width="3385"
+height="2252"
+srcset="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/ocr_google_hu_ef82d8532591d1d7.jpg 480w, https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/ocr_google_hu_31e02e7026e240b0.jpg 1024w"
+loading="lazy"
+alt="Translate image 示範"
+class="gallery-image"
+data-flex-grow="150"
+data-flex-basis="360px"
+>&lt;/p>
+&lt;p>Translate images的優點是簡單易用，無需安裝任何軟件，只需要將圖片上傳到Google Translate即可。不過，缺點是需要用另一個設備開著智能鏡頭，而且翻譯結果也不會顯示在遊戲中。感覺就像：&lt;/p>
+&lt;img src="src/genius.png" alt="Genius" width="50%" height="50%" style="display: block; margin: auto"/>
+&lt;figcaption style="font-size: 1.4rem; color: var(--card-text-color-secondary); text-align: center;">Genius.jpg&lt;/figcaption>
+&lt;p>話雖如此，這個功能當年在我玩 3DS 的時候還是非常好用的，當時的3DS很多遊戲并沒有中文化，那時候就靠著用iPad影住3DS幫我翻譯😂&lt;/p>
+&lt;h4 id="mort">MORT
+&lt;/h4>&lt;p>MORT 是一個免費open source的Windows OCR 翻譯工具，是一個在電腦上不錯的選擇，對比起上述的智能鏡頭，MORT無需鏡頭就可以從螢幕上攝取。我曾經早期在玩BLUE PROTOCOL使用了MORT一會（&lt;del>之後因爲封鎖外國ＩＰ就沒有再用了&lt;/del>），能應付到大部分情況。&lt;/p>
+&lt;p>Project地址:　&lt;a class="link" href="https://github.com/killkimno/MORT" target="_blank" rel="noopener"
+>https://github.com/killkimno/MORT&lt;/a>&lt;/p>
+&lt;img src="src/MORT_windows.jpg" alt="MORT Windows" width="50%" height="50%" style="display: block; margin: auto;"/>
+&lt;p>MORT 支援多種翻譯服務，也可以自己implement翻譯API，以及自訂翻譯修正功能。它的使用方法也非常簡單，只需要設置 OCR 掃描區域，然後選擇翻譯服務即可。下面將簡單示範效果：&lt;/p>
+&lt;p>&lt;img src="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/MORT_area.jpg"
+width="1919"
+height="1079"
+srcset="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/MORT_area_hu_eb4c29dfc54e928.jpg 480w, https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/MORT_area_hu_ff4a5474d7f574a4.jpg 1024w"
+loading="lazy"
+alt="我們需要在這裡設定 OCR 掃描Window"
+class="gallery-image"
+data-flex-grow="177"
+data-flex-basis="426px"
+>&lt;/p>
+&lt;p>&lt;img src="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/MORT_result.jpg"
+width="1919"
+height="1079"
+srcset="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/MORT_result_hu_805dd2c155a22479.jpg 480w, https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/MORT_result_hu_4de147a56d197833.jpg 1024w"
+loading="lazy"
+alt="翻譯輸出會覆蓋掃瞄Window"
+class="gallery-image"
+data-flex-grow="177"
+data-flex-basis="426px"
+>&lt;/p>
+&lt;p>在操作與速度上，MORT基本上可以做到即時翻譯。基本上解決了我們人工輸入的問題，並且可以自動化翻譯過程。當然，這個工具也有一些缺點，例如需要手動設置 OCR 掃描區域，如果遊戲的文字顯示位置不固定，那么都需要經常調整掃描位置。&lt;/p>
+&lt;h3 id="缺點">缺點
+&lt;/h3>&lt;p>整體來說，OCR技術是目前最簡單的遊戲翻譯方法之一，無需修改遊戲資源，也不需要任何編程知識，只需要安裝一個OCR翻譯工具即可。&lt;/p>
+&lt;p>不過，這個方法的有一些缺點，或者說是這個技術的困難：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>對於一些具有藝術風格的文字，會出現明顯識別錯誤的情況，例如下圖，MORT提取到的文字是&amp;quot;SHAD WBRINGERS&amp;quot;，而實際上是&amp;quot;SHADOWBRINGERS&amp;quot;
+&lt;img src="src/ocr_problem1.png" alt="OCR Problem" width="80%" height="50%" style="display: block; margin: auto;"/>&lt;/p>
+&lt;figcaption style="font-size: 1.4rem; color: var(--card-text-color-secondary); text-align: center;">FFXIV Shadowbringers遊戲標題&lt;/figcaption>
+&lt;/li>
+&lt;li>
+&lt;p>翻譯結果的顯示可能會影響遊戲的畫面顯示，或者會遮擋到遊戲，觀賞體驗會打折扣
+&lt;img src="src/ocr_problem2.png" alt="OCR Problem" width="80%" height="50%" style="display: block; margin: auto;"/>&lt;/p>
+&lt;figcaption style="font-size: 1.4rem; color: var(--card-text-color-secondary); text-align: center;">翻譯結果溢出了遊戲視窗&lt;/figcaption>
+&lt;/li>
+&lt;li>
+&lt;p>OCR技術的準確性取決於遊戲畫面的清晰度和文字的大小，如果畫面模糊/文字過小/遊戲畫面變化，則可能會導致識別錯誤&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>基本上缺點２和３是技術上難以解決的，那麼就有沒有其他方法可以解決這些問題呢？&lt;/p>
+&lt;hr>
+&lt;h2 id="從記憶體掃描提取文字">從記憶體掃描提取文字
+&lt;/h2>&lt;p>遊戲運行時，文字內容通常會被加載到渲染對象(Render Object)的記憶體空間中，再透過渲染函數(如&lt;code>draw()&lt;/code>)顯示在畫面上。&lt;/p>
+&lt;p>這些文字在記憶體中是以二進制的形式存儲的，這意味著我們可以通過掃描遊戲運行時的記憶體來提取這些文字。&lt;/p>
+&lt;h3 id="簡單演示">簡單演示
+&lt;/h3>&lt;p>假設我們現在有以下的遊戲畫面，然后我們想提取畫面中的文字 (畫面中的字每10秒改變一次)：&lt;/p>
+&lt;p>&lt;img src="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m3_00.png"
+width="1507"
+height="636"
+srcset="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m3_00_hu_fbbe07fc9774a9cd.png 480w, https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m3_00_hu_9752a858b9cc4216.png 1024w"
+loading="lazy"
+alt="Demo遊戲畫面"
+class="gallery-image"
+data-flex-grow="236"
+data-flex-basis="568px"
+>&lt;/p>
+&lt;ol>
+&lt;li>使用一些工具來掃描遊戲的記憶體 (這裏會使用&lt;a class="link" href="https://github.com/cheat-engine/cheat-engine" target="_blank" rel="noopener"
+>CheatEngine&lt;/a> )，首先我們直接從記憶體搜尋 &lt;code>This is dialogue 7.&lt;/code> 。&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m3_01.jpg"
+width="1614"
+height="987"
+srcset="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m3_01_hu_8ea1f40054ac4a13.jpg 480w, https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m3_01_hu_6b1c186a25f0360.jpg 1024w"
+loading="lazy"
+alt="第一次掃描"
+class="gallery-image"
+data-flex-grow="163"
+data-flex-basis="392px"
+>&lt;/p>
+&lt;blockquote>
+&lt;p>這裡由於C#的特性，字符串會被編碼成&lt;a class="link" href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/reference-types" target="_blank" rel="noopener"
+>UTF-16&lt;/a>，這裡會選擇UTF-16&lt;/p>&lt;/blockquote>
+&lt;ol start="2">
+&lt;li>
+&lt;p>接著我們會得到一個地址列表，這些開地址都是包含&lt;code>This is dialogue 7.&lt;/code>的地址&lt;/p>
+&lt;p>最理想的情況下是第一次搜索然後裏面的內容會跟著畫面的字變動，這樣我們就可以知道這個地址是存放著畫面中的文字的地址。然而當畫面的文字出現變動的時候，我們會發現這個地址的內容並沒有變化&lt;/p>
+&lt;p>這意味著這個地址並不是存放著畫面中的文字的地址，而是這段文字的&lt;strong>物件地址 (Object address)&lt;/strong>&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m3_03.jpg"
+width="1009"
+height="805"
+srcset="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m3_03_hu_9f893ca2f0cabf4c.jpg 480w, https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m3_03_hu_ccfd4c223424ea56.jpg 1024w"
+loading="lazy"
+alt="附近的記憶體"
+class="gallery-image"
+data-flex-grow="125"
+data-flex-basis="300px"
+>&lt;/p>
+&lt;ol start="3">
+&lt;li>
+&lt;p>透過分析這段文字附近的記憶體我們大概知道以下的訊息：&lt;/p>
+&lt;ul>
+&lt;li>這段記憶體附近存在其他的對話文本，然後這裏有重複出現的Magic Number &lt;code>08 FC 4D 91 80 02 00 00&lt;/code> (圖片中黃色圈住的部分)&lt;/li>
+&lt;li>紅色部分是我們的對話文本，這裡是&lt;code>This is dialogue 7.&lt;/code>&lt;/li>
+&lt;li>然後文本前面存在一個 &lt;code>14 00&lt;/code> 的數字，這個數字是這段文字的長度，20個字，這裏比原本的長度多了1個字元，觀察最後的&lt;code>00 0D&lt;/code>，發現這個是&lt;code>[U+000D]&lt;/code>，是&lt;code>\r&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>從這裡我們大概猜得出這個地址是對話文本的地址，也就是&lt;code>String&lt;/code>，而前面Magic Number開始部分是&lt;code>String&lt;/code>的Signature，然后4 bytes后面會跟文字的長度。&lt;/p>
+&lt;p>那么我們知道這段文字的對象地址 (Object address)，然後我們可以去搜尋&lt;strong>誰指向這個地址 (who points to this address)&lt;/strong>，這樣我們就可以知道這段文字是被誰引用 (理所當然地就是&lt;code>渲染的對象&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m3_05.jpg"
+width="1613"
+height="980"
+srcset="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m3_05_hu_b92e7b5ec76b2053.jpg 480w, https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m3_05_hu_c3c8059b01307102.jpg 1024w"
+loading="lazy"
+alt="搜尋Object地址"
+class="gallery-image"
+data-flex-grow="164"
+data-flex-basis="395px"
+>&lt;/p>
+&lt;ol start="4">
+&lt;li>在畫面中再一次顯示&lt;code>This is dialogue 7.&lt;/code>的時候進行搜尋，我們發現有2個位置會指向這個Object，稍微再等一等畫面改變&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m3_06.jpg"
+width="1610"
+height="981"
+srcset="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m3_06_hu_b76cb652123b9ff6.jpg 480w, https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m3_06_hu_c5acf979f024c572.jpg 1024w"
+loading="lazy"
+alt="搜尋Object地址"
+class="gallery-image"
+data-flex-grow="164"
+data-flex-basis="393px"
+>&lt;/p>
+&lt;ol start="5">
+&lt;li>這時候我們會發現有一個位置的地址會跟著畫面中的文字變化，是另一段文字的地址，也即使是&lt;code>This is dialogue 10.&lt;/code>的地址，跟著畫面中的文字相同，這意味著這個地址是存放著渲染畫面中的文字的地址。&lt;/li>
+&lt;/ol>
+&lt;p>這意味著我們可以透過上述相同的方法，首先找到這個&lt;code>渲染Object&lt;/code>的Signature，然后再找出儲存文字的偏移量(Offset)，獲取文字Object的地址，再透過文字Object獲取到文字以及文字的長度，然後將其翻譯成目標語言，最後將翻譯結果顯示在遊戲畫面上。整體過程大概是這樣：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-C++" data-lang="C++">&lt;span class="line">&lt;span class="cl">&lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">string&lt;/span> &lt;span class="n">ExtractGameText&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 1. 搜索渲染Object
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="kt">void&lt;/span>&lt;span class="o">*&lt;/span> &lt;span class="n">renderObj&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">FindRenderObject&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 2. 透過渲染Object偏移取得文字Object
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="kt">void&lt;/span>&lt;span class="o">*&lt;/span> &lt;span class="n">textObj&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="o">**&lt;/span>&lt;span class="p">)((&lt;/span>&lt;span class="n">uintptr_t&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="n">renderObj&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="n">TEXT_OBJECT_OFFSET&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 3. 透過文字Object取得文字
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span> &lt;span class="kt">short&lt;/span> &lt;span class="n">textLen&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="o">*&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">short&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="p">)((&lt;/span>&lt;span class="n">uintptr_t&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="n">textObj&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="mh">0x4&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">string&lt;/span> &lt;span class="n">gameText&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">ReadGameMemory&lt;/span>&lt;span class="p">((&lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="p">)((&lt;/span>&lt;span class="n">uintptr_t&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="n">textObj&lt;/span> &lt;span class="o">+&lt;/span> &lt;span class="mh">0x6&lt;/span>&lt;span class="p">),&lt;/span> &lt;span class="n">textLen&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">gameText&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>可能會有人問，為什麼不順便從渲染Object修改文字呢？因為通常直接修改文字都很大機會沒有即時反應或者會出現崩潰，有些渲染Object通常為了optimize渲染流程，通常都不會故意每一frame去重複，通常會有一個變量variable (例如 &lt;code>isDirty&lt;/code>)控制、又或者一些變數權限問題、caching mechanism等等，從而導致修改失效。&lt;/p>
+&lt;p>不過在這個方法下，是可以直接從遊戲中提取文字，不會受到畫面清晰度和文字大小的影響。&lt;/p>
+&lt;h3 id="tataruhelper">TataruHelper
+&lt;/h3>&lt;p>TataruHelper 是一個用於 Final Fantasy XIV 的翻譯工具，通過&lt;a class="link" href="https://github.com/FFXIVAPP/sharlayan" target="_blank" rel="noopener"
+>Sharlayan工具&lt;/a>獲取到遊戲劇情的文字，然後將其翻譯成目標語言。&lt;/p>
+&lt;p>Project地址:　&lt;a class="link" href="https://github.com/NightlyRevenger/TataruHelper" target="_blank" rel="noopener"
+>https://github.com/NightlyRevenger/TataruHelper&lt;/a>&lt;/p>
+&lt;p>然後通過對TataruHelper-Sharlayan工具簡單的分析，可以看見其中他的&lt;a class="link" href="https://github.com/NightlyRevenger/TataruHelper/blob/8141501284c5bdc102c331ed863f79d08e87d24e/Sharlayan/Reader.ChatLog.cs#L52" target="_blank" rel="noopener"
+>Reader.ChatLog.cs&lt;/a>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-C#" data-lang="C#">&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">static&lt;/span> &lt;span class="n">ChatLogResult&lt;/span> &lt;span class="n">GetChatLog&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">previousArrayIndex&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="m">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="kt">int&lt;/span> &lt;span class="n">previousOffset&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="m">0&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">...&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">Signature&lt;/span> &lt;span class="n">ChatLogKey&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">Scanner&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Instance&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Locations&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">Signatures&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">ChatLogKey&lt;/span>&lt;span class="p">];&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">var&lt;/span> &lt;span class="n">chatPointerMap&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">IntPtr&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="n">Scanner&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Instance&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Locations&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">Signatures&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">ChatLogKey&lt;/span>&lt;span class="p">];&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">chatPointerMap&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">ToInt64&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">&amp;lt;=&lt;/span> &lt;span class="m">20&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">result&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">List&lt;/span>&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="n">List&lt;/span>&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="p">&amp;gt;&amp;gt;&lt;/span> &lt;span class="n">buffered&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">List&lt;/span>&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="n">List&lt;/span>&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="kt">byte&lt;/span>&lt;span class="p">&amp;gt;&amp;gt;();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">try&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">var&lt;/span> &lt;span class="n">LineCount&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="kt">uint&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="n">MemoryHandler&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Instance&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">GetPlatformUInt&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">chatPointerMap&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ChatLogReader&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Indexes&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Clear&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ChatLogReader&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">ChatLogPointers&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">ChatLogPointers&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">LineCount&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="kt">uint&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="n">MemoryHandler&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Instance&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">GetPlatformUInt&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">chatPointerMap&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">OffsetArrayStart&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">MemoryHandler&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Instance&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">GetPlatformUInt&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">chatPointerMap&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">MemoryHandler&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Instance&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Structures&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">ChatLogPointers&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">OffsetArrayStart&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">OffsetArrayPos&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">MemoryHandler&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Instance&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">GetPlatformUInt&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">chatPointerMap&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">MemoryHandler&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Instance&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Structures&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">ChatLogPointers&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">OffsetArrayPos&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">OffsetArrayEnd&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">MemoryHandler&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Instance&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">GetPlatformUInt&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">chatPointerMap&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">MemoryHandler&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Instance&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Structures&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">ChatLogPointers&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">OffsetArrayEnd&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">LogStart&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">MemoryHandler&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Instance&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">GetPlatformUInt&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">chatPointerMap&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">MemoryHandler&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Instance&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Structures&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">ChatLogPointers&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">LogStart&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">LogNext&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">MemoryHandler&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Instance&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">GetPlatformUInt&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">chatPointerMap&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">MemoryHandler&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Instance&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Structures&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">ChatLogPointers&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">LogNext&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">LogEnd&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">MemoryHandler&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Instance&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">GetPlatformUInt&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">chatPointerMap&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">MemoryHandler&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Instance&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Structures&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">ChatLogPointers&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">LogEnd&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">};&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">...&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">...&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>就是透過&lt;code>ChatLogKey&lt;/code>這個Signature來獲取到遊戲的對話文本對象 (&lt;code>Line 4&lt;/code>)，然後再提取其相關信息 (&lt;code>Line 20&lt;/code>)。&lt;/p>
+&lt;p>然後到翻譯工具本體，可以看見其中&lt;a class="link" href="https://github.com/NightlyRevenger/TataruHelper/blob/8141501284c5bdc102c331ed863f79d08e87d24e/FFXIVWpfApp1/FFHandlers/FFMemoryReader.cs#L327" target="_blank" rel="noopener"
+>FFMemoryReader.cs&lt;/a>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;span class="lnt">40
+&lt;/span>&lt;span class="lnt">41
+&lt;/span>&lt;span class="lnt">42
+&lt;/span>&lt;span class="lnt">43
+&lt;/span>&lt;span class="lnt">44
+&lt;/span>&lt;span class="lnt">45
+&lt;/span>&lt;span class="lnt">46
+&lt;/span>&lt;span class="lnt">47
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-C#" data-lang="C#">&lt;span class="line">&lt;span class="cl">&lt;span class="kd">private&lt;/span> &lt;span class="kd">async&lt;/span> &lt;span class="n">Task&lt;/span> &lt;span class="n">ChatReader&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">int&lt;/span> &lt;span class="n">_previousArrayIndex&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="m">0&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">int&lt;/span> &lt;span class="n">_previousOffset&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="m">0&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ChatLogResult&lt;/span> &lt;span class="n">previousPanelResults&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">ChatLogResult&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">while&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">_KeepWorking&lt;/span> &lt;span class="p">&amp;amp;&amp;amp;&lt;/span> &lt;span class="n">_KeepReading&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">try&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ChatLogResult&lt;/span> &lt;span class="n">readResult&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">Reader&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">GetChatLog&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">_previousArrayIndex&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">_previousOffset&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">_previousArrayIndex&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">readResult&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">PreviousArrayIndex&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">_previousOffset&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">readResult&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">PreviousOffset&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">_UseDirectReadingInternal&lt;/span> &lt;span class="p">&amp;amp;&amp;amp;&lt;/span> &lt;span class="n">_UseDirectReading&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">var&lt;/span> &lt;span class="n">directDialog&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">Reader&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">GetDirectDialog&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">readResult&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">ChatLogItems&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">AddRange&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">directDialog&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">ChatLogItems&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ClearMessagesList&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">readResult&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">previousPanelResults&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">directDialog&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">var&lt;/span> &lt;span class="n">chatLogEntries&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">readResult&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">ChatLogItems&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">readResult&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">ChatLogItems&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Count&lt;/span> &lt;span class="p">&amp;gt;&lt;/span> &lt;span class="m">0&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">for&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="kt">int&lt;/span> &lt;span class="n">i&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="m">0&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="n">i&lt;/span> &lt;span class="p">&amp;lt;&lt;/span> &lt;span class="n">readResult&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">ChatLogItems&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Count&lt;/span>&lt;span class="p">;&lt;/span> &lt;span class="n">i&lt;/span>&lt;span class="p">++)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">ProcessChatMsg&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">readResult&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">ChatLogItems&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">i&lt;/span>&lt;span class="p">]);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">catch&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">Exception&lt;/span> &lt;span class="n">e&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">Logger&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">WriteLog&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Convert&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">ToString&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">e&lt;/span>&lt;span class="p">));&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">await&lt;/span> &lt;span class="n">Task&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Delay&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">GlobalSettings&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">MemoryReaderDelay&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">private&lt;/span> &lt;span class="k">void&lt;/span> &lt;span class="n">ProcessChatMsg&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">ChatLogItem&lt;/span> &lt;span class="n">chatLogItem&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">var&lt;/span> &lt;span class="n">tmpMsg&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">FFChatMsg&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">chatLogItem&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Line&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">chatLogItem&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Code&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">chatLogItem&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">TimeStamp&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">_FFxivChat&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Enqueue&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">tmpMsg&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>然后下層則負責透過&lt;code>ChatLogResult&lt;/code>處理對象，提取文字交給&lt;code>ProcessChatMsg&lt;/code>負責，最後交給翻譯相關的API進行翻譯，然後將翻譯結果顯示在遊戲畫面上。
+這樣就可以實現即時翻譯的效果，並且不會受到畫面清晰度和文字大小的影響。&lt;/p>
+&lt;p>&lt;img src="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/tataru_helper.jpg"
+width="1726"
+height="955"
+srcset="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/tataru_helper_hu_41f6ae7973fdb74a.jpg 480w, https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/tataru_helper_hu_a7af0dcac99fd220.jpg 1024w"
+loading="lazy"
+alt="官方示範的TataruHelper效果"
+class="gallery-image"
+data-flex-grow="180"
+data-flex-basis="433px"
+>&lt;/p>
+&lt;h3 id="缺點-1">缺點
+&lt;/h3>&lt;p>在不考慮技術門檻的情況下，這個方法的唯一缺點就是它的翻譯結果的呈現方式缺少沉澱感，翻譯結果並不是顯示在原本的位置。那么有沒有方法可以直接修改遊戲顯示的文字呢？&lt;/p>
+&lt;h2 id="靜態修改---修改遊戲資源">靜態修改 - 修改遊戲資源
+&lt;/h2>&lt;p>正常情況下遊戲資源都會分別儲存在一個&lt;code>資源文件夾 (Assets)&lt;/code>裡面(例如Resoruces, AssetBundle)以方便管理，然后遊戲運行時對資源目錄讀取，例如角色的對話會儲存在TextAssets&lt;/p>
+&lt;blockquote>
+&lt;p>想像一下如果角色的對話編寫再代碼裏面，如果要進行更改那麼是一件非常麻煩的事&lt;/p>&lt;/blockquote>
+&lt;p>靜態修改是指直接再遊戲運行前，修改遊戲資源文件中的文字，有安裝過漢化MOD的經驗的話相信對這個方法並不陌生，有些MOD就是直接覆蓋遊戲的部分檔案，原理就是把已經翻譯好的資源包 (Assets) 直接覆蓋進遊戲的資源位置，然後遊戲運行時就會直接使用這些已修改的資源(漢化后的文字)。&lt;/p>
+&lt;p>雖然表面表面上看就只是覆蓋資源文件，但其實這個方法的最困難的地方是如何找到&lt;code>資源文件夾 (Assets)&lt;/code>、從中提取文字以及再一次封包，一般遊戲為了防止遭到修改和解包，以及optimize遊戲運行時的速度，遊戲的資源已經被打包成專用格式。&lt;/p>
+&lt;h3 id="簡單演示-1">簡單演示
+&lt;/h3>&lt;p>&lt;img src="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m4_00.png"
+width="1216"
+height="612"
+srcset="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m4_00_hu_d7db43670faf9926.png 480w, https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m4_00_hu_2305ef374d552d5b.png 1024w"
+loading="lazy"
+alt="Demo遊戲畫面"
+class="gallery-image"
+data-flex-grow="198"
+data-flex-basis="476px"
+>&lt;/p>
+&lt;p>就以我們上一個例子的Demo示範，假設我們有以下的TextAssets (在Resources/dialogue)，而這些TextAssets就是畫面中的文字：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-txt" data-lang="txt">&lt;span class="line">&lt;span class="cl">{
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#34;Hello&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#34;This is dialogue 1.&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#34;This is dialogue 2.&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#34;This is dialogue 3.&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#34;This is dialogue 4.&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#34;This is dialogue 5.&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#34;This is dialogue 6.&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#34;This is dialogue 7.&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#34;This is dialogue 8.&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#34;This is dialogue 9.&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &amp;#34;This is dialogue 10.&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ol>
+&lt;li>首先我們需要找到遊戲的位置&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m4_01.png"
+width="695"
+height="231"
+srcset="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m4_01_hu_61752cb6260ef21b.png 480w, https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m4_01_hu_5010122d2225ec38.png 1024w"
+loading="lazy"
+alt="遊戲目錄"
+class="gallery-image"
+data-flex-grow="300"
+data-flex-basis="722px"
+>&lt;/p>
+&lt;ol start="2">
+&lt;li>觀察他的&lt;code>Data&lt;/code>的資料夾，這個resources.assets就是我們的目標，當然無法直接打開&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m4_02.png"
+width="774"
+height="440"
+srcset="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m4_02_hu_fd2615f1a419470b.png 480w, https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m4_02_hu_beba6349615b2abe.png 1024w"
+loading="lazy"
+alt="遊戲Data目錄"
+class="gallery-image"
+data-flex-grow="175"
+data-flex-basis="422px"
+>&lt;/p>
+&lt;ol start="3">
+&lt;li>這時候我們需要使用一些工具來解包這個資源包，這裡會使用&lt;a class="link" href="https://github.com/SeriousCache/UABE" target="_blank" rel="noopener"
+>UABE&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m4_03.png"
+width="1347"
+height="839"
+srcset="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m4_03_hu_e052f893241fb909.png 480w, https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m4_03_hu_1e0d8a5aa5dd1aa1.png 1024w"
+loading="lazy"
+alt="解包後的結果"
+class="gallery-image"
+data-flex-grow="160"
+data-flex-basis="385px"
+>&lt;/p>
+&lt;ol start="4">
+&lt;li>然後我們可以在UABE中找到我們的TextAssets，然后對其進行修改，對其進行修改然后保存，然後再將其封包回去&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m4_04.jpg"
+width="724"
+height="524"
+srcset="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m4_04_hu_59e4a3162d00b2d3.jpg 480w, https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m4_04_hu_903f2a64732009cf.jpg 1024w"
+loading="lazy"
+alt="用UABE進行修改以及再一次封包"
+class="gallery-image"
+data-flex-grow="138"
+data-flex-basis="331px"
+>&lt;/p>
+&lt;ol start="5">
+&lt;li>最後我們就可以看到修改后的結果了&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m4_05.png"
+width="1219"
+height="630"
+srcset="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m4_05_hu_f7f8ae37a1abcbb8.png 480w, https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m4_05_hu_fd96885cc0fa0b02.png 1024w"
+loading="lazy"
+alt="修改后的結果"
+class="gallery-image"
+data-flex-grow="193"
+data-flex-basis="464px"
+>&lt;/p>
+&lt;blockquote>
+&lt;p>⚠️正常情況下這裡的中文字會無法顯示，這裡為了示範已經預先把中文文字字型包打進來了遊戲裏面，後面會連同動態修改的部分一起說明這些方法的一些潛在問題&lt;/p>&lt;/blockquote>
+&lt;h3 id="缺點-2">缺點
+&lt;/h3>&lt;p>靜態修改的方法基本上解決了上述缺少沉澱感的缺點，但同帶來了一些潛在的問題&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>技術含量門檻較高‌：對遊戲的資源包進行解包和封包，需要一些專業的工具和知識。顯示的Demo的是一個Unity的遊戲，因為已經有前人的工具可以使用，所以過程看起來比較簡單。但如果是其他引擎的遊戲，則需要自己去找工具或者自己寫工具來解包和封包。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>潛在的法律風險‌：不正當使用的情況下對遊戲進行解包是有機會侵犯遊戲的智慧財產權，當然如果取得遊戲官方的授權的話就沒有這方面的考量。&lt;/strong>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>‌潛在穩定性風險‌：修改遊戲檔案可能導致程式崩潰或資料遺失，需備份原始檔案。(也是為什麼有些漢化模組會特登強調備份遊戲檔案的原因)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>模組的有效性‌風險‌：使用靜態修改漢化後，如果遊戲出現更新可能會導致修改的資源文件失效，因為原本的修改的資源包被更新成官方新版本的資源包，這樣舊的資源包就會被覆蓋掉從而失效。(也是為什麼有些漢化模組有時候會著遊戲更新後失效)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>額外的延伸問題需要處理，詳情請見 &lt;code>7.1: 延伸&lt;/code>&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h2 id="動態修改---hook">動態修改 - Hook
+&lt;/h2>&lt;p>動態修改是指在遊戲運行的時候，通過一些技術手段來修改遊戲的文件中的文字。這個方法的原理是通過&lt;code>Hook&lt;/code>技術來攔截遊戲的渲染函數或者文字相關的函數，然後在渲染之前將文字進行翻譯。&lt;/p>
+&lt;p>&lt;img src="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m5_00.png"
+width="1068"
+height="731"
+srcset="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m5_00_hu_9c9c9f126569aaca.png 480w, https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m5_00_hu_6c6f67392ebd3ece.png 1024w"
+loading="lazy"
+alt="Hook理念"
+class="gallery-image"
+data-flex-grow="146"
+data-flex-basis="350px"
+>&lt;/p>
+&lt;p>手法上跟上面的&lt;code>從記憶體掃描出文字位址&lt;/code>類似，但這個方法的核心不是去找&lt;code>Object&lt;/code>的Signature，而是去找&lt;code>函數 (Function)&lt;/code>。透過找到的相關函數，然後將其Hook，從中攔截&lt;code>函數的參數(Function parameters)&lt;/code>，進行翻譯以及返回翻譯結果，然后再還原去原本的函數 (Function)。&lt;/p>
+&lt;p>雖然如此，這個方法的技術含量會比靜態修改高很多，因為Hook技術本身就需要一些底層的知識，一般而言通常都會使用到inline hook，如果對這個技術的原理以及實現有興趣，我建議可以觀看以下文章:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://www.malwaretech.com/2015/01/inline-hooking-for-programmers-part-1.html" target="_blank" rel="noopener"
+>Inline Hooking for Programmers (Part 1: Introduction)&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://www.sunmoonblog.com/2019/07/15/inline-hook-basic/" target="_blank" rel="noopener"
+>Android inline hook 浅析&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>(如果有機會可能我都會自己實現一次，目前我都係直接使用別人已經寫好的Library)&lt;/p>
+&lt;h3 id="簡單演示-待更新">簡單演示 (待更新)
+&lt;/h3>&lt;p>(這部分網上已經有很多Desktop方面，暫時不提供示範，之後會開一篇文章講述如何對手機unity APK進行Hook漢化)&lt;/p>
+&lt;h3 id="bepinex--xunityautotranslator">BepInEx + XUnity.AutoTranslator
+&lt;/h3>&lt;p>這裡將會介紹其中一個Unity遊戲常見的工具，BepInEx以及XUnity.AutoTranslator&lt;/p>
+&lt;p>BepInEx是一個開源的Unity遊戲模組框架，支持多種遊戲引擎，並且提供了許多API來幫助開發者進行遊戲模組的開發，BepInEx其中就有提供Unity方面的Hook API。&lt;/p>
+&lt;p>XUnity.AutoTranslator則是一個基於BepInEx的翻譯模組，可以自動將遊戲中的文字翻譯成目標語言。&lt;/p>
+&lt;ul>
+&lt;li>&lt;a class="link" href="https://github.com/BepInEx/BepInEx" target="_blank" rel="noopener"
+>BepInEx&lt;/a>&lt;/li>
+&lt;li>&lt;a class="link" href="https://github.com/bbepis/XUnity.AutoTranslator" target="_blank" rel="noopener"
+>XUnity.AutoTranslator&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>然後通過對XUnity.AutoTranslator的Hook Folder分析，可以看見其中對各種unity文字類別進行了Hook，例如&lt;code>TextMeshPro&lt;/code>、&lt;code>NGUI&lt;/code>、&lt;code>UGUI&lt;/code>等等，我們可以直接看&lt;code>TextMeshProHooks.cs&lt;/code>。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-C#" data-lang="C#">&lt;span class="line">&lt;span class="cl">&lt;span class="kd">internal&lt;/span> &lt;span class="kd">static&lt;/span> &lt;span class="k">class&lt;/span> &lt;span class="nc">TextWindow_SetText_Hook&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">...&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">static&lt;/span> &lt;span class="n">MethodBase&lt;/span> &lt;span class="n">TargetMethod&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">object&lt;/span> &lt;span class="n">instance&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">AccessToolsShim&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Method&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">UnityTypes&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">TextWindow&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">ClrType&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="s">&amp;#34;SetText&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">Type&lt;/span>&lt;span class="p">[]&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="k">typeof&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">string&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">});&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">...&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">// TextGetterCompatHooks.cs&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">internal&lt;/span> &lt;span class="kd">static&lt;/span> &lt;span class="k">class&lt;/span> &lt;span class="nc">Text_text_Hook&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">...&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">static&lt;/span> &lt;span class="k">void&lt;/span> &lt;span class="n">Postfix&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">object&lt;/span> &lt;span class="n">__instance&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="k">ref&lt;/span> &lt;span class="kt">string&lt;/span> &lt;span class="n">__result&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">TextGetterCompatModeHelper&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">ReplaceTextWithOriginal&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">__instance&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="k">ref&lt;/span> &lt;span class="n">__result&lt;/span>&lt;span class="p">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">...&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>TMP是Unity的其中之一的文字渲染系統，在正常的Unity C# Code，如果要更改顯示的字就會呼叫 &lt;code>SetText()&lt;/code>，從中看見XUnity.AutoTranslator會對其進行Hook，從而獲取文字，然后使用&lt;code>ReplaceTextWithOriginal&lt;/code>。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-C#" data-lang="C#">&lt;span class="line">&lt;span class="cl">&lt;span class="na">[MethodImpl(MethodImplOptions.NoInlining)]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="kd">static&lt;/span> &lt;span class="k">void&lt;/span> &lt;span class="n">ReplaceTextWithOriginal&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">object&lt;/span> &lt;span class="n">instance&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="k">ref&lt;/span> &lt;span class="kt">string&lt;/span> &lt;span class="n">__result&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="p">(!&lt;/span>&lt;span class="n">Settings&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">TextGetterCompatibilityMode&lt;/span> &lt;span class="p">||&lt;/span> &lt;span class="n">IsGettingText&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="k">return&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">var&lt;/span> &lt;span class="n">tti&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">instance&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">GetTextTranslationInfo&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">tti&lt;/span>&lt;span class="p">?.&lt;/span>&lt;span class="n">IsTranslated&lt;/span> &lt;span class="p">==&lt;/span> &lt;span class="kc">true&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">var&lt;/span> &lt;span class="n">originalAssembly&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">instance&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">GetType&lt;/span>&lt;span class="p">().&lt;/span>&lt;span class="n">Assembly&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">var&lt;/span> &lt;span class="n">withinGameCode&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">originalAssembly&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">IsAssemblyCsharp&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="n">withinGameCode&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// If the UI element is inside Assembly-CSharp it&amp;#39;s not possible to tell if it&amp;#39;s called by game code or UI code&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// This happens in NGUI, in which always replacing doesn&amp;#39;t seem to cause any issues&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">__result&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">tti&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">OriginalText&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">else&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// BUG: This seems to not be right, at least in the latest BepInEx5 there seems to be one less stack frame&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 0. This method&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 1. Postfix&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 2. _Postfix&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 3. Harmony-related trampoline method/MM_Detour&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// 4. Original method&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">var&lt;/span> &lt;span class="n">callingMethod&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">StackFrame&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="m">4&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="n">GetMethod&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kt">var&lt;/span> &lt;span class="n">callingAssembly&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">callingMethod&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">DeclaringType&lt;/span>&lt;span class="p">?.&lt;/span>&lt;span class="n">Assembly&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="p">(!&lt;/span>&lt;span class="n">originalAssembly&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">Equals&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">callingAssembly&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// if the assembly is not the same, it may be call from the game or another mod, so replace&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">__result&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">tti&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">OriginalText&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>然後在這裏處理替換成原本的文字，然後再將翻譯的文字傳回去。&lt;/p>
+&lt;h3 id="優點">優點
+&lt;/h3>&lt;p>優點基本繼承了靜態修改的優點，並且解決了靜態修改的缺點，因為這個方法是直接在遊戲運行的時候進行翻譯，沒有對遊戲資源進行修改，翻譯文字與原文字是隔開的，所以不需要擔心遊戲更新導致的資源包失效問題。基本上遊戲沒有大改變的情況下，漢化效果是依然存在的。(也解釋了為什麼有些漢化模組不會受到遊戲更新影響)&lt;/p>
+&lt;h3 id="缺點-3">缺點
+&lt;/h3>&lt;p>缺點基本上是靜態修改的缺點，並且技術難度以及deubg比起其他方法是最困難的，以下是一些Hook常見的問題：&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>Hook失敗&lt;/strong>：有些遊戲會對Hook進行檢測，這樣會導致Hook失敗。除此之外，在使用inine hook的時候，Hook的function如果長度不足夠，則會導致Hook失敗 (沒有足夠的長度去注入jump指令)&lt;/li>
+&lt;li>&lt;strong>時機問題&lt;/strong>：遊戲運行的時候會有很多Threadd在運行，在Proxy function的時候需要注意當前在哪一個Thread，那些Function可以使用及不可以 (Access Violation Problem)&lt;/li>
+&lt;li>&lt;strong>性能問題&lt;/strong>：Proxy Function如果內部執行如果過多指令，則會導致遊戲性能下降&lt;/li>
+&lt;/ol>
+&lt;h2 id="總結">總結
+&lt;/h2>&lt;p>總括來說，本文介紹的四種遊戲漢化技術方法如下：&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>技術方法&lt;/th>
+&lt;th>技術門檻&lt;/th>
+&lt;th>優點&lt;/th>
+&lt;th>缺點&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>OCR技術自動識別&lt;/td>
+&lt;td>低&lt;/td>
+&lt;td>即裝即用，操作簡便&lt;/td>
+&lt;td>識別準確度問題(e.g: 對特殊字體/藝術字的識別率低)&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>記憶體掃描提取&lt;/td>
+&lt;td>中&lt;/td>
+&lt;td>不受畫面品質影響&lt;/td>
+&lt;td>輸出位置需針對不同遊戲進行調整&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>靜態修改資源&lt;/td>
+&lt;td>高&lt;/td>
+&lt;td>翻譯效果最自然，完全融入遊戲界面，修改後無需持續運行翻譯程序&lt;/td>
+&lt;td>涉及遊戲檔案修改存在法律風險，遊戲更新會導致修改失效&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>動態Hook技術&lt;/td>
+&lt;td>高~極高&lt;/td>
+&lt;td>不直接修改遊戲檔案，對遊戲更新的適應性強&lt;/td>
+&lt;td>開發和維護成本最高，可能影響遊戲穩定性，靜態修改資源問題，Hook問題&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>每種方法都有各自的好處和壞處以及最適合的使用場景，根據遊戲的特性和需求選擇從而產生不同的漢化方法的。&lt;/p>
+&lt;h3 id="延伸">延伸
+&lt;/h3>&lt;p>在這裡會簡單提及一些延伸的問題，這些問題是針對靜態修改和動態Hook的問題&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>字型問題&lt;/strong>：如果遊戲預設是沒有中文的，這意味著如果我們只是簡單地修改文字是不會有效果的(會出現亂碼的情況)，如果要顯示中文的話，則需要將中文字型包打進去遊戲裏面，而至於要怎樣將字型包打進去遊戲，就是另一個問題了。&lt;/li>
+&lt;li>&lt;strong>圖片問題&lt;/strong>：如果遊戲的文字是以圖片的形式顯示的話，基本上只是修改文字是沒有用的，這時候就需要將圖片的資源包提取出來，然後再進行修改，然後再將其封包回去遊戲裏面。遊戲的圖片運氣好的話可能會提供原生的圖片資源，這樣就可以直接修改圖片了，但如果沒有的話，通常都是被打包成以及壓縮了(例如&lt;code>DXT&lt;/code>,&lt;code>ETC&lt;/code>)，需要有額外的工作處理。&lt;/li>
+&lt;/ol>
+&lt;p>除此之外非常建議可以閱讀一下這篇文章，這篇文章基本上講述了整個漢化的工作流程：&lt;/p>
+&lt;p>&lt;a class="link" href="https://www.zhihu.com/question/46282905/answer/1087459979" target="_blank" rel="noopener"
+>游戏的汉化过程是怎样的？&lt;/a>&lt;/p>
+&lt;h2 id="後話">後話
+&lt;/h2>&lt;p>這篇文章是我在學習遊戲漢化的過程中，對於遊戲漢化的一些技術方法的總結。當然科技會不斷進步，這些方法也會隨著時間而改變，這篇文章只是針對目前的技術方法進行總結。希望這篇文章能夠幫助到對遊戲漢化技術手段有興趣的人。&lt;/p>
+&lt;h2 id="參考資料">參考資料
+&lt;/h2>&lt;ul>
+&lt;li>Google Translate 圖片翻譯功能: &lt;a class="link" href="https://support.google.com/translate/answer/6142483" target="_blank" rel="noopener"
+>https://support.google.com/translate/answer/6142483&lt;/a>&lt;/li>
+&lt;li>DeepL 翻譯器: &lt;a class="link" href="https://www.deepl.com/en/translator" target="_blank" rel="noopener"
+>https://www.deepl.com/en/translator&lt;/a>&lt;/li>
+&lt;li>維基百科 - OCR技術: &lt;a class="link" href="https://zh.wikipedia.org/zh-tw/" target="_blank" rel="noopener"
+>https://zh.wikipedia.org/zh-tw/&lt;/a>光學字符識別&lt;/li>
+&lt;li>MORT 開源項目: &lt;a class="link" href="https://github.com/killkimno/MORT" target="_blank" rel="noopener"
+>https://github.com/killkimno/MORT&lt;/a>&lt;/li>
+&lt;li>Cheat Engine 工具: &lt;a class="link" href="https://github.com/cheat-engine/cheat-engine" target="_blank" rel="noopener"
+>https://github.com/cheat-engine/cheat-engine&lt;/a>&lt;/li>
+&lt;li>TataruHelper 翻譯工具: &lt;a class="link" href="https://github.com/NightlyRevenger/TataruHelper" target="_blank" rel="noopener"
+>https://github.com/NightlyRevenger/TataruHelper&lt;/a>&lt;/li>
+&lt;li>Sharlayan 遊戲記憶體讀取工具: &lt;a class="link" href="https://github.com/FFXIVAPP/sharlayan" target="_blank" rel="noopener"
+>https://github.com/FFXIVAPP/sharlayan&lt;/a>&lt;/li>
+&lt;li>UABE 資源解包工具: &lt;a class="link" href="https://github.com/SeriousCache/UABE" target="_blank" rel="noopener"
+>https://github.com/SeriousCache/UABE&lt;/a>&lt;/li>
+&lt;li>BepInEx 模組框架: &lt;a class="link" href="https://github.com/BepInEx/BepInEx" target="_blank" rel="noopener"
+>https://github.com/BepInEx/BepInEx&lt;/a>&lt;/li>
+&lt;li>XUnity.AutoTranslator: &lt;a class="link" href="https://github.com/bbepis/XUnity.AutoTranslator" target="_blank" rel="noopener"
+>https://github.com/bbepis/XUnity.AutoTranslator&lt;/a>&lt;/li>
+&lt;/ul></description></item></channel></rss>
