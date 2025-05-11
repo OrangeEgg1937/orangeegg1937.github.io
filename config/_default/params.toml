@@ -68,6 +68,17 @@ src = "img/game_default.png"
 toggle = true
 default = "dark"
 
+[imageProcessing.cover]
+enabled = true
+
+[imageProcessing.content]
+enabled = true
+
+## Comments
+[comments]
+enabled = true
+provider = "giscus"
+
 [comments.giscus]
 repo = "OrangeEgg1937/orangeegg1937.github.io"
 repoID = "R_kgDOOjbNNQ"
