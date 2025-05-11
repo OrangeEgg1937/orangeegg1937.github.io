@@ -1,1 +1,3 @@
 User-agent: *
+Disallow:
+Sitemap: https://orangeegg1937.github.io/sitemap.xml
