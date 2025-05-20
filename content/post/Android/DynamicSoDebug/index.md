@@ -182,4 +182,4 @@ tasks.register("BuildNativeLibToRootOnly") {
 
 ### 注意事項
 
-雖然dynamic load是一個非常方便的功能，但在使用時仍然需要注意一些**安全性**事項，從外部和內部儲存動態載入的.so檔案可能會很容易被惡意修改，或加載時使用完整性檢查(integrity checking)等安全措施。
+雖然dynamic load是一個非常方便的功能，但在使用時仍然需要注意一些**安全性**事項，從外部和內部儲存動態載入的.so檔案可能會很容易被惡意修改，為了安全起見加載時使用完整性檢查(integrity checking)等安全措施。
