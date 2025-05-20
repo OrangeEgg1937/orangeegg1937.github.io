@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>動態載入 on Akua的IT狗Blog</title><link>https://orangeegg1937.github.io/tags/%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5/</link><description>Recent content in 動態載入 on Akua的IT狗Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Mon, 19 May 2025 15:46:05 +0800</lastBuildDate><atom:link href="https://orangeegg1937.github.io/tags/%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5/index.xml" rel="self" type="application/rss+xml"/><item><title>Android動態載入SO - 無Root無需重新安裝APK即可測試Native庫的方法</title><link>https://orangeegg1937.github.io/p/android%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5so-%E7%84%A1root%E7%84%A1%E9%9C%80%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%9Dapk%E5%8D%B3%E5%8F%AF%E6%B8%AC%E8%A9%A6native%E5%BA%AB%E7%9A%84%E6%96%B9%E6%B3%95/</link><pubDate>Mon, 19 May 2025 15:46:05 +0800</pubDate><guid>https://orangeegg1937.github.io/p/android%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5so-%E7%84%A1root%E7%84%A1%E9%9C%80%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%9Dapk%E5%8D%B3%E5%8F%AF%E6%B8%AC%E8%A9%A6native%E5%BA%AB%E7%9A%84%E6%96%B9%E6%B3%95/</guid><description>&lt;img src="https://orangeegg1937.github.io/p/android%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5so-%E7%84%A1root%E7%84%A1%E9%9C%80%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%9Dapk%E5%8D%B3%E5%8F%AF%E6%B8%AC%E8%A9%A6native%E5%BA%AB%E7%9A%84%E6%96%B9%E6%B3%95/src/cover.jpg" alt="Featured image of post Android動態載入SO - 無Root無需重新安裝APK即可測試Native庫的方法" />&lt;blockquote>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>動態載入 on Akua的IT狗Blog</title><link>https://orangeegg1937.github.io/tags/%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5/</link><description>Recent content in 動態載入 on Akua的IT狗Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Mon, 19 May 2025 15:46:05 +0800</lastBuildDate><atom:link href="https://orangeegg1937.github.io/tags/%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5/index.xml" rel="self" type="application/rss+xml"/><item><title>Android動態載入SO - 無Root無需重新安裝APK即可測試Native庫的方法</title><link>https://orangeegg1937.github.io/post/android/android-dynamic-load-so/</link><pubDate>Mon, 19 May 2025 15:46:05 +0800</pubDate><guid>https://orangeegg1937.github.io/post/android/android-dynamic-load-so/</guid><description>&lt;img src="https://orangeegg1937.github.io/post/android/android-dynamic-load-so/src/cover.jpg" alt="Featured image of post Android動態載入SO - 無Root無需重新安裝APK即可測試Native庫的方法" />&lt;blockquote>
 &lt;p>⚠️ 以下步驟僅適用於測試與Debug，不適用於Deployment階段，若要部署，可參考「Android Hotfix .so」&lt;/p>&lt;/blockquote>
 &lt;h2 id="前言">前言
 &lt;/h2>&lt;p>在首次接觸NDK的時候，可以看到預設project使用&lt;code>System.loadLibrary()&lt;/code>來靜態載入(static load).so檔案，這個方法會在APK的lib目錄下尋找.so檔案，並將其載入到應用程序中。使用這個方法時，需要將.so檔案打包到APK中，這樣在app啟動時就會自動載入這些庫。&lt;/p>
@@ -61,10 +61,10 @@
 &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h3 id="原效果">原效果
-&lt;/h3>&lt;p>&lt;img src="https://orangeegg1937.github.io/p/android%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5so-%E7%84%A1root%E7%84%A1%E9%9C%80%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%9Dapk%E5%8D%B3%E5%8F%AF%E6%B8%AC%E8%A9%A6native%E5%BA%AB%E7%9A%84%E6%96%B9%E6%B3%95/src/orig.png"
+&lt;/h3>&lt;p>&lt;img src="https://orangeegg1937.github.io/post/android/android-dynamic-load-so/src/orig.png"
 width="1428"
 height="900"
-srcset="https://orangeegg1937.github.io/p/android%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5so-%E7%84%A1root%E7%84%A1%E9%9C%80%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%9Dapk%E5%8D%B3%E5%8F%AF%E6%B8%AC%E8%A9%A6native%E5%BA%AB%E7%9A%84%E6%96%B9%E6%B3%95/src/orig_hu_8b9580d350c65be7.png 480w, https://orangeegg1937.github.io/p/android%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5so-%E7%84%A1root%E7%84%A1%E9%9C%80%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%9Dapk%E5%8D%B3%E5%8F%AF%E6%B8%AC%E8%A9%A6native%E5%BA%AB%E7%9A%84%E6%96%B9%E6%B3%95/src/orig_hu_383a0900d3179b7c.png 1024w"
+srcset="https://orangeegg1937.github.io/post/android/android-dynamic-load-so/src/orig_hu_8b9580d350c65be7.png 480w, https://orangeegg1937.github.io/post/android/android-dynamic-load-so/src/orig_hu_383a0900d3179b7c.png 1024w"
 loading="lazy"
 alt="Built APK 之後，當我們呼叫native function時，會得到&amp;#34;Hello from C&amp;#43;&amp;#43;&amp;#34;"
 class="gallery-image"
@@ -174,10 +174,10 @@ data-flex-basis="380px"
 &lt;p>從內部或 apk/lib 載入native library&lt;/p>
 &lt;/li>
 &lt;/ol>
-&lt;p>&lt;img src="https://orangeegg1937.github.io/p/android%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5so-%E7%84%A1root%E7%84%A1%E9%9C%80%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%9Dapk%E5%8D%B3%E5%8F%AF%E6%B8%AC%E8%A9%A6native%E5%BA%AB%E7%9A%84%E6%96%B9%E6%B3%95/src/loaded_from_apk.png"
+&lt;p>&lt;img src="https://orangeegg1937.github.io/post/android/android-dynamic-load-so/src/loaded_from_apk.png"
 width="1459"
 height="691"
-srcset="https://orangeegg1937.github.io/p/android%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5so-%E7%84%A1root%E7%84%A1%E9%9C%80%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%9Dapk%E5%8D%B3%E5%8F%AF%E6%B8%AC%E8%A9%A6native%E5%BA%AB%E7%9A%84%E6%96%B9%E6%B3%95/src/loaded_from_apk_hu_7610183d9301937f.png 480w, https://orangeegg1937.github.io/p/android%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5so-%E7%84%A1root%E7%84%A1%E9%9C%80%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%9Dapk%E5%8D%B3%E5%8F%AF%E6%B8%AC%E8%A9%A6native%E5%BA%AB%E7%9A%84%E6%96%B9%E6%B3%95/src/loaded_from_apk_hu_3b2fb0fc16ec7522.png 1024w"
+srcset="https://orangeegg1937.github.io/post/android/android-dynamic-load-so/src/loaded_from_apk_hu_7610183d9301937f.png 480w, https://orangeegg1937.github.io/post/android/android-dynamic-load-so/src/loaded_from_apk_hu_3b2fb0fc16ec7522.png 1024w"
 loading="lazy"
 alt="現在重建 APK，目前的 so 是從 /lib 目錄載入"
 class="gallery-image"
@@ -236,10 +236,10 @@ data-flex-basis="506px"
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;p>執行之後，我們可以看到project root中有一個 .so 檔案&lt;/p>
-&lt;p>&lt;img src="https://orangeegg1937.github.io/p/android%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5so-%E7%84%A1root%E7%84%A1%E9%9C%80%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%9Dapk%E5%8D%B3%E5%8F%AF%E6%B8%AC%E8%A9%A6native%E5%BA%AB%E7%9A%84%E6%96%B9%E6%B3%95/src/build_so.png"
+&lt;p>&lt;img src="https://orangeegg1937.github.io/post/android/android-dynamic-load-so/src/build_so.png"
 width="389"
 height="491"
-srcset="https://orangeegg1937.github.io/p/android%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5so-%E7%84%A1root%E7%84%A1%E9%9C%80%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%9Dapk%E5%8D%B3%E5%8F%AF%E6%B8%AC%E8%A9%A6native%E5%BA%AB%E7%9A%84%E6%96%B9%E6%B3%95/src/build_so_hu_7e898267ee9a0ed8.png 480w, https://orangeegg1937.github.io/p/android%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5so-%E7%84%A1root%E7%84%A1%E9%9C%80%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%9Dapk%E5%8D%B3%E5%8F%AF%E6%B8%AC%E8%A9%A6native%E5%BA%AB%E7%9A%84%E6%96%B9%E6%B3%95/src/build_so_hu_2cb5005696009622.png 1024w"
+srcset="https://orangeegg1937.github.io/post/android/android-dynamic-load-so/src/build_so_hu_7e898267ee9a0ed8.png 480w, https://orangeegg1937.github.io/post/android/android-dynamic-load-so/src/build_so_hu_2cb5005696009622.png 1024w"
 loading="lazy"
 alt="我們可以在/outputs看到檔案"
 class="gallery-image"
@@ -247,10 +247,10 @@ data-flex-grow="79"
 data-flex-basis="190px"
 >&lt;/p>
 &lt;p>將其放入 APK 外部儲存空間。&lt;/p>
-&lt;p>&lt;img src="https://orangeegg1937.github.io/p/android%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5so-%E7%84%A1root%E7%84%A1%E9%9C%80%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%9Dapk%E5%8D%B3%E5%8F%AF%E6%B8%AC%E8%A9%A6native%E5%BA%AB%E7%9A%84%E6%96%B9%E6%B3%95/src/move_so_to_external_storage.png"
+&lt;p>&lt;img src="https://orangeegg1937.github.io/post/android/android-dynamic-load-so/src/move_so_to_external_storage.png"
 width="826"
 height="494"
-srcset="https://orangeegg1937.github.io/p/android%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5so-%E7%84%A1root%E7%84%A1%E9%9C%80%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%9Dapk%E5%8D%B3%E5%8F%AF%E6%B8%AC%E8%A9%A6native%E5%BA%AB%E7%9A%84%E6%96%B9%E6%B3%95/src/move_so_to_external_storage_hu_28ace3ddac7c39be.png 480w, https://orangeegg1937.github.io/p/android%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5so-%E7%84%A1root%E7%84%A1%E9%9C%80%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%9Dapk%E5%8D%B3%E5%8F%AF%E6%B8%AC%E8%A9%A6native%E5%BA%AB%E7%9A%84%E6%96%B9%E6%B3%95/src/move_so_to_external_storage_hu_8c83b11ec1abf6c9.png 1024w"
+srcset="https://orangeegg1937.github.io/post/android/android-dynamic-load-so/src/move_so_to_external_storage_hu_28ace3ddac7c39be.png 480w, https://orangeegg1937.github.io/post/android/android-dynamic-load-so/src/move_so_to_external_storage_hu_8c83b11ec1abf6c9.png 1024w"
 loading="lazy"
 alt="放入 APK 外部儲存空間"
 class="gallery-image"
@@ -259,10 +259,10 @@ data-flex-basis="401px"
 >&lt;/p>
 &lt;h3 id="結果">結果
 &lt;/h3>&lt;p>無需重新安裝或更新 APK此情況下，我們可以看到文字被更改&lt;/p>
-&lt;p>&lt;img src="https://orangeegg1937.github.io/p/android%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5so-%E7%84%A1root%E7%84%A1%E9%9C%80%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%9Dapk%E5%8D%B3%E5%8F%AF%E6%B8%AC%E8%A9%A6native%E5%BA%AB%E7%9A%84%E6%96%B9%E6%B3%95/src/final_result.png"
+&lt;p>&lt;img src="https://orangeegg1937.github.io/post/android/android-dynamic-load-so/src/final_result.png"
 width="1497"
 height="736"
-srcset="https://orangeegg1937.github.io/p/android%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5so-%E7%84%A1root%E7%84%A1%E9%9C%80%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%9Dapk%E5%8D%B3%E5%8F%AF%E6%B8%AC%E8%A9%A6native%E5%BA%AB%E7%9A%84%E6%96%B9%E6%B3%95/src/final_result_hu_ffeee9b0f0f8ca48.png 480w, https://orangeegg1937.github.io/p/android%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5so-%E7%84%A1root%E7%84%A1%E9%9C%80%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%9Dapk%E5%8D%B3%E5%8F%AF%E6%B8%AC%E8%A9%A6native%E5%BA%AB%E7%9A%84%E6%96%B9%E6%B3%95/src/final_result_hu_68774fb1ab1059c6.png 1024w"
+srcset="https://orangeegg1937.github.io/post/android/android-dynamic-load-so/src/final_result_hu_ffeee9b0f0f8ca48.png 480w, https://orangeegg1937.github.io/post/android/android-dynamic-load-so/src/final_result_hu_68774fb1ab1059c6.png 1024w"
 loading="lazy"
 alt="我們可以看到文字已變更"
 class="gallery-image"

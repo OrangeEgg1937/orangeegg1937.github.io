@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Akua的IT狗Blog</title><link>https://orangeegg1937.github.io/post/unity/</link><description>Recent content on Akua的IT狗Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Sun, 03 Dec 2023 18:21:00 +0800</lastBuildDate><atom:link href="https://orangeegg1937.github.io/post/unity/index.xml" rel="self" type="application/rss+xml"/><item><title>UnityEvent</title><link>https://orangeegg1937.github.io/post/unity/unity-event-note/</link><pubDate>Sun, 03 Dec 2023 18:21:00 +0800</pubDate><guid>https://orangeegg1937.github.io/post/unity/unity-event-note/</guid><description>&lt;h2 id="unityevent">UnityEvent
+&lt;/h2>&lt;blockquote>
+&lt;p>Unity manual: &lt;a class="link" href="https://docs.unity3d.com/Manual/UnityEvents.html" target="_blank" rel="noopener"
+>https://docs.unity3d.com/Manual/UnityEvents.html&lt;/a>&lt;/p>&lt;/blockquote>
+&lt;p>According to the manual, UnityEvents are a way of allowing user driven callback to be persisted from edit time to run time without the need for additional programming and script configuration. UnityEvents may sound very unfamiliar as it cannot directly added in a gameobject. However, if you used the UGUI Button before, you will understand it soon. As the &lt;code>On click()&lt;/code> selection in the button is a kind of UnityEvents.&lt;/p>
+&lt;p>&lt;img src="https://orangeegg1937.github.io/post/unity/unity-event-note/src/image2.png"
+width="437"
+height="485"
+srcset="https://orangeegg1937.github.io/post/unity/unity-event-note/src/image2_hu_5042c07a0406f541.png 480w, https://orangeegg1937.github.io/post/unity/unity-event-note/src/image2_hu_f4fb8b334f80d94d.png 1024w"
+loading="lazy"
+alt="Button Inspector"
+class="gallery-image"
+data-flex-grow="90"
+data-flex-basis="216px"
+>&lt;/p>
+&lt;p>If we want to use the UnityEvent, we can simply using the class &lt;code>UnityEvent&lt;/code>. After that, you can see the same selection in the inspector.&lt;/p>
+&lt;p>&lt;img src="https://orangeegg1937.github.io/post/unity/unity-event-note/src/image1.png"
+width="1073"
+height="398"
+srcset="https://orangeegg1937.github.io/post/unity/unity-event-note/src/image1_hu_762a88ba4f3034bb.png 480w, https://orangeegg1937.github.io/post/unity/unity-event-note/src/image1_hu_8bbb4b86d158ef9a.png 1024w"
+loading="lazy"
+alt="Custom script"
+class="gallery-image"
+data-flex-grow="269"
+data-flex-basis="647px"
+>&lt;/p>
+&lt;h2 id="move-deeply">Move deeply
+&lt;/h2>&lt;p>Sometime we may want to pass some specific value to the callback function such as the enemy gameobject, however, if we look at the inspector, it dose not support to pass the gameobject, so how can we do it? Actually, we can using the generic form of the &lt;code>UnityEvent&amp;lt;T0&amp;gt;&lt;/code>. Then, using &lt;code>.Invoke(value)&lt;/code> to send to all listener.&lt;/p>
+&lt;p>However, if you look at the code it may a bit complicated. So how can we assign a function into a &lt;code>UnityEvent&lt;/code> without using generic? We can try to use &lt;code>C# delegate&lt;/code>. Here is an example:&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-C#" data-lang="C#">&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span> &lt;span class="k">class&lt;/span> &lt;span class="nc">ValueController&lt;/span> &lt;span class="p">:&lt;/span> &lt;span class="n">MonoBehaviour&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="kt">float&lt;/span> &lt;span class="n">number&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">Button&lt;/span> &lt;span class="n">plus&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="n">Button&lt;/span> &lt;span class="n">mins&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">public&lt;/span> &lt;span class="kt">float&lt;/span> &lt;span class="n">offset&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="m">10.0f&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="c1">// initial the member&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="k">void&lt;/span> &lt;span class="n">Awake&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">number&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="m">0&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">plus&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">gameObject&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">transform&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">GetChild&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="m">0&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="n">GetComponent&lt;/span>&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="n">Button&lt;/span>&lt;span class="p">&amp;gt;();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">mins&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="n">gameObject&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">transform&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">GetChild&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="m">1&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="n">GetComponent&lt;/span>&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="n">Button&lt;/span>&lt;span class="p">&amp;gt;();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">plus&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">onClick&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">AddListener&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">delegate&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="n">EditVal&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">offset&lt;/span>&lt;span class="p">);&lt;/span> &lt;span class="p">});&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">mins&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">onClick&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">AddListener&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="k">delegate&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="n">EditVal&lt;/span>&lt;span class="p">(-&lt;/span>&lt;span class="n">offset&lt;/span>&lt;span class="p">);&lt;/span> &lt;span class="p">});&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="kd">private&lt;/span> &lt;span class="k">void&lt;/span> &lt;span class="n">EditVal&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kt">float&lt;/span> &lt;span class="n">val&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">number&lt;/span> &lt;span class="p">+=&lt;/span> &lt;span class="n">val&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>In this code, we assign the &lt;code>EditVal()&lt;/code> function into the listener, when players click the &lt;code>plus&lt;/code> button, the number will be increased by 10; when players click the &lt;code>mins&lt;/code> button, the number will be decreased by 10. Most importantly, we havn&amp;rsquo;t create any new UnityEvent in the script.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-C#" data-lang="C#">&lt;span class="line">&lt;span class="cl">&lt;span class="n">plus&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">onClick&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">AddListener&lt;/span>&lt;span class="p">(()&lt;/span> &lt;span class="p">=&amp;gt;&lt;/span> &lt;span class="n">EditVal&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">offset&lt;/span>&lt;span class="p">));&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>Or using the lambda expressions.&lt;/p>
+&lt;p>The reason why we need to use delegate/lambda expressions here because according to the Unity &lt;a class="link" href="https://docs.unity3d.com/2018.3/Documentation/ScriptReference/Events.UnityEvent.AddListener.html" target="_blank" rel="noopener"
+>documentaion&lt;/a>, the &lt;code>UnityAction&lt;/code> class here (The button &lt;code>OnClick()&lt;/code> ) does not take any argument.&lt;/p>
+&lt;h2 id="reference">Reference
+&lt;/h2>&lt;ol>
+&lt;li>
+&lt;p>&lt;a class="link" href="https://docs.unity3d.com/2018.3/Documentation/ScriptReference/Events.UnityEvent.html" target="_blank" rel="noopener"
+>&lt;code>UnityEvent&lt;/code> Class&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a class="link" href="https://docs.unity3d.com/Manual/UnityEvents.html" target="_blank" rel="noopener"
+>Unity Manual&lt;/a>&lt;/p>
+&lt;/li>
+&lt;/ol></description></item></channel></rss>

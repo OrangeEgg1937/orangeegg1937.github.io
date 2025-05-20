@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Arduino on Akua的IT狗Blog</title><link>https://orangeegg1937.github.io/categories/arduino/</link><description>Recent content in Arduino on Akua的IT狗Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Sat, 20 Jan 2024 20:28:00 +0800</lastBuildDate><atom:link href="https://orangeegg1937.github.io/categories/arduino/index.xml" rel="self" type="application/rss+xml"/><item><title>簡單BongoCat動畫 with Arduino</title><link>https://orangeegg1937.github.io/p/%E7%B0%A1%E5%96%AEbongocat%E5%8B%95%E7%95%AB-with-arduino/</link><pubDate>Sat, 20 Jan 2024 20:28:00 +0800</pubDate><guid>https://orangeegg1937.github.io/p/%E7%B0%A1%E5%96%AEbongocat%E5%8B%95%E7%95%AB-with-arduino/</guid><description>&lt;img src="https://orangeegg1937.github.io/p/%E7%B0%A1%E5%96%AEbongocat%E5%8B%95%E7%95%AB-with-arduino/src/cover.png" alt="Featured image of post 簡單BongoCat動畫 with Arduino" />&lt;h1 id="project-repo-here">&lt;strong>Project repo here: &lt;a class="link" href="https://github.com/OrangeEgg1937/ArduinoBongoCatOLED" target="_blank" rel="noopener"
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Arduino on Akua的IT狗Blog</title><link>https://orangeegg1937.github.io/categories/arduino/</link><description>Recent content in Arduino on Akua的IT狗Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Sat, 20 Jan 2024 20:28:00 +0800</lastBuildDate><atom:link href="https://orangeegg1937.github.io/categories/arduino/index.xml" rel="self" type="application/rss+xml"/><item><title>簡單BongoCat動畫 with Arduino</title><link>https://orangeegg1937.github.io/post/arduino/arduino-bongo-cat/</link><pubDate>Sat, 20 Jan 2024 20:28:00 +0800</pubDate><guid>https://orangeegg1937.github.io/post/arduino/arduino-bongo-cat/</guid><description>&lt;img src="https://orangeegg1937.github.io/post/arduino/arduino-bongo-cat/src/cover.png" alt="Featured image of post 簡單BongoCat動畫 with Arduino" />&lt;h1 id="project-repo-here">&lt;strong>Project repo here: &lt;a class="link" href="https://github.com/OrangeEgg1937/ArduinoBongoCatOLED" target="_blank" rel="noopener"
 >Code&lt;/a>&lt;/strong>
 &lt;/h1>&lt;h2 id="前言">前言
 &lt;/h2>&lt;p>話說在某一天，有位友人發送了這個貼文給我
@@ -246,7 +246,7 @@ width: 144px;
 &lt;/li>
 &lt;/ol>
 &lt;h2 id="hardware-setup-mcu螢幕">Hardware Setup (MCU＋螢幕)
-&lt;/h2>&lt;figure>&lt;img src="https://orangeegg1937.github.io/p/%E7%B0%A1%E5%96%AEbongocat%E5%8B%95%E7%95%AB-with-arduino/src/connection.png" width="800px">
+&lt;/h2>&lt;figure>&lt;img src="https://orangeegg1937.github.io/post/arduino/arduino-bongo-cat/src/connection.png" width="800px">
 &lt;/figure>
 &lt;ul>
 &lt;li>1x Arduino UNO&lt;/li>
@@ -291,10 +291,10 @@ width: 144px;
 &lt;/div>&lt;p>可能需要注意的是i2c address以及Arduino Pin位置（正常情況下應該都是0x3C）&lt;/p>
 &lt;h3 id="圖片準備">圖片準備
 &lt;/h3>&lt;p>SSD1306有幾個不同尺寸的型號，根據型號的尺寸，展示圖片的範圍也會有所不同。而我所使用的尺寸是128x64，為了方便設計，圖片的原生尺寸也設定為128x64。&lt;/p>
-&lt;figure>&lt;img src="https://orangeegg1937.github.io/p/%E7%B0%A1%E5%96%AEbongocat%E5%8B%95%E7%95%AB-with-arduino/src/drawing.png" width="800px">
+&lt;figure>&lt;img src="https://orangeegg1937.github.io/post/arduino/arduino-bongo-cat/src/drawing.png" width="800px">
 &lt;/figure>
 &lt;p>然后再繪製4幅不同狀態的圖片（leftBtnOnClick, rightBtnOnClick, both, idle）&lt;/p>
-&lt;figure>&lt;img src="https://orangeegg1937.github.io/p/%E7%B0%A1%E5%96%AEbongocat%E5%8B%95%E7%95%AB-with-arduino/src/pic_all.jpg" width="800px">
+&lt;figure>&lt;img src="https://orangeegg1937.github.io/post/arduino/arduino-bongo-cat/src/pic_all.jpg" width="800px">
 &lt;/figure>
 &lt;h3 id="將圖片import進去program">將圖片import進去program
 &lt;/h3>&lt;p>將圖片export變成bitmap，利用LCD Assistant輸出成byte array。（詳細的工作原理之后可能再補充一下）&lt;/p>
@@ -302,11 +302,11 @@ width: 144px;
 &lt;a class="link" href="https://nhs-tw.blogspot.com/2015/11/step-by-step-oled-lcd-assistant.html" target="_blank" rel="noopener"
 >＜Step By Step系列 - 番外篇 OLED圖片取檔方法, 使用LCD Assistant＞&lt;/a>&lt;/p>
 &lt;p>之後我們將結果貼上在主程式裏面
-&lt;figure>&lt;img src="https://orangeegg1937.github.io/p/%E7%B0%A1%E5%96%AEbongocat%E5%8B%95%E7%95%AB-with-arduino/src/byte_array_01.jpg" width="800px">
+&lt;figure>&lt;img src="https://orangeegg1937.github.io/post/arduino/arduino-bongo-cat/src/byte_array_01.jpg" width="800px">
 &lt;/figure>
 &lt;/p>
 &lt;p>需要注意的是如果我們直接貼上的話，應該會顯示以下錯誤：
-&lt;figure>&lt;img src="https://orangeegg1937.github.io/p/%E7%B0%A1%E5%96%AEbongocat%E5%8B%95%E7%95%AB-with-arduino/src/max_error.jpg" width="800px">
+&lt;figure>&lt;img src="https://orangeegg1937.github.io/post/arduino/arduino-bongo-cat/src/max_error.jpg" width="800px">
 &lt;/figure>
 這個原因是因為Arduino的dynamic memory(RAM)沒有足夠空間放我們的圖片，dynamic memory通常在MCU上面所擁有的空間都比較少(而且珍貴)，而我們的圖片是一個非常大的檔案。&lt;/p>
 &lt;p>因為我們的圖片通常是是一個常數不會變的東西，所以我們可以將圖片的資料放在Flash memory，因此我們需要加一個modifier &amp;ldquo;PROGMEM&amp;quot;在這個variable上面：&lt;/p>
@@ -321,7 +321,7 @@ width: 144px;
 &lt;/div>&lt;p>詳細的使用可以參考官方的文章：&lt;a class="link" href="https://www.arduino.cc/reference/en/language/variables/utilities/progmem/" target="_blank" rel="noopener"
 >Arduino - PROGMEM&lt;/a>&lt;/p>
 &lt;p>之后圖片就可以順利import進去program裡面了！
-&lt;figure>&lt;img src="https://orangeegg1937.github.io/p/%E7%B0%A1%E5%96%AEbongocat%E5%8B%95%E7%95%AB-with-arduino/src/ok.png" width="800px">
+&lt;figure>&lt;img src="https://orangeegg1937.github.io/post/arduino/arduino-bongo-cat/src/ok.png" width="800px">
 &lt;/figure>
 &lt;/p>
 &lt;h3 id="按鈕控制">按鈕控制
@@ -353,5 +353,5 @@ width: 144px;
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
 &lt;/div>&lt;h2 id="最終成果">最終成果
-&lt;/h2>&lt;figure>&lt;img src="https://orangeegg1937.github.io/p/%E7%B0%A1%E5%96%AEbongocat%E5%8B%95%E7%95%AB-with-arduino/src/result.png" width="800px">
+&lt;/h2>&lt;figure>&lt;img src="https://orangeegg1937.github.io/post/arduino/arduino-bongo-cat/src/result.png" width="800px">
 &lt;/figure></description></item></channel></rss>

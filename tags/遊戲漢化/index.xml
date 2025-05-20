@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>遊戲漢化 on Akua的IT狗Blog</title><link>https://orangeegg1937.github.io/tags/%E9%81%8A%E6%88%B2%E6%BC%A2%E5%8C%96/</link><description>Recent content in 遊戲漢化 on Akua的IT狗Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Sun, 11 May 2025 00:20:05 +0800</lastBuildDate><atom:link href="https://orangeegg1937.github.io/tags/%E9%81%8A%E6%88%B2%E6%BC%A2%E5%8C%96/index.xml" rel="self" type="application/rss+xml"/><item><title>技術上，漢化遊戲有什麼方法？</title><link>https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/</link><pubDate>Sun, 11 May 2025 00:20:05 +0800</pubDate><guid>https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/</guid><description>&lt;img src="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/cover.png" alt="Featured image of post 技術上，漢化遊戲有什麼方法？" />&lt;h2 id="前言">前言
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>遊戲漢化 on Akua的IT狗Blog</title><link>https://orangeegg1937.github.io/tags/%E9%81%8A%E6%88%B2%E6%BC%A2%E5%8C%96/</link><description>Recent content in 遊戲漢化 on Akua的IT狗Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Sun, 11 May 2025 00:20:05 +0800</lastBuildDate><atom:link href="https://orangeegg1937.github.io/tags/%E9%81%8A%E6%88%B2%E6%BC%A2%E5%8C%96/index.xml" rel="self" type="application/rss+xml"/><item><title>技術上，漢化遊戲有什麼方法？</title><link>https://orangeegg1937.github.io/post/tech/game-translation-intro/</link><pubDate>Sun, 11 May 2025 00:20:05 +0800</pubDate><guid>https://orangeegg1937.github.io/post/tech/game-translation-intro/</guid><description>&lt;img src="https://orangeegg1937.github.io/post/tech/game-translation-intro/src/cover.png" alt="Featured image of post 技術上，漢化遊戲有什麼方法？" />&lt;h2 id="前言">前言
 &lt;/h2>&lt;blockquote>
 &lt;p>作為資深玩家，當遇到沒有中文選項的遊戲時，第一反應往往是尋找漢化MOD。這些MOD的安裝方式各異，從簡單的下載安裝包到需要修改遊戲資源的複雜操作。使用過漢化的玩家都知道，有些漢化會在遊戲更新後失效(甚至需要移除)，但有些卻不受影響，這其中的差異是什麼原因造成的呢？&lt;/p>
 &lt;p>對於沒有漢化MOD的遊戲，且不懂遊戲語言的玩家，還有什麼方法可以理解遊戲內容呢？&lt;/p>
@@ -13,10 +13,10 @@
 &lt;p>而且還有一個關鍵問題是：&lt;/p>
 &lt;blockquote>
 &lt;p>既然都不會原語言，怎麼會懂得輸入文本呢？&lt;/p>&lt;/blockquote>
-&lt;p>&lt;img src="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/example1.jpg"
+&lt;p>&lt;img src="https://orangeegg1937.github.io/post/tech/game-translation-intro/src/example1.jpg"
 width="1920"
 height="1080"
-srcset="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/example1_hu_9c8df8db763a2fda.jpg 480w, https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/example1_hu_a929661461df60f.jpg 1024w"
+srcset="https://orangeegg1937.github.io/post/tech/game-translation-intro/src/example1_hu_9c8df8db763a2fda.jpg 480w, https://orangeegg1937.github.io/post/tech/game-translation-intro/src/example1_hu_a929661461df60f.jpg 1024w"
 loading="lazy"
 alt="想像一下，要將畫面中所有日文轉成中文是一件多麼苦惱的事情😲"
 class="gallery-image"
@@ -33,10 +33,10 @@ data-flex-basis="426px"
 &lt;/h4>&lt;p>Google Translate 提供了一個非常方便的功能 &amp;ndash; &lt;a class="link" href="https://support.google.com/translate/answer/6142483" target="_blank" rel="noopener"
 >Translate images&lt;/a>，可以直接將圖片中的文字翻譯成其他語言，這項技術的原理就是透過OCR識別文字，然后再翻譯成目標語言。&lt;/p>
 &lt;p>雖然在網頁版中，只提供了上傳圖片的功能，但在手機App中，則可以直接拍攝圖片甚至動態翻譯。（可以使用智能鏡頭無需拍照，然後它會自動幫你翻譯以及替換）&lt;/p>
-&lt;p>&lt;img src="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/ocr_google.jpg"
+&lt;p>&lt;img src="https://orangeegg1937.github.io/post/tech/game-translation-intro/src/ocr_google.jpg"
 width="3385"
 height="2252"
-srcset="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/ocr_google_hu_ef82d8532591d1d7.jpg 480w, https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/ocr_google_hu_31e02e7026e240b0.jpg 1024w"
+srcset="https://orangeegg1937.github.io/post/tech/game-translation-intro/src/ocr_google_hu_ef82d8532591d1d7.jpg 480w, https://orangeegg1937.github.io/post/tech/game-translation-intro/src/ocr_google_hu_31e02e7026e240b0.jpg 1024w"
 loading="lazy"
 alt="Translate image 示範"
 class="gallery-image"
@@ -53,20 +53,20 @@ data-flex-basis="360px"
 >https://github.com/killkimno/MORT&lt;/a>&lt;/p>
 &lt;img src="src/MORT_windows.jpg" alt="MORT Windows" width="50%" height="50%" style="display: block; margin: auto;"/>
 &lt;p>MORT 支援多種翻譯服務，也可以自己implement翻譯API，以及自訂翻譯修正功能。它的使用方法也非常簡單，只需要設置 OCR 掃描區域，然後選擇翻譯服務即可。下面將簡單示範效果：&lt;/p>
-&lt;p>&lt;img src="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/MORT_area.jpg"
+&lt;p>&lt;img src="https://orangeegg1937.github.io/post/tech/game-translation-intro/src/MORT_area.jpg"
 width="1919"
 height="1079"
-srcset="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/MORT_area_hu_eb4c29dfc54e928.jpg 480w, https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/MORT_area_hu_ff4a5474d7f574a4.jpg 1024w"
+srcset="https://orangeegg1937.github.io/post/tech/game-translation-intro/src/MORT_area_hu_eb4c29dfc54e928.jpg 480w, https://orangeegg1937.github.io/post/tech/game-translation-intro/src/MORT_area_hu_ff4a5474d7f574a4.jpg 1024w"
 loading="lazy"
 alt="我們需要在這裡設定 OCR 掃描Window"
 class="gallery-image"
 data-flex-grow="177"
 data-flex-basis="426px"
 >&lt;/p>
-&lt;p>&lt;img src="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/MORT_result.jpg"
+&lt;p>&lt;img src="https://orangeegg1937.github.io/post/tech/game-translation-intro/src/MORT_result.jpg"
 width="1919"
 height="1079"
-srcset="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/MORT_result_hu_805dd2c155a22479.jpg 480w, https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/MORT_result_hu_4de147a56d197833.jpg 1024w"
+srcset="https://orangeegg1937.github.io/post/tech/game-translation-intro/src/MORT_result_hu_805dd2c155a22479.jpg 480w, https://orangeegg1937.github.io/post/tech/game-translation-intro/src/MORT_result_hu_4de147a56d197833.jpg 1024w"
 loading="lazy"
 alt="翻譯輸出會覆蓋掃瞄Window"
 class="gallery-image"
@@ -99,10 +99,10 @@ data-flex-basis="426px"
 &lt;p>這些文字在記憶體中是以二進制的形式存儲的，這意味著我們可以通過掃描遊戲運行時的記憶體來提取這些文字。&lt;/p>
 &lt;h3 id="簡單演示">簡單演示
 &lt;/h3>&lt;p>假設我們現在有以下的遊戲畫面，然后我們想提取畫面中的文字 (畫面中的字每10秒改變一次)：&lt;/p>
-&lt;p>&lt;img src="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m3_00.png"
+&lt;p>&lt;img src="https://orangeegg1937.github.io/post/tech/game-translation-intro/src/m3_00.png"
 width="1507"
 height="636"
-srcset="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m3_00_hu_fbbe07fc9774a9cd.png 480w, https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m3_00_hu_9752a858b9cc4216.png 1024w"
+srcset="https://orangeegg1937.github.io/post/tech/game-translation-intro/src/m3_00_hu_fbbe07fc9774a9cd.png 480w, https://orangeegg1937.github.io/post/tech/game-translation-intro/src/m3_00_hu_9752a858b9cc4216.png 1024w"
 loading="lazy"
 alt="Demo遊戲畫面"
 class="gallery-image"
@@ -113,10 +113,10 @@ data-flex-basis="568px"
 &lt;li>使用一些工具來掃描遊戲的記憶體 (這裏會使用&lt;a class="link" href="https://github.com/cheat-engine/cheat-engine" target="_blank" rel="noopener"
 >CheatEngine&lt;/a> )，首先我們直接從記憶體搜尋 &lt;code>This is dialogue 7.&lt;/code> 。&lt;/li>
 &lt;/ol>
-&lt;p>&lt;img src="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m3_01.jpg"
+&lt;p>&lt;img src="https://orangeegg1937.github.io/post/tech/game-translation-intro/src/m3_01.jpg"
 width="1614"
 height="987"
-srcset="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m3_01_hu_8ea1f40054ac4a13.jpg 480w, https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m3_01_hu_6b1c186a25f0360.jpg 1024w"
+srcset="https://orangeegg1937.github.io/post/tech/game-translation-intro/src/m3_01_hu_8ea1f40054ac4a13.jpg 480w, https://orangeegg1937.github.io/post/tech/game-translation-intro/src/m3_01_hu_6b1c186a25f0360.jpg 1024w"
 loading="lazy"
 alt="第一次掃描"
 class="gallery-image"
@@ -133,10 +133,10 @@ data-flex-basis="392px"
 &lt;p>這意味著這個地址並不是存放著畫面中的文字的地址，而是這段文字的&lt;strong>物件地址 (Object address)&lt;/strong>&lt;/p>
 &lt;/li>
 &lt;/ol>
-&lt;p>&lt;img src="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m3_03.jpg"
+&lt;p>&lt;img src="https://orangeegg1937.github.io/post/tech/game-translation-intro/src/m3_03.jpg"
 width="1009"
 height="805"
-srcset="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m3_03_hu_9f893ca2f0cabf4c.jpg 480w, https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m3_03_hu_ccfd4c223424ea56.jpg 1024w"
+srcset="https://orangeegg1937.github.io/post/tech/game-translation-intro/src/m3_03_hu_9f893ca2f0cabf4c.jpg 480w, https://orangeegg1937.github.io/post/tech/game-translation-intro/src/m3_03_hu_ccfd4c223424ea56.jpg 1024w"
 loading="lazy"
 alt="附近的記憶體"
 class="gallery-image"
@@ -155,10 +155,10 @@ data-flex-basis="300px"
 &lt;p>那么我們知道這段文字的對象地址 (Object address)，然後我們可以去搜尋&lt;strong>誰指向這個地址 (who points to this address)&lt;/strong>，這樣我們就可以知道這段文字是被誰引用 (理所當然地就是&lt;code>渲染的對象&lt;/code>)&lt;/p>
 &lt;/li>
 &lt;/ol>
-&lt;p>&lt;img src="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m3_05.jpg"
+&lt;p>&lt;img src="https://orangeegg1937.github.io/post/tech/game-translation-intro/src/m3_05.jpg"
 width="1613"
 height="980"
-srcset="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m3_05_hu_b92e7b5ec76b2053.jpg 480w, https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m3_05_hu_c3c8059b01307102.jpg 1024w"
+srcset="https://orangeegg1937.github.io/post/tech/game-translation-intro/src/m3_05_hu_b92e7b5ec76b2053.jpg 480w, https://orangeegg1937.github.io/post/tech/game-translation-intro/src/m3_05_hu_c3c8059b01307102.jpg 1024w"
 loading="lazy"
 alt="搜尋Object地址"
 class="gallery-image"
@@ -168,10 +168,10 @@ data-flex-basis="395px"
 &lt;ol start="4">
 &lt;li>在畫面中再一次顯示&lt;code>This is dialogue 7.&lt;/code>的時候進行搜尋，我們發現有2個位置會指向這個Object，稍微再等一等畫面改變&lt;/li>
 &lt;/ol>
-&lt;p>&lt;img src="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m3_06.jpg"
+&lt;p>&lt;img src="https://orangeegg1937.github.io/post/tech/game-translation-intro/src/m3_06.jpg"
 width="1610"
 height="981"
-srcset="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m3_06_hu_b76cb652123b9ff6.jpg 480w, https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m3_06_hu_c5acf979f024c572.jpg 1024w"
+srcset="https://orangeegg1937.github.io/post/tech/game-translation-intro/src/m3_06_hu_b76cb652123b9ff6.jpg 480w, https://orangeegg1937.github.io/post/tech/game-translation-intro/src/m3_06_hu_c5acf979f024c572.jpg 1024w"
 loading="lazy"
 alt="搜尋Object地址"
 class="gallery-image"
@@ -402,10 +402,10 @@ data-flex-basis="393px"
 &lt;/div>
 &lt;/div>&lt;p>然后下層則負責透過&lt;code>ChatLogResult&lt;/code>處理對象，提取文字交給&lt;code>ProcessChatMsg&lt;/code>負責，最後交給翻譯相關的API進行翻譯，然後將翻譯結果顯示在遊戲畫面上。
 這樣就可以實現即時翻譯的效果，並且不會受到畫面清晰度和文字大小的影響。&lt;/p>
-&lt;p>&lt;img src="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/tataru_helper.jpg"
+&lt;p>&lt;img src="https://orangeegg1937.github.io/post/tech/game-translation-intro/src/tataru_helper.jpg"
 width="1726"
 height="955"
-srcset="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/tataru_helper_hu_41f6ae7973fdb74a.jpg 480w, https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/tataru_helper_hu_a7af0dcac99fd220.jpg 1024w"
+srcset="https://orangeegg1937.github.io/post/tech/game-translation-intro/src/tataru_helper_hu_41f6ae7973fdb74a.jpg 480w, https://orangeegg1937.github.io/post/tech/game-translation-intro/src/tataru_helper_hu_a7af0dcac99fd220.jpg 1024w"
 loading="lazy"
 alt="官方示範的TataruHelper效果"
 class="gallery-image"
@@ -421,10 +421,10 @@ data-flex-basis="433px"
 &lt;p>靜態修改是指直接再遊戲運行前，修改遊戲資源文件中的文字，有安裝過漢化MOD的經驗的話相信對這個方法並不陌生，有些MOD就是直接覆蓋遊戲的部分檔案，原理就是把已經翻譯好的資源包 (Assets) 直接覆蓋進遊戲的資源位置，然後遊戲運行時就會直接使用這些已修改的資源(漢化后的文字)。&lt;/p>
 &lt;p>雖然表面表面上看就只是覆蓋資源文件，但其實這個方法的最困難的地方是如何找到&lt;code>資源文件夾 (Assets)&lt;/code>、從中提取文字以及再一次封包，一般遊戲為了防止遭到修改和解包，以及optimize遊戲運行時的速度，遊戲的資源已經被打包成專用格式。&lt;/p>
 &lt;h3 id="簡單演示-1">簡單演示
-&lt;/h3>&lt;p>&lt;img src="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m4_00.png"
+&lt;/h3>&lt;p>&lt;img src="https://orangeegg1937.github.io/post/tech/game-translation-intro/src/m4_00.png"
 width="1216"
 height="612"
-srcset="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m4_00_hu_d7db43670faf9926.png 480w, https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m4_00_hu_2305ef374d552d5b.png 1024w"
+srcset="https://orangeegg1937.github.io/post/tech/game-translation-intro/src/m4_00_hu_d7db43670faf9926.png 480w, https://orangeegg1937.github.io/post/tech/game-translation-intro/src/m4_00_hu_2305ef374d552d5b.png 1024w"
 loading="lazy"
 alt="Demo遊戲畫面"
 class="gallery-image"
@@ -467,10 +467,10 @@ data-flex-basis="476px"
 &lt;/div>&lt;ol>
 &lt;li>首先我們需要找到遊戲的位置&lt;/li>
 &lt;/ol>
-&lt;p>&lt;img src="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m4_01.png"
+&lt;p>&lt;img src="https://orangeegg1937.github.io/post/tech/game-translation-intro/src/m4_01.png"
 width="695"
 height="231"
-srcset="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m4_01_hu_61752cb6260ef21b.png 480w, https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m4_01_hu_5010122d2225ec38.png 1024w"
+srcset="https://orangeegg1937.github.io/post/tech/game-translation-intro/src/m4_01_hu_61752cb6260ef21b.png 480w, https://orangeegg1937.github.io/post/tech/game-translation-intro/src/m4_01_hu_5010122d2225ec38.png 1024w"
 loading="lazy"
 alt="遊戲目錄"
 class="gallery-image"
@@ -480,10 +480,10 @@ data-flex-basis="722px"
 &lt;ol start="2">
 &lt;li>觀察他的&lt;code>Data&lt;/code>的資料夾，這個resources.assets就是我們的目標，當然無法直接打開&lt;/li>
 &lt;/ol>
-&lt;p>&lt;img src="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m4_02.png"
+&lt;p>&lt;img src="https://orangeegg1937.github.io/post/tech/game-translation-intro/src/m4_02.png"
 width="774"
 height="440"
-srcset="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m4_02_hu_fd2615f1a419470b.png 480w, https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m4_02_hu_beba6349615b2abe.png 1024w"
+srcset="https://orangeegg1937.github.io/post/tech/game-translation-intro/src/m4_02_hu_fd2615f1a419470b.png 480w, https://orangeegg1937.github.io/post/tech/game-translation-intro/src/m4_02_hu_beba6349615b2abe.png 1024w"
 loading="lazy"
 alt="遊戲Data目錄"
 class="gallery-image"
@@ -494,10 +494,10 @@ data-flex-basis="422px"
 &lt;li>這時候我們需要使用一些工具來解包這個資源包，這裡會使用&lt;a class="link" href="https://github.com/SeriousCache/UABE" target="_blank" rel="noopener"
 >UABE&lt;/a>&lt;/li>
 &lt;/ol>
-&lt;p>&lt;img src="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m4_03.png"
+&lt;p>&lt;img src="https://orangeegg1937.github.io/post/tech/game-translation-intro/src/m4_03.png"
 width="1347"
 height="839"
-srcset="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m4_03_hu_e052f893241fb909.png 480w, https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m4_03_hu_1e0d8a5aa5dd1aa1.png 1024w"
+srcset="https://orangeegg1937.github.io/post/tech/game-translation-intro/src/m4_03_hu_e052f893241fb909.png 480w, https://orangeegg1937.github.io/post/tech/game-translation-intro/src/m4_03_hu_1e0d8a5aa5dd1aa1.png 1024w"
 loading="lazy"
 alt="解包後的結果"
 class="gallery-image"
@@ -507,10 +507,10 @@ data-flex-basis="385px"
 &lt;ol start="4">
 &lt;li>然後我們可以在UABE中找到我們的TextAssets，然后對其進行修改，對其進行修改然后保存，然後再將其封包回去&lt;/li>
 &lt;/ol>
-&lt;p>&lt;img src="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m4_04.jpg"
+&lt;p>&lt;img src="https://orangeegg1937.github.io/post/tech/game-translation-intro/src/m4_04.jpg"
 width="724"
 height="524"
-srcset="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m4_04_hu_59e4a3162d00b2d3.jpg 480w, https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m4_04_hu_903f2a64732009cf.jpg 1024w"
+srcset="https://orangeegg1937.github.io/post/tech/game-translation-intro/src/m4_04_hu_59e4a3162d00b2d3.jpg 480w, https://orangeegg1937.github.io/post/tech/game-translation-intro/src/m4_04_hu_903f2a64732009cf.jpg 1024w"
 loading="lazy"
 alt="用UABE進行修改以及再一次封包"
 class="gallery-image"
@@ -520,10 +520,10 @@ data-flex-basis="331px"
 &lt;ol start="5">
 &lt;li>最後我們就可以看到修改后的結果了&lt;/li>
 &lt;/ol>
-&lt;p>&lt;img src="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m4_05.png"
+&lt;p>&lt;img src="https://orangeegg1937.github.io/post/tech/game-translation-intro/src/m4_05.png"
 width="1219"
 height="630"
-srcset="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m4_05_hu_f7f8ae37a1abcbb8.png 480w, https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m4_05_hu_fd96885cc0fa0b02.png 1024w"
+srcset="https://orangeegg1937.github.io/post/tech/game-translation-intro/src/m4_05_hu_f7f8ae37a1abcbb8.png 480w, https://orangeegg1937.github.io/post/tech/game-translation-intro/src/m4_05_hu_fd96885cc0fa0b02.png 1024w"
 loading="lazy"
 alt="修改后的結果"
 class="gallery-image"
@@ -553,10 +553,10 @@ data-flex-basis="464px"
 &lt;/ol>
 &lt;h2 id="動態修改---hook">動態修改 - Hook
 &lt;/h2>&lt;p>動態修改是指在遊戲運行的時候，通過一些技術手段來修改遊戲的文件中的文字。這個方法的原理是通過&lt;code>Hook&lt;/code>技術來攔截遊戲的渲染函數或者文字相關的函數，然後在渲染之前將文字進行翻譯。&lt;/p>
-&lt;p>&lt;img src="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m5_00.png"
+&lt;p>&lt;img src="https://orangeegg1937.github.io/post/tech/game-translation-intro/src/m5_00.png"
 width="1068"
 height="731"
-srcset="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m5_00_hu_9c9c9f126569aaca.png 480w, https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/m5_00_hu_6c6f67392ebd3ece.png 1024w"
+srcset="https://orangeegg1937.github.io/post/tech/game-translation-intro/src/m5_00_hu_9c9c9f126569aaca.png 480w, https://orangeegg1937.github.io/post/tech/game-translation-intro/src/m5_00_hu_6c6f67392ebd3ece.png 1024w"
 loading="lazy"
 alt="Hook理念"
 class="gallery-image"

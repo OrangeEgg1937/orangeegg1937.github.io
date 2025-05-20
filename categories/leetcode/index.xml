@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Leetcode on Akua的IT狗Blog</title><link>https://orangeegg1937.github.io/categories/leetcode/</link><description>Recent content in Leetcode on Akua的IT狗Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Mon, 15 May 2023 20:41:00 +0800</lastBuildDate><atom:link href="https://orangeegg1937.github.io/categories/leetcode/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 1721 Swapping Nodes in a Linked List</title><link>https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/</link><pubDate>Mon, 15 May 2023 20:41:00 +0800</pubDate><guid>https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/</guid><description>&lt;h1 id="leetcode-1721-swapping-nodes-in-a-linked-list">Leetcode 1721. Swapping Nodes in a Linked List
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Leetcode on Akua的IT狗Blog</title><link>https://orangeegg1937.github.io/categories/leetcode/</link><description>Recent content in Leetcode on Akua的IT狗Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Mon, 15 May 2023 20:41:00 +0800</lastBuildDate><atom:link href="https://orangeegg1937.github.io/categories/leetcode/index.xml" rel="self" type="application/rss+xml"/><item><title>Leetcode 1721 Swapping Nodes in a Linked List</title><link>https://orangeegg1937.github.io/post/leetcode/leetcode-1721/</link><pubDate>Mon, 15 May 2023 20:41:00 +0800</pubDate><guid>https://orangeegg1937.github.io/post/leetcode/leetcode-1721/</guid><description>&lt;h1 id="leetcode-1721-swapping-nodes-in-a-linked-list">Leetcode 1721. Swapping Nodes in a Linked List
 &lt;/h1>&lt;blockquote>
 &lt;p>You are given the head of a linked list, and an integer k.&lt;/p>
 &lt;p>Return the head of the linked list after swapping the values of the kth node from the beginning and the &lt;strong>kth&lt;/strong> node from the end (the list is 1-indexed).&lt;/p>&lt;/blockquote>
-&lt;p>&lt;img src="https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/example.png"
+&lt;p>&lt;img src="https://orangeegg1937.github.io/post/leetcode/leetcode-1721/example.png"
 width="761"
 height="465"
-srcset="https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/example_hu_eda577a27681a3df.png 480w, https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/example_hu_ae8a1f39b1b1569d.png 1024w"
+srcset="https://orangeegg1937.github.io/post/leetcode/leetcode-1721/example_hu_eda577a27681a3df.png 480w, https://orangeegg1937.github.io/post/leetcode/leetcode-1721/example_hu_ae8a1f39b1b1569d.png 1024w"
 loading="lazy"
 alt="Test case"
 class="gallery-image"
@@ -15,10 +15,10 @@ data-flex-basis="392px"
 &lt;h2 id="前言">前言
 &lt;/h2>&lt;p>作為一個Leetcode + Data structure菜鳥，一開始的解決方法都很直接。發現有什麼問題就直接暴力解決它。這一篇Blog最主要紀錄我前期的思考方式以及開始培養習慣，所以以下解法思路可能效率不高。&lt;/p>
 &lt;h2 id="個人解法思路">個人解法思路
-&lt;/h2>&lt;p>&lt;img src="https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/example2.jpg"
+&lt;/h2>&lt;p>&lt;img src="https://orangeegg1937.github.io/post/leetcode/leetcode-1721/example2.jpg"
 width="961"
 height="283"
-srcset="https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/example2_hu_ae1e48d69871b16.jpg 480w, https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/example2_hu_2e9dbade1042d6ae.jpg 1024w"
+srcset="https://orangeegg1937.github.io/post/leetcode/leetcode-1721/example2_hu_ae1e48d69871b16.jpg 480w, https://orangeegg1937.github.io/post/leetcode/leetcode-1721/example2_hu_2e9dbade1042d6ae.jpg 1024w"
 loading="lazy"
 alt="Question 1721"
 class="gallery-image"
@@ -33,10 +33,10 @@ data-flex-basis="814px"
 &lt;li>透過已紀錄的Array/Vector，就知道node的位置以及整體長度，從而解決了「如何在list中尋找第&lt;strong>k&lt;/strong>的node和從尾端到開頭的第&lt;strong>k&lt;/strong>個node」&lt;/li>
 &lt;/ol>
 &lt;h2 id="解法-solution">解法 Solution
-&lt;/h2>&lt;p>&lt;img src="https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/example3.jpg"
+&lt;/h2>&lt;p>&lt;img src="https://orangeegg1937.github.io/post/leetcode/leetcode-1721/example3.jpg"
 width="975"
 height="369"
-srcset="https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/example3_hu_4b88890860643951.jpg 480w, https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/example3_hu_8bcdb37ac0cc7638.jpg 1024w"
+srcset="https://orangeegg1937.github.io/post/leetcode/leetcode-1721/example3_hu_4b88890860643951.jpg 480w, https://orangeegg1937.github.io/post/leetcode/leetcode-1721/example3_hu_8bcdb37ac0cc7638.jpg 1024w"
 loading="lazy"
 alt="Solution"
 class="gallery-image"
@@ -135,10 +135,10 @@ data-flex-basis="634px"
 &lt;li>「怎樣都要Travel整個Linked-list才知道整體長度」→ Time complexity 已經沒有最佳化空間 → 那麼就從Space complexity改良&lt;/li>
 &lt;li>有沒有方法可以節省空間？有，可以用pointer紀錄兩個位置 (fast/slow point)&lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/example4.png"
+&lt;p>&lt;img src="https://orangeegg1937.github.io/post/leetcode/leetcode-1721/example4.png"
 width="811"
 height="676"
-srcset="https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/example4_hu_76b66dbf12072eb2.png 480w, https://orangeegg1937.github.io/p/leetcode-1721-swapping-nodes-in-a-linked-list/example4_hu_ef98aa4d029356da.png 1024w"
+srcset="https://orangeegg1937.github.io/post/leetcode/leetcode-1721/example4_hu_76b66dbf12072eb2.png 480w, https://orangeegg1937.github.io/post/leetcode/leetcode-1721/example4_hu_ef98aa4d029356da.png 1024w"
 loading="lazy"
 alt="Fast_slow_pointer"
 class="gallery-image"
