@@ -1,4 +1,278 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Akua的IT狗Blog</title><link>https://orangeegg1937.github.io/</link><description>Recent content on Akua的IT狗Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Sun, 11 May 2025 00:20:05 +0800</lastBuildDate><atom:link href="https://orangeegg1937.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>技術上，漢化遊戲有什麼方法？</title><link>https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/</link><pubDate>Sun, 11 May 2025 00:20:05 +0800</pubDate><guid>https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/</guid><description>&lt;img src="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/cover.png" alt="Featured image of post 技術上，漢化遊戲有什麼方法？" />&lt;h2 id="前言">前言
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Akua的IT狗Blog</title><link>https://orangeegg1937.github.io/</link><description>Recent content on Akua的IT狗Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Mon, 19 May 2025 15:46:05 +0800</lastBuildDate><atom:link href="https://orangeegg1937.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Android動態載入SO - 無Root無需重新安裝APK即可測試Native庫的方法</title><link>https://orangeegg1937.github.io/p/android%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5so-%E7%84%A1root%E7%84%A1%E9%9C%80%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%9Dapk%E5%8D%B3%E5%8F%AF%E6%B8%AC%E8%A9%A6native%E5%BA%AB%E7%9A%84%E6%96%B9%E6%B3%95/</link><pubDate>Mon, 19 May 2025 15:46:05 +0800</pubDate><guid>https://orangeegg1937.github.io/p/android%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5so-%E7%84%A1root%E7%84%A1%E9%9C%80%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%9Dapk%E5%8D%B3%E5%8F%AF%E6%B8%AC%E8%A9%A6native%E5%BA%AB%E7%9A%84%E6%96%B9%E6%B3%95/</guid><description>&lt;img src="https://orangeegg1937.github.io/p/android%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5so-%E7%84%A1root%E7%84%A1%E9%9C%80%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%9Dapk%E5%8D%B3%E5%8F%AF%E6%B8%AC%E8%A9%A6native%E5%BA%AB%E7%9A%84%E6%96%B9%E6%B3%95/src/cover.jpg" alt="Featured image of post Android動態載入SO - 無Root無需重新安裝APK即可測試Native庫的方法" />&lt;blockquote>
+&lt;p>⚠️ 以下步驟僅適用於測試與Debug，不適用於Deployment階段，若要部署，可參考「Android Hotfix .so」&lt;/p>&lt;/blockquote>
+&lt;h2 id="前言">前言
+&lt;/h2>&lt;p>在首次接觸NDK的時候，可以看到預設project使用&lt;code>System.loadLibrary()&lt;/code>來靜態載入(static load).so檔案，這個方法會在APK的lib目錄下尋找.so檔案，並將其載入到應用程序中。使用這個方法時，需要將.so檔案打包到APK中，這樣在app啟動時就會自動載入這些庫。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="kd">static&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">System&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">loadLibrary&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;dynamicloadso&amp;#34;&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>在一個不複雜的app中，這樣的做法是足以應付的，但如果形容程式的規模變大的時候，每次都要對so進行debug或者只是對so進行更新會花上很多時間re-build apk。為了解決這個問題，我們可以使用Android的動態載入so的功能，這樣就可以在不重新安裝APK的情況下使用Native庫&lt;/p>
+&lt;h2 id="動態載入">動態載入
+&lt;/h2>&lt;p>Android動態載入so (Dynamic Load native library) 是一種在運行時載入Native庫的方法，這種方法可以在應用程序運行時根據程式運行邏輯自行選擇什麼時候才載入，並且不需要預先將.so檔案打包到APK中。&lt;/p>
+&lt;h2 id="demo">Demo
+&lt;/h2>&lt;ul>
+&lt;li>假設我們有以下程式碼Native Code&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-C++" data-lang="C++">&lt;span class="line">&lt;span class="cl">&lt;span class="k">extern&lt;/span> &lt;span class="s">&amp;#34;C&amp;#34;&lt;/span> &lt;span class="n">JNIEXPORT&lt;/span> &lt;span class="n">jstring&lt;/span> &lt;span class="n">JNICALL&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">Java_com_akua_demo_dynamicloadso_DynamicSOLoader_stringFromJNI&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">JNIEnv&lt;/span>&lt;span class="o">*&lt;/span> &lt;span class="n">env&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">jclass&lt;/span> &lt;span class="n">klass&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">string&lt;/span> &lt;span class="n">hello&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;Hello from C++&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">env&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">NewStringUTF&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">hello&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">c_str&lt;/span>&lt;span class="p">());&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>而Java的程式碼定義為&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="kd">static&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">System&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">loadLibrary&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;dynamicloadso&amp;#34;&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">static&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">native&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">String&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">stringFromJNI&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="原效果">原效果
+&lt;/h3>&lt;p>&lt;img src="https://orangeegg1937.github.io/p/android%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5so-%E7%84%A1root%E7%84%A1%E9%9C%80%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%9Dapk%E5%8D%B3%E5%8F%AF%E6%B8%AC%E8%A9%A6native%E5%BA%AB%E7%9A%84%E6%96%B9%E6%B3%95/src/orig.png"
+width="1428"
+height="900"
+srcset="https://orangeegg1937.github.io/p/android%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5so-%E7%84%A1root%E7%84%A1%E9%9C%80%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%9Dapk%E5%8D%B3%E5%8F%AF%E6%B8%AC%E8%A9%A6native%E5%BA%AB%E7%9A%84%E6%96%B9%E6%B3%95/src/orig_hu_8b9580d350c65be7.png 480w, https://orangeegg1937.github.io/p/android%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5so-%E7%84%A1root%E7%84%A1%E9%9C%80%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%9Dapk%E5%8D%B3%E5%8F%AF%E6%B8%AC%E8%A9%A6native%E5%BA%AB%E7%9A%84%E6%96%B9%E6%B3%95/src/orig_hu_383a0900d3179b7c.png 1024w"
+loading="lazy"
+alt="Built APK 之後，當我們呼叫native function時，會得到&amp;#34;Hello from C&amp;#43;&amp;#43;&amp;#34;"
+class="gallery-image"
+data-flex-grow="158"
+data-flex-basis="380px"
+>&lt;/p>
+&lt;h3 id="從內部儲存internal-storage載入原生程式庫">從內部儲存(internal storage)載入原生程式庫
+&lt;/h3>&lt;p>對Java程式碼做了一些改變，加入了一個&lt;code>loadLibraryFromInternalStorage()&lt;/code> method.&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;span class="lnt">37
+&lt;/span>&lt;span class="lnt">38
+&lt;/span>&lt;span class="lnt">39
+&lt;/span>&lt;span class="lnt">40
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="kd">public&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">static&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">void&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nf">loadLibraryFromInternalStorage&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Activity&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">activity&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kd">throws&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">Exception&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">Context&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">context&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">activity&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getApplicationContext&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">try&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">StringBuilder&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">lib_internal_path&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">new&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">StringBuilder&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">StringBuilder&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">lib_external_path&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">new&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">StringBuilder&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">lib_internal_path&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">append&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">context&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getFilesDir&lt;/span>&lt;span class="p">().&lt;/span>&lt;span class="na">getAbsolutePath&lt;/span>&lt;span class="p">())&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">append&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">File&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">separator&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">append&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;custom&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">append&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">File&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">separator&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">append&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;arm64-v8a&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">append&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">File&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">separator&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">append&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">LIB_NAME&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">lib_external_path&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">append&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">context&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getExternalFilesDir&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kc">null&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="na">getAbsolutePath&lt;/span>&lt;span class="p">())&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">append&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">File&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">separator&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">append&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;custom&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">append&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">File&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">separator&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">append&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;arm64-v8a&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">append&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">File&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">separator&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">append&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">LIB_NAME&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="c1">// Add arm64-v7a if needed&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">File&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">lib_file&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">new&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">File&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">lib_external_path&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">toString&lt;/span>&lt;span class="p">());&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">if&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">lib_file&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">exists&lt;/span>&lt;span class="p">())&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">copyFileToInternalStorage&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">lib_external_path&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">toString&lt;/span>&lt;span class="p">(),&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">lib_internal_path&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">toString&lt;/span>&lt;span class="p">());&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">File&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">internal_lib_file&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">new&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">File&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">lib_internal_path&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">toString&lt;/span>&lt;span class="p">());&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">if&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">!&lt;/span>&lt;span class="n">internal_lib_file&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">exists&lt;/span>&lt;span class="p">())&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">System&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">loadLibrary&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;dynamicloadso&amp;#34;&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">Log&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">d&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">TAG&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s">&amp;#34;loadLibraryFromInternalStorage: Loaded from APK&amp;#34;&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">return&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">System&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">load&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">internal_lib_file&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">getAbsolutePath&lt;/span>&lt;span class="p">());&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">Log&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">d&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">TAG&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s">&amp;#34;loadLibraryFromInternalStorage: Loaded from external storage&amp;#34;&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">catch&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">Exception&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">e&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="k">throw&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">new&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">Exception&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;Failed to load library&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">e&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="p">}&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;blockquote>
+&lt;p>⚠️ 通常情況下需要考慮CPU架構去載入其特定的so，但在demo中，只先考慮 arm64-v8a&lt;/p>&lt;/blockquote>
+&lt;p>在這個code中，可以將它分成三個部分：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>從Activity取得內部和外部路徑 (Internal and External Storage)&lt;/p>
+&lt;p>在 Android 中，我們只能從內部儲存空間或 apk/lib 目錄載入函式庫。某些手機裝置，可能會基於安全理由阻止普通用戶存取內部儲存裝置，例如 Samsung Knox / 安全資料夾。因此，我們需要額外的方法來從外部儲存載入函式庫，也就是將它複製到內部&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>檢查和複製，在這部分檢查內部或外部儲存中是否存在已patched的so，如果是，則將其從外部複製到內部。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>從內部或 apk/lib 載入native library&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>&lt;img src="https://orangeegg1937.github.io/p/android%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5so-%E7%84%A1root%E7%84%A1%E9%9C%80%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%9Dapk%E5%8D%B3%E5%8F%AF%E6%B8%AC%E8%A9%A6native%E5%BA%AB%E7%9A%84%E6%96%B9%E6%B3%95/src/loaded_from_apk.png"
+width="1459"
+height="691"
+srcset="https://orangeegg1937.github.io/p/android%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5so-%E7%84%A1root%E7%84%A1%E9%9C%80%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%9Dapk%E5%8D%B3%E5%8F%AF%E6%B8%AC%E8%A9%A6native%E5%BA%AB%E7%9A%84%E6%96%B9%E6%B3%95/src/loaded_from_apk_hu_7610183d9301937f.png 480w, https://orangeegg1937.github.io/p/android%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5so-%E7%84%A1root%E7%84%A1%E9%9C%80%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%9Dapk%E5%8D%B3%E5%8F%AF%E6%B8%AC%E8%A9%A6native%E5%BA%AB%E7%9A%84%E6%96%B9%E6%B3%95/src/loaded_from_apk_hu_3b2fb0fc16ec7522.png 1024w"
+loading="lazy"
+alt="現在重建 APK，目前的 so 是從 /lib 目錄載入"
+class="gallery-image"
+data-flex-grow="211"
+data-flex-basis="506px"
+>&lt;/p>
+&lt;h3 id="僅build-native-library">僅Build Native Library
+&lt;/h3>&lt;p>讓我們變更native function文字並重新建立 .so (但不rebuild整個 apk)&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-C++" data-lang="C++">&lt;span class="line">&lt;span class="cl">&lt;span class="k">extern&lt;/span> &lt;span class="s">&amp;#34;C&amp;#34;&lt;/span> &lt;span class="n">JNIEXPORT&lt;/span> &lt;span class="n">jstring&lt;/span> &lt;span class="n">JNICALL&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">Java_com_akua_demo_dynamicloadso_DynamicSOLoader_stringFromJNI&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">JNIEnv&lt;/span>&lt;span class="o">*&lt;/span> &lt;span class="n">env&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">jclass&lt;/span> &lt;span class="n">klass&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">std&lt;/span>&lt;span class="o">::&lt;/span>&lt;span class="n">string&lt;/span> &lt;span class="n">hello&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s">&amp;#34;Patched from C++&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">return&lt;/span> &lt;span class="n">env&lt;/span>&lt;span class="o">-&amp;gt;&lt;/span>&lt;span class="n">NewStringUTF&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">hello&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">c_str&lt;/span>&lt;span class="p">());&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>新增一項&amp;quot;僅建立native library so&amp;quot;任務&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-gradle" data-lang="gradle">&lt;span class="line">&lt;span class="cl">&lt;span class="n">tasks&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="na">register&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s2">&amp;#34;BuildNativeLibToRootOnly&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">group&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;build&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">description&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="s2">&amp;#34;Builds the native library and places it in the root directory.&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">dependsOn&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s2">&amp;#34;externalNativeBuildRelease&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">doLast&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">copy&lt;/span> &lt;span class="o">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">from&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s2">&amp;#34;$buildDir/intermediates/cmake/release/obj&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">into&lt;/span>&lt;span class="o">(&lt;/span>&lt;span class="s2">&amp;#34;$rootDir/outputs&amp;#34;&lt;/span>&lt;span class="o">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="o">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>執行之後，我們可以看到project root中有一個 .so 檔案&lt;/p>
+&lt;p>&lt;img src="https://orangeegg1937.github.io/p/android%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5so-%E7%84%A1root%E7%84%A1%E9%9C%80%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%9Dapk%E5%8D%B3%E5%8F%AF%E6%B8%AC%E8%A9%A6native%E5%BA%AB%E7%9A%84%E6%96%B9%E6%B3%95/src/build_so.png"
+width="389"
+height="491"
+srcset="https://orangeegg1937.github.io/p/android%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5so-%E7%84%A1root%E7%84%A1%E9%9C%80%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%9Dapk%E5%8D%B3%E5%8F%AF%E6%B8%AC%E8%A9%A6native%E5%BA%AB%E7%9A%84%E6%96%B9%E6%B3%95/src/build_so_hu_7e898267ee9a0ed8.png 480w, https://orangeegg1937.github.io/p/android%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5so-%E7%84%A1root%E7%84%A1%E9%9C%80%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%9Dapk%E5%8D%B3%E5%8F%AF%E6%B8%AC%E8%A9%A6native%E5%BA%AB%E7%9A%84%E6%96%B9%E6%B3%95/src/build_so_hu_2cb5005696009622.png 1024w"
+loading="lazy"
+alt="我們可以在/outputs看到檔案"
+class="gallery-image"
+data-flex-grow="79"
+data-flex-basis="190px"
+>&lt;/p>
+&lt;p>將其放入 APK 外部儲存空間。&lt;/p>
+&lt;p>&lt;img src="https://orangeegg1937.github.io/p/android%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5so-%E7%84%A1root%E7%84%A1%E9%9C%80%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%9Dapk%E5%8D%B3%E5%8F%AF%E6%B8%AC%E8%A9%A6native%E5%BA%AB%E7%9A%84%E6%96%B9%E6%B3%95/src/move_so_to_external_storage.png"
+width="826"
+height="494"
+srcset="https://orangeegg1937.github.io/p/android%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5so-%E7%84%A1root%E7%84%A1%E9%9C%80%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%9Dapk%E5%8D%B3%E5%8F%AF%E6%B8%AC%E8%A9%A6native%E5%BA%AB%E7%9A%84%E6%96%B9%E6%B3%95/src/move_so_to_external_storage_hu_28ace3ddac7c39be.png 480w, https://orangeegg1937.github.io/p/android%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5so-%E7%84%A1root%E7%84%A1%E9%9C%80%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%9Dapk%E5%8D%B3%E5%8F%AF%E6%B8%AC%E8%A9%A6native%E5%BA%AB%E7%9A%84%E6%96%B9%E6%B3%95/src/move_so_to_external_storage_hu_8c83b11ec1abf6c9.png 1024w"
+loading="lazy"
+alt="放入 APK 外部儲存空間"
+class="gallery-image"
+data-flex-grow="167"
+data-flex-basis="401px"
+>&lt;/p>
+&lt;h3 id="結果">結果
+&lt;/h3>&lt;p>無需重新安裝或更新 APK此情況下，我們可以看到文字被更改&lt;/p>
+&lt;p>&lt;img src="https://orangeegg1937.github.io/p/android%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5so-%E7%84%A1root%E7%84%A1%E9%9C%80%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%9Dapk%E5%8D%B3%E5%8F%AF%E6%B8%AC%E8%A9%A6native%E5%BA%AB%E7%9A%84%E6%96%B9%E6%B3%95/src/final_result.png"
+width="1497"
+height="736"
+srcset="https://orangeegg1937.github.io/p/android%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5so-%E7%84%A1root%E7%84%A1%E9%9C%80%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%9Dapk%E5%8D%B3%E5%8F%AF%E6%B8%AC%E8%A9%A6native%E5%BA%AB%E7%9A%84%E6%96%B9%E6%B3%95/src/final_result_hu_ffeee9b0f0f8ca48.png 480w, https://orangeegg1937.github.io/p/android%E5%8B%95%E6%85%8B%E8%BC%89%E5%85%A5so-%E7%84%A1root%E7%84%A1%E9%9C%80%E9%87%8D%E6%96%B0%E5%AE%89%E8%A3%9Dapk%E5%8D%B3%E5%8F%AF%E6%B8%AC%E8%A9%A6native%E5%BA%AB%E7%9A%84%E6%96%B9%E6%B3%95/src/final_result_hu_68774fb1ab1059c6.png 1024w"
+loading="lazy"
+alt="我們可以看到文字已變更"
+class="gallery-image"
+data-flex-grow="203"
+data-flex-basis="488px"
+>&lt;/p>
+&lt;h2 id="總結">總結
+&lt;/h2>&lt;p>這個方法可以讓我們在不重新安裝APK的情況下，測試和debug Native庫，這樣可以節省大量時間並提高開發效率。就我個人而言，當我做一些遊戲模組時，它可以節省我重建遊戲APK的時間。除此之外，&lt;strong>這也是熱修(hotfix)的技術之一&lt;/strong>。&lt;/p>
+&lt;h3 id="注意事項">注意事項
+&lt;/h3>&lt;p>雖然dynamic load是一個非常方便的功能，但在使用時仍然需要注意一些&lt;strong>安全性&lt;/strong>事項，從外部和內部儲存動態載入的.so檔案可能會很容易被惡意修改，或加載時使用完整性檢查(integrity checking)等安全措施。&lt;/p></description></item><item><title>技術上，漢化遊戲有什麼方法？</title><link>https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/</link><pubDate>Sun, 11 May 2025 00:20:05 +0800</pubDate><guid>https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/</guid><description>&lt;img src="https://orangeegg1937.github.io/p/%E6%8A%80%E8%A1%93%E4%B8%8A%E6%BC%A2%E5%8C%96%E9%81%8A%E6%88%B2%E6%9C%89%E4%BB%80%E9%BA%BC%E6%96%B9%E6%B3%95/src/cover.png" alt="Featured image of post 技術上，漢化遊戲有什麼方法？" />&lt;h2 id="前言">前言
 &lt;/h2>&lt;blockquote>
 &lt;p>作為資深玩家，當遇到沒有中文選項的遊戲時，第一反應往往是尋找漢化MOD。這些MOD的安裝方式各異，從簡單的下載安裝包到需要修改遊戲資源的複雜操作。使用過漢化的玩家都知道，有些漢化會在遊戲更新後失效(甚至需要移除)，但有些卻不受影響，這其中的差異是什麼原因造成的呢？&lt;/p>
 &lt;p>對於沒有漢化MOD的遊戲，且不懂遊戲語言的玩家，還有什麼方法可以理解遊戲內容呢？&lt;/p>
