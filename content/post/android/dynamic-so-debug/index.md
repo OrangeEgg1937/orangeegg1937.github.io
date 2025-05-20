@@ -31,6 +31,8 @@ keywords:
 
 > ⚠️ 以下步驟僅適用於測試與Debug，不適用於Deployment階段，若要部署，可參考「Android Hotfix .so」
 
+> Code repository: https://github.com/OrangeEgg1937/Android-Dynamic-Native-Library-Load-Example
+
 ## 前言
 
 在首次接觸NDK的時候，可以看到預設project使用`System.loadLibrary()`來靜態載入(static load).so檔案，這個方法會在APK的lib目錄下尋找.so檔案，並將其載入到應用程序中。使用這個方法時，需要將.so檔案打包到APK中，這樣在app啟動時就會自動載入這些庫。
