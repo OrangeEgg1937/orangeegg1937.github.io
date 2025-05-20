@@ -3,6 +3,8 @@ title: 技術上，漢化遊戲有什麼方法？
 date: 2025-05-11 00:20:05+0800
 description: "淺談遊戲漢化的技術手段"
 
+slug: game-translation-intro
+
 categories:
     - 遊戲漢化
 tags:

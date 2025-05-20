@@ -4,6 +4,8 @@ description: 絕龍詩戰爭 - Day After Clear
 date: 2022-08-20 00:16:34+0800
 image: https://pbs.twimg.com/media/FY7zPPjacAACkFF?format=jpg
 
+slug: ffxiv-dsr-clear-summary
+
 categories:
     - non-tech
 

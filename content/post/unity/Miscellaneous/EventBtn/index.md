@@ -2,6 +2,7 @@
 title: UnityEvent
 description: personal note for the UnityEvent
 date: 2023-12-03 18:21:00+0800
+slug: unity-event-note
 categories:
     - Unity
 tags:

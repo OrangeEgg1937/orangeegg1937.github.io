@@ -2,6 +2,7 @@
 title: 簡單BongoCat動畫 with Arduino
 description: 利用按鈕去轉換螢幕顯示的圖片
 date: 2024-01-20 20:28:00+0800
+slug: arduino-bongo-cat
 categories:
     - Arduino
 tags:

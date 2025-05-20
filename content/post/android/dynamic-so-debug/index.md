@@ -3,8 +3,11 @@ title: Android動態載入SO - 無Root無需重新安裝APK即可測試Native庫
 date: 2025-05-19 15:46:05+0800
 description: "一個簡單的方法，可以節省大量時間並測試Native庫。"
 
-categories:
+slug: "android-dynamic-load-so"
+
+categories: 
     - Android
+
 tags:
     - Android
     - 動態載入

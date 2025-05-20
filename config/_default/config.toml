@@ -19,4 +19,6 @@ enableRobotsTXT = true
 pagerSize = 5
 
 [sitemap]
-    filename = "sitemap.xml"
+  changefreq = "monthly"
+  filename = "sitemap.xml"
+  priority = 0.5

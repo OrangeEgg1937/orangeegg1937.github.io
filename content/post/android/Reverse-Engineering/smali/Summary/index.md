@@ -2,6 +2,13 @@
 title: Basic smali code
 description: personal note
 date: 2024-10-03 14:13:00+0800
+slug: smali-basic-note
+keywords: [
+    "smali",
+    "android",
+    "reverse engineering",
+    "apk"
+]
 categories:
     - Android
     - smali

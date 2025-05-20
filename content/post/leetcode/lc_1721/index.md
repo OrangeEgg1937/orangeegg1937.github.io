@@ -2,6 +2,7 @@
 title: Leetcode 1721 Swapping Nodes in a Linked List
 description: Leetcode 1721 解題心得
 date: 2023-05-15 20:41:00+0800
+slug: leetcode-1721
 categories:
     - Leetcode
 tags:
