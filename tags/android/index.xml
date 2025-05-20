@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Android on Akua的IT狗Blog</title><link>https://orangeegg1937.github.io/tags/android/</link><description>Recent content in Android on Akua的IT狗Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-tw</language><lastBuildDate>Mon, 19 May 2025 15:46:05 +0800</lastBuildDate><atom:link href="https://orangeegg1937.github.io/tags/android/index.xml" rel="self" type="application/rss+xml"/><item><title>Android動態載入SO - 無Root無需重新安裝APK即可測試Native庫的方法</title><link>https://orangeegg1937.github.io/post/android/android-dynamic-load-so/</link><pubDate>Mon, 19 May 2025 15:46:05 +0800</pubDate><guid>https://orangeegg1937.github.io/post/android/android-dynamic-load-so/</guid><description>&lt;img src="https://orangeegg1937.github.io/post/android/android-dynamic-load-so/src/cover.jpg" alt="Featured image of post Android動態載入SO - 無Root無需重新安裝APK即可測試Native庫的方法" />&lt;blockquote>
 &lt;p>⚠️ 以下步驟僅適用於測試與Debug，不適用於Deployment階段，若要部署，可參考「Android Hotfix .so」&lt;/p>&lt;/blockquote>
+&lt;blockquote>
+&lt;p>Code repository: &lt;a class="link" href="https://github.com/OrangeEgg1937/Android-Dynamic-Native-Library-Load-Example" target="_blank" rel="noopener"
+>https://github.com/OrangeEgg1937/Android-Dynamic-Native-Library-Load-Example&lt;/a>&lt;/p>&lt;/blockquote>
 &lt;h2 id="前言">前言
 &lt;/h2>&lt;p>在首次接觸NDK的時候，可以看到預設project使用&lt;code>System.loadLibrary()&lt;/code>來靜態載入(static load).so檔案，這個方法會在APK的lib目錄下尋找.so檔案，並將其載入到應用程序中。使用這個方法時，需要將.so檔案打包到APK中，這樣在app啟動時就會自動載入這些庫。&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
