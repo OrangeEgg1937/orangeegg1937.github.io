@@ -4,6 +4,8 @@ mainSections = ["post"]
 rssFullContent = true
 favicon = "/favicon.png"
 
+description = "Akua的IT狗Blog"
+
 [footer]
 since = 2022
 customText = ""
