@@ -272,7 +272,7 @@ data-flex-basis="488px"
 &lt;h2 id="總結">總結
 &lt;/h2>&lt;p>這個方法可以讓我們在不重新安裝APK的情況下，測試和debug Native庫，這樣可以節省大量時間並提高開發效率。就我個人而言，當我做一些遊戲模組時，它可以節省我重建遊戲APK的時間。除此之外，&lt;strong>這也是熱修(hotfix)的技術之一&lt;/strong>。&lt;/p>
 &lt;h3 id="注意事項">注意事項
-&lt;/h3>&lt;p>雖然dynamic load是一個非常方便的功能，但在使用時仍然需要注意一些&lt;strong>安全性&lt;/strong>事項，從外部和內部儲存動態載入的.so檔案可能會很容易被惡意修改，或加載時使用完整性檢查(integrity checking)等安全措施。&lt;/p></description></item><item><title>Basic smali code</title><link>https://orangeegg1937.github.io/p/basic-smali-code/</link><pubDate>Thu, 03 Oct 2024 14:13:00 +0800</pubDate><guid>https://orangeegg1937.github.io/p/basic-smali-code/</guid><description>&lt;h2 id="data-types">Data types
+&lt;/h3>&lt;p>雖然dynamic load是一個非常方便的功能，但在使用時仍然需要注意一些&lt;strong>安全性&lt;/strong>事項，從外部和內部儲存動態載入的.so檔案可能會很容易被惡意修改，為了安全起見加載時使用完整性檢查(integrity checking)等安全措施。&lt;/p></description></item><item><title>Basic smali code</title><link>https://orangeegg1937.github.io/p/basic-smali-code/</link><pubDate>Thu, 03 Oct 2024 14:13:00 +0800</pubDate><guid>https://orangeegg1937.github.io/p/basic-smali-code/</guid><description>&lt;h2 id="data-types">Data types
 &lt;/h2>&lt;table>
 &lt;thead>
 &lt;tr>
